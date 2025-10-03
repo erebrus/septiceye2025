@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=7 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
 [ext_resource type="Resource" uid="uid://7vtuecoxqef2" path="res://src/start_state.tres" id="2_pk08u"]
 [ext_resource type="PackedScene" uid="uid://lqtollaovard" path="res://src/base_level.tscn" id="3_pk08u"]
 [ext_resource type="PackedScene" uid="uid://cdm2fhla0kigd" path="res://src/common/fade_panel.tscn" id="4_wqvko"]
-[ext_resource type="Script" uid="uid://b0wlvlxmntrlj" path="res://src/systems/name_generator.gd" id="5_pk08u"]
 
 [sub_resource type="Resource" id="Resource_5q4o7"]
 metadata/__load_path__ = "res://src/tutorial_state.tres"
@@ -18,9 +17,6 @@ game_state = SubResource("Resource_5q4o7")
 [node name="LevelManager" parent="." node_paths=PackedStringArray("level_container") instance=ExtResource("2_bs6l1")]
 levels = Array[PackedScene]([ExtResource("3_pk08u")])
 level_container = NodePath("../Level")
-
-[node name="NameGenerator" type="Node" parent="."]
-script = ExtResource("5_pk08u")
 
 [node name="Level" type="Node2D" parent="."]
 

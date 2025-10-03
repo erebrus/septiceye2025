@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dga413qveeevc"]
+[gd_scene load_steps=6 format=3 uid="uid://dga413qveeevc"]
 
-[ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/character/test/character_portrait_test.gd" id="1_nmdu8"]
-[ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/character/character_portrait.tscn" id="2_bd4xp"]
+[ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/systems/character_generator/test/character_portrait_test.gd" id="1_nmdu8"]
+[ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_bd4xp"]
+[ext_resource type="PackedScene" uid="uid://6s4mcqvyfcgw" path="res://src/systems/character/passport.tscn" id="3_p6mq6"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_mhq3f"]
 action = &"ui_select"
@@ -60,6 +61,12 @@ text = "Generate!"
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
 position = Vector2(1477, 585)
+
+[node name="Passport" parent="." instance=ExtResource("3_p6mq6")]
+offset_left = 783.0
+offset_top = 555.0
+offset_right = 850.0
+offset_bottom = 632.0
 
 [connection signal="item_selected" from="VBoxContainer/TorsoOptions" to="." method="_on_torso_options_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/HeadOptions" to="." method="_on_head_options_item_selected"]

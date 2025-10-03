@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://04681mljvxoh" path="res://src/common/ui_sfx.gd" id="5_fmvy8"]
 [ext_resource type="AudioStream" uid="uid://vdr7ewrp5m01" path="res://assets/sfx/kenneys/select_001.ogg" id="5_kyxtr"]
 [ext_resource type="AudioStream" uid="uid://dcowjg8y0gyjd" path="res://assets/sfx/kenneys/select_002.ogg" id="6_7sypx"]
-[ext_resource type="PackedScene" uid="uid://dv04tvpd5gpyu" path="res://src/character/character_generator.tscn" id="8_0o1u7"]
+[ext_resource type="PackedScene" uid="uid://dv04tvpd5gpyu" path="res://src/systems/character_generator/character_generator.tscn" id="8_0o1u7"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_q1nu8"]
 stream_count = 3

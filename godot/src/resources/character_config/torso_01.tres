@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TorsoConfig" load_steps=3 format=3 uid="uid://d0pj68si4fkis"]
 
-[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/character/torso_config.gd" id="1_xu2qc"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="1_xu2qc"]
 [ext_resource type="Texture2D" uid="uid://b3ypkqtmwivnx" path="res://assets/gfx/Trial 1/trial-body.png" id="2_f573l"]
 
 [resource]

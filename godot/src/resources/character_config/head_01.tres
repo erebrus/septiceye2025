@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://cok5tkw4eou3o"]
 
-[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/character/part_config.gd" id="1_l45c0"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="1_l45c0"]
 [ext_resource type="Texture2D" uid="uid://b7h0xbyttbxwq" path="res://assets/gfx/Trial 1/trial-head.png" id="2_fabud"]
 
 [resource]
