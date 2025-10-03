@@ -52,6 +52,8 @@ func generate() -> Character:
 
 func generate_for_rule(rule: Rule) -> Character:
 	var character = Character.new()
+	if rule.religion != Types.Religion.UNKNOWN:
+		character.religion = rule.religion
 	rule.make_character_meet(character)
 	complete(character)
 	return character
@@ -59,7 +61,11 @@ func generate_for_rule(rule: Rule) -> Character:
 
 func generate_for_destination(destination: Types.Destination, ruleset: RuleSet) -> Character:
 	var character = Character.new()
+	character.religion = religions.pick_random()
+	
 	for rule in ruleset.rules:
+		if not rule.should_apply(character):
+			continue
 		if destination in rule.met_destinations:
 			if destination not in rule.unmet_destinations:
 				rule.make_character_meet(character)

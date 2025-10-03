@@ -11,6 +11,7 @@ var current_character: Character
 @onready var fade_panel: FadePanel = %FadePanel
 
 @onready var scheduled_deaths: ScheduledDeaths = %ScheduledDeaths
+@onready var rule_manual: RuleManual = %RuleManual
 
 
 
@@ -53,5 +54,6 @@ func _on_level_manager_level_ready() -> void:
 		if level_manager.current_level_idx==0:
 			game_state = start_state.duplicate()
 		get_level().set_state(game_state)
+		
 	scheduled_deaths.set_state(game_state)
-	
+	rule_manual.ruleset = get_level().ruleset
