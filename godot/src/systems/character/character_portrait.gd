@@ -20,9 +20,9 @@ func _setup() -> void:
 	$InFrontOfTorso.position = character.torso_config.head_position
 	
 	_set_sprite(%Torso, character.torso_config.texture, Color.WHITE)
-	_set_sprite(%Head, character.head_config.texture, character.skin_color)
-	_set_sprite(%HairBack, character.hair_config.texture, character.hair_color)
-	_set_sprite(%HairFront, character.hair_config.front_texture, character.hair_color)
+	_set_sprite(%Head, character.head_config.texture, character.skin_color_code)
+	_set_sprite(%HairBack, character.hair_config.texture, character.hair_color_code)
+	_set_sprite(%HairFront, character.hair_config.front_texture, character.hair_color_code)
 	
 
 func _set_sprite(sprite: Sprite2D, texture: Texture2D, color: Color) -> void:
