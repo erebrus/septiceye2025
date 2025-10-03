@@ -22,9 +22,10 @@ func expected_fate_for(character: Character) -> Types.Destination:
 		assert(not possible_destinations.is_empty())
 		
 		if possible_destinations.size() == 1:
+			GSLogger.info("Character with destination: %s" % Types.Destination.keys()[possible_destinations.front()])
 			return possible_destinations.front()
 	
-	GSLogger.warn("Character with multiple possible destinations")
+	GSLogger.warn("Character with multiple destinations (chosen: %s)" % Types.Destination.keys()[possible_destinations.front()])
 	return possible_destinations.front()
 	
 

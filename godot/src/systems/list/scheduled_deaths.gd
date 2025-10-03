@@ -15,7 +15,10 @@ func set_state(state: GameState):
 	for child in container.get_children():
 		child.queue_free()
 	
-	for character in state.character_queue:
+	var queue := state.character_queue.duplicate()
+	queue.shuffle()
+	
+	for character in queue:
 		if character.is_in_list:
 			var character_name = NameScene.instantiate()
 			character_name.character = character

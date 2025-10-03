@@ -40,11 +40,14 @@ func generate() -> void:
 	for character in character_queue:
 		GSLogger.info("Counting custom character")
 		Globals.character_generator.complete(character)
+		character.destination = ruleset.expected_fate_for(character)
 		num_extra += _count_character(character, target)
 		
 	for rule in ruleset.rules:
 		GSLogger.info("Generating character which meets rule: %s" % rule)
 		var character = Globals.character_generator.generate_for_rule(rule)
+		character.destination = ruleset.expected_fate_for(character)
+		character_queue.append(character)
 		num_extra += _count_character(character, target)
 	
 	for destination in target:
@@ -54,11 +57,10 @@ func generate() -> void:
 	
 	for _i in range(num_extra, extra_souls):
 		GSLogger.info("Generating extra character")
-		character_queue.append(Globals.character_generator.generate())
-		
-	for character in character_queue:
+		var character = Globals.character_generator.generate()
 		character.destination = ruleset.expected_fate_for(character)
-	
+		character_queue.append(character)
+		
 	character_queue.shuffle()
 	
 
@@ -72,9 +74,8 @@ func next_character() -> void:
 
 
 func _count_character(character: Character, target: Dictionary[Types.Destination, int]) -> int:
-	var destination = ruleset.expected_fate_for(character)
-	if target.has(destination):
-		target[destination] -= 1
+	if target.has(character.destination):
+		target[character.destination] -= 1
 		return 0
 	else:
 		return -1

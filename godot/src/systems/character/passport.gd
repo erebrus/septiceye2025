@@ -24,5 +24,9 @@ func _setup() -> void:
 
 func _on_stamp_requested(destination: Types.Destination) -> void:
 	# TODO open passport and stamp it 
+	GSLogger.info("Stamped character with %s (expected: %s)" % [
+		Types.Destination.keys()[destination],
+		Types.Destination.keys()[character.destination],
+	])
 	Events.character_stamped.emit(destination, character.destination)
 	

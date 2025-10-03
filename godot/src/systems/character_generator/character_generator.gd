@@ -73,6 +73,8 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet) 
 			rule.make_character_not_meet(character)
 	
 	complete(character)
+	character.destination = ruleset.expected_fate_for(character)
+	
 	return character
 	
 
