@@ -50,6 +50,3 @@ func _on_level_manager_level_ready() -> void:
 		get_level().set_state(game_state)
 	scheduled_deaths.set_state(game_state)
 	
-
-func _on_level_manager_loading_level(level: BaseLevel):
-	level.generate()

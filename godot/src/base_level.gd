@@ -3,11 +3,10 @@ class_name BaseLevel extends Node
 
 @export var override_game_state: GameState
 
-@export var extra_souls_in_list: int = 5
-@export var extra_souls_not_in_list: int = 2 
+@export var extra_souls: int = 5
 
 @export var quotas: Dictionary[Types.Destination, int]
-
+@export var ruleset: RuleSet
 
 var game_state:GameState
 @export var character_queue: Array[Character]
@@ -18,6 +17,7 @@ var game_state:GameState
 
 func _ready() -> void:
 	portrait.hide()
+	generate()
 	
 
 func set_state(_game_state:GameState):
@@ -27,40 +27,52 @@ func set_state(_game_state:GameState):
 	for destination in quotas:
 		game_state.quotas[destination] = 0
 	
-	if game_state.character_queue.is_empty():
-		game_state.character_queue = character_queue
-	else:
-		character_queue = game_state.character_queue
+	game_state.character_queue = character_queue
 	
-
 
 func generate() -> void:
-	for destination in quotas:
-		for _i in quotas[destination]:
-			GSLogger.info("Generating character with destination: %s" % Types.Destination.keys()[destination])
-			character_queue.append(_generate_character(destination, []))
+	var target := quotas.duplicate()
+	var num_extra := 0
 	
-	for i in extra_souls_in_list:
-		GSLogger.info("Generating extra in-list character")
-		character_queue.append(_generate_character())
+	for character in character_queue:
+		GSLogger.info("Counting custom character")
+		Globals.character_generator.complete(character)
+		num_extra += _count_character(character, target)
 		
-	for i in extra_souls_not_in_list:
-		GSLogger.info("Generating extra not-in-list character")
-		var character := _generate_character()
-		character.is_in_list = false
-		character_queue.append(character)
+	for rule in ruleset.rules:
+		GSLogger.info("Generating character which meets rule: %s" % rule)
+		var character = Globals.character_generator.generate_for_rule(rule)
+		num_extra += _count_character(character, target)
+	
+	for destination in target:
+		for _i in target[destination]:
+			GSLogger.info("Generating character with destination: %s" % Types.Destination.keys()[destination])
+			character_queue.append(_generate_character(destination))
+	
+	for _i in range(num_extra, extra_souls):
+		GSLogger.info("Generating extra character")
+		character_queue.append(Globals.character_generator.generate())
 		
 	
 	character_queue.shuffle()
 	
 
-func _generate_character(destination: Types.Destination = Types.Destination.A, rules: Array = []) -> Character:
+func _generate_character(destination: Types.Destination = Types.Destination.RETURN) -> Character:
 	var character = Character.new()
 	
 	# TODO: configure character based on rules
 	
 	Globals.character_generator.complete(character)
 	return character
+	
+
+func _count_character(character: Character, target: Dictionary[Types.Destination, int]) -> int:
+	var destination = ruleset.expected_fate_for(character)
+	if target.has(destination):
+		target[destination] -= 1
+		return 0
+	else:
+		return -1
 	
 
 func _on_manual_button_pressed():

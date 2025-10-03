@@ -15,8 +15,8 @@ extends Node
 
 
 func _ready() -> void:
-	for i in Character.Religion:
-		religion_options.add_item(i, Character.Religion[i])
+	for i in Types.Religion:
+		religion_options.add_item(i, Types.Religion[i])
 	for i in Character.Gender:
 		gender_options.add_item(i, Character.Gender[i])
 	for i in Character.HairColor:
@@ -41,7 +41,7 @@ func _update() -> void:
 
 func _on_generate_pressed():
 	var character = Character.new()
-	character.religion = religion_options.selected
+	Types.Religion = religion_options.selected
 	character.gender = gender_options.selected
 	character.hair_color = hair_color_options.selected
 	character.skin_color = skin_color_options.selected
@@ -59,7 +59,7 @@ func _on_generate_pressed():
 	
 
 func _on_religion_options_item_selected(index):
-	portrait.character.religion = index
+	portrait.Types.Religion = index
 	_update() 
 	
 

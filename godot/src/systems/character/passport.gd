@@ -15,5 +15,5 @@ func _ready() -> void:
 func _setup() -> void:
 	%Name.text = character.name
 	%Gender.text = Character.Gender.keys()[character.gender].to_lower()
-	%Religion.text = Character.Religion.keys()[character.religion].to_lower()
+	%Religion.text = Types.Religion.keys()[Types.Religion].to_lower()
 	

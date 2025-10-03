@@ -7,14 +7,6 @@ enum Trait {
 	SKIN_COLOR,
 }
 
-enum Religion {
-	UNKNOWN,
-	A,
-	B,
-	C,
-	D
-}
-
 enum Gender {
 	UNKNOWN,
 	MALE,
@@ -55,7 +47,7 @@ enum SkinColor {
 var name: String
 var is_in_list: bool = true
 var gender: Gender
-var religion: Religion
+var religion: Types.Religion
 
 var hair_color: HairColor
 var hair_color_code: Color:
@@ -91,5 +83,14 @@ func get_trait(soul_trait: Trait) -> int:
 		Trait.HAIR_COLOR: return hair_color
 		Trait.SKIN_COLOR: return skin_color
 	
-	GSLogger.error("Unknown trait %s" % soul_trait)
+	GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
 	return 0
+	
+
+func set_trait(soul_trait: Trait, value: int) -> void:
+	match soul_trait:
+		Trait.RELIGION: religion = value as Types.Religion
+		Trait.GENDER: gender = value as Gender
+		Trait.HAIR_COLOR: hair_color = value as HairColor
+		Trait.SKIN_COLOR: skin_color = value as SkinColor
+		_: GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
