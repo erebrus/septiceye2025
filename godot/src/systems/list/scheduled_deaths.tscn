@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://l2dskqk2haet"]
+
+[ext_resource type="Script" uid="uid://c4miawmnjpugl" path="res://src/systems/list/scheduled_deaths.gd" id="1_2i7o8"]
+[ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_8tshg"]
+[ext_resource type="PackedScene" uid="uid://dqs2dylldp06q" path="res://src/systems/list/character_name.tscn" id="2_sllgi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tshg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sllgi"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="ScheduledDeaths" type="PopupPanel"]
+oversampling_override = 1.0
+size = Vector2i(275, 100)
+visible = true
+theme = ExtResource("1_8tshg")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8tshg")
+script = ExtResource("1_2i7o8")
+NameScene = ExtResource("2_sllgi")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 275.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sllgi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Scheduled Deaths"
+
+[node name="NameContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

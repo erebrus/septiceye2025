@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dga413qveeevc"]
+[gd_scene load_steps=6 format=3 uid="uid://dga413qveeevc"]
 
 [ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/systems/character_generator/test/character_portrait_test.gd" id="1_nmdu8"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_bd4xp"]

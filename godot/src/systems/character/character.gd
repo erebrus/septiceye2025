@@ -53,6 +53,7 @@ enum SkinColor {
 }
 
 var name: String
+var is_in_list: bool = true
 var gender: Gender
 var religion: Religion
 

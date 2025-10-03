@@ -1,3 +1,5 @@
 class_name GameState extends Resource
 
-@export var dummy_var:int=0
+@export var character_queue: Array[Character]
+
+@export var quotas: Dictionary[Types.Destination, int]

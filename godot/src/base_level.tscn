@@ -1,6 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://lqtollaovard"]
+[gd_scene load_steps=6 format=3 uid="uid://lqtollaovard"]
 
 [ext_resource type="Script" uid="uid://b4ytavk038x8p" path="res://src/base_level.gd" id="1_mnxva"]
+[ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_82ww6"]
+[ext_resource type="Texture2D" uid="uid://d1eeu4nkovikv" path="res://assets/gfx/ui/manual_button.png" id="2_mo2dc"]
+[ext_resource type="Texture2D" uid="uid://whvv60cor3mh" path="res://assets/gfx/ui/list_button.png" id="3_82ww6"]
+[ext_resource type="Texture2D" uid="uid://cfjk2jkra6qrk" path="res://assets/gfx/ui/open_button.png" id="4_0xb2g"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_mnxva")
+
+[node name="CharacterPortrait" parent="." instance=ExtResource("2_82ww6")]
+unique_name_in_owner = true
+position = Vector2(960, 550)
+
+[node name="DeskPlaceholder" type="Polygon2D" parent="."]
+position = Vector2(0, 179)
+color = Color(0.4117647, 0.22745098, 0.2784314, 1)
+polygon = PackedVector2Array(-154, 613, 2060, 622, 2048, 1061, -121, 1082)
+
+[node name="ManualButton" type="TextureButton" parent="."]
+offset_left = 1582.0
+offset_top = 721.0
+offset_right = 1821.0
+offset_bottom = 1050.0
+texture_normal = ExtResource("2_mo2dc")
+texture_pressed = ExtResource("2_mo2dc")
+texture_hover = ExtResource("2_mo2dc")
+texture_disabled = ExtResource("2_mo2dc")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScheduledDeathsButton" type="TextureButton" parent="."]
+offset_left = 1282.0
+offset_top = 721.0
+offset_right = 1521.0
+offset_bottom = 1050.0
+texture_normal = ExtResource("3_82ww6")
+texture_pressed = ExtResource("3_82ww6")
+texture_hover = ExtResource("3_82ww6")
+texture_disabled = ExtResource("3_82ww6")
+metadata/_edit_use_anchors_ = true
+
+[node name="StartDayButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 51.0
+offset_top = 56.0
+offset_right = 290.0
+offset_bottom = 160.0
+texture_normal = ExtResource("4_0xb2g")
+texture_pressed = ExtResource("4_0xb2g")
+texture_hover = ExtResource("4_0xb2g")
+texture_disabled = ExtResource("4_0xb2g")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
+[connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]
+[connection signal="pressed" from="StartDayButton" to="." method="_on_start_day_button_pressed"]

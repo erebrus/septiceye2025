@@ -6,9 +6,14 @@ signal fade_out_completed
 @export var fade_in_duration := 1.0
 
 
+func _ready():
+	show()
+	
+
 func set_fade(val:bool):
 	modulate=Color(1,1,1,1 if val else 0)
 	
+
 func fade_in():
 	set_fade(true)
 	var tween := create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)

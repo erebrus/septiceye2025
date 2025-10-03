@@ -1,7 +1,7 @@
 class_name LevelManager extends Node
 
 signal unloading_level
-signal loading_level
+signal loading_level(level: BaseLevel)
 signal level_unloaded
 signal level_ready
 
@@ -70,8 +70,8 @@ func _load_level(scene:PackedScene):
 	if _has_loaded_level():
 		_unload_current_level()
 	
-	loading_level.emit()
 	var new_level = scene.instantiate()
+	loading_level.emit(new_level)
 	current_level = new_level
 	
 	# TODO: call here any initialization of the level needed BEFORE adding to the tree (maybe we should set GameState here?)
