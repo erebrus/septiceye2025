@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://b58peuo4bsbio"]
+[gd_scene load_steps=10 format=3 uid="uid://b58peuo4bsbio"]
 
 [ext_resource type="Script" uid="uid://du3udx3vspxt7" path="res://src/systems/character/character_portrait.gd" id="1_7yeod"]
+[ext_resource type="Shader" uid="uid://dnmv34ghycbw" path="res://src/systems/character/recolor.gdshader" id="2_3kjl4"]
 [ext_resource type="Texture2D" uid="uid://dv66coj234qsq" path="res://assets/gfx/Trial 1/trial-hair-back.png" id="2_83niv"]
 [ext_resource type="Texture2D" uid="uid://b7h0xbyttbxwq" path="res://assets/gfx/Trial 1/trial-head.png" id="3_mxwyy"]
 [ext_resource type="Texture2D" uid="uid://b3ypkqtmwivnx" path="res://assets/gfx/Trial 1/trial-body.png" id="4_3kjl4"]
 [ext_resource type="Texture2D" uid="uid://bqdld5p6nsmbx" path="res://assets/gfx/Trial 1/trial-hair.png" id="5_k0vji"]
+[ext_resource type="Texture2D" uid="uid://bylpt540s1cob" path="res://assets/gfx/Trial 1/trial-eyes.png" id="5_mxwyy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0vji"]
+shader = ExtResource("2_3kjl4")
+shader_parameter/target_color = Color(1, 1, 1, 1)
+shader_parameter/shift_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tagy4"]
+shader = ExtResource("2_3kjl4")
+shader_parameter/target_color = Color(1, 1, 1, 1)
+shader_parameter/shift_amount = 0.0
 
 [node name="CharacterPortrait" type="Node2D"]
 script = ExtResource("1_7yeod")
+skin_material = SubResource("ShaderMaterial_k0vji")
+hair_material = SubResource("ShaderMaterial_tagy4")
 
 [node name="Torso" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -24,6 +38,10 @@ texture = ExtResource("2_83niv")
 [node name="Head" type="Sprite2D" parent="Torso/BehindTorso"]
 unique_name_in_owner = true
 texture = ExtResource("3_mxwyy")
+
+[node name="Eyes" type="Sprite2D" parent="Torso/BehindTorso"]
+unique_name_in_owner = true
+texture = ExtResource("5_mxwyy")
 
 [node name="InFrontOfTorso" type="Node2D" parent="Torso"]
 unique_name_in_owner = true

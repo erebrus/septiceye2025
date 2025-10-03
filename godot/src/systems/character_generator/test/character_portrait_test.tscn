@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dga413qveeevc"]
+[gd_scene load_steps=9 format=3 uid="uid://dga413qveeevc"]
 
 [ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/systems/character_generator/test/character_portrait_test.gd" id="1_nmdu8"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_bd4xp"]
 [ext_resource type="PackedScene" uid="uid://6s4mcqvyfcgw" path="res://src/systems/character/passport.tscn" id="3_p6mq6"]
+[ext_resource type="Shader" uid="uid://dnmv34ghycbw" path="res://src/systems/character/recolor.gdshader" id="3_wb2uj"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_mhq3f"]
 action = &"ui_select"
 
 [sub_resource type="Shortcut" id="Shortcut_nmdu8"]
 events = [SubResource("InputEventAction_mhq3f")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_achjk"]
+shader = ExtResource("3_wb2uj")
+shader_parameter/target_color = Color(0.6550001, 0.55, 1, 1)
+shader_parameter/shift_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omyb5"]
+shader = ExtResource("3_wb2uj")
+shader_parameter/target_color = Color(1, 1, 1, 1)
+shader_parameter/shift_amount = 0.0
 
 [node name="CharacterPortraitTest" type="Node"]
 script = ExtResource("1_nmdu8")
@@ -77,6 +88,8 @@ text = "Generate!"
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
 position = Vector2(1477, 585)
+skin_material = SubResource("ShaderMaterial_achjk")
+hair_material = SubResource("ShaderMaterial_omyb5")
 
 [node name="Passport" parent="." instance=ExtResource("3_p6mq6")]
 offset_left = 783.0
