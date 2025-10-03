@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://dga413qveeevc"]
+
+[ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/character/test/character_portrait_test.gd" id="1_nmdu8"]
+[ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/character/character_portrait.tscn" id="2_bd4xp"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mhq3f"]
+action = &"ui_select"
+
+[sub_resource type="Shortcut" id="Shortcut_nmdu8"]
+events = [SubResource("InputEventAction_mhq3f")]
+
+[node name="CharacterPortraitTest" type="Node"]
+script = ExtResource("1_nmdu8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="TorsoOptions" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HeadOptions" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HairOptions" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Hair"
+
+[node name="HairColor" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Skin"
+
+[node name="SkinColor" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Generate" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_nmdu8")
+text = "Generate!"
+
+[node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
+position = Vector2(1477, 585)
+
+[connection signal="item_selected" from="VBoxContainer/TorsoOptions" to="." method="_on_torso_options_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HeadOptions" to="." method="_on_head_options_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HairOptions" to="." method="_on_hair_options_item_selected"]
+[connection signal="color_changed" from="VBoxContainer/HBoxContainer/HairColor" to="." method="_on_hair_color_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/HBoxContainer2/SkinColor" to="." method="_on_skin_color_color_changed"]
+[connection signal="pressed" from="VBoxContainer/Generate" to="." method="_on_generate_pressed"]

@@ -8,6 +8,7 @@ var config:ConfigFile
 
 var in_game:=false
 var in_dialogue:=false
+
 var game:Game
 
 
@@ -18,6 +19,7 @@ var game_version: String:
 
 @onready var music_manager: MusicManager = $MusicManager
 @onready var ui_sfx: UiSfx = $UiSfx
+@onready var character_generator: CharacterGenerator = $CharacterGenerator
 
 
 func _ready():
