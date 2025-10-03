@@ -1,8 +1,5 @@
 class_name CharacterPortrait extends Node2D
 
-@export var skin_material: ShaderMaterial
-@export var hair_material: ShaderMaterial
-
 
 var character: Character:
 	set(value):
@@ -22,26 +19,18 @@ var character: Character:
 @onready var hair_front: Sprite2D = %HairFront
 
 func _ready() -> void:
-	head.material = skin_material
-	eyes.material = skin_material
-	
-	hair_back.material = hair_material
-	hair_front.material = hair_material
-	
 	if character != null:
 		_setup()
 	
 
 func _set_skin_color(color: Color) -> void:
-	skin_material.set_shader_parameter("target_color", color)
-	#%Head.modulate = color
-	#%Eyes.modulate = color
+	head.modulate = color
+	eyes.modulate = color
 	
 
 func _set_hair_color(color: Color) -> void:
-	hair_material.set_shader_parameter("target_color", color)
-	#%HairBack.modulate = color
-	#%HairFront.modulate = color
+	hair_back.modulate = color
+	hair_front.modulate = color
 	
 
 func _setup() -> void:
@@ -53,17 +42,16 @@ func _setup() -> void:
 	_set_skin_color(character.skin_color_code)
 	_set_hair_color(character.hair_color_code)
 	
-	_set_sprite(%Torso, character.torso_config.texture, Color.WHITE)
-	_set_sprite(%Head, character.head_config.texture, character.skin_color_code)
-	_set_sprite(%HairBack, character.hair_config.texture, character.hair_color_code)
-	_set_sprite(%HairFront, character.hair_config.front_texture, character.hair_color_code)
+	_set_sprite(torso, character.torso_config.texture)
+	_set_sprite(head, character.head_config.texture)
+	_set_sprite(hair_back, character.hair_config.texture)
+	_set_sprite(hair_front, character.hair_config.front_texture)
 	
 
-func _set_sprite(sprite: Sprite2D, texture: Texture2D, color: Color) -> void:
+func _set_sprite(sprite: Sprite2D, texture: Texture2D) -> void:
 	if texture != null:
 		sprite.visible = true
 		sprite.texture = texture
-		#sprite.modulate = color
 	else:
 		sprite.visible = false
 	
