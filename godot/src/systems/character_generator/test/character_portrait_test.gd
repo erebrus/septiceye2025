@@ -94,11 +94,9 @@ func _on_hair_options_item_selected(index):
 	
 
 func _on_hair_color_color_changed(color):
-	portrait.character.hair_color = color
-	_update() 
+	portrait._set_hair_color(color)
 	
 
 func _on_skin_color_color_changed(color):
-	portrait.character.skin_color = color
-	_update() 
+	portrait._set_skin_color(color)
 	
