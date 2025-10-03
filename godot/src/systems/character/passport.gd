@@ -1,4 +1,4 @@
-extends MarginContainer
+class_name Passport extends PopupPanel
 
 var character: Character:
 	set(value):
@@ -11,9 +11,18 @@ func _ready() -> void:
 	if character != null:
 		_setup()
 	
+	Events.show_passport_requested.connect(popup)
+	Events.stamp_requested.connect(_on_stamp_requested)
+	Events.character_entered.connect(func(x): character = x)
+	
 
 func _setup() -> void:
 	%Name.text = character.name
 	%Gender.text = Character.Gender.keys()[character.gender].to_lower()
-	%Religion.text = Types.Religion.keys()[Types.Religion].to_lower()
+	%Religion.text = Types.Religion.keys()[character.religion].to_lower()
+	
+
+func _on_stamp_requested(destination: Types.Destination) -> void:
+	# TODO open passport and stamp it 
+	Events.character_stamped.emit(destination, character.destination)
 	

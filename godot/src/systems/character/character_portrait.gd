@@ -22,6 +22,8 @@ func _ready() -> void:
 	if character != null:
 		_setup()
 	
+	Events.character_entered.connect(func(x): character = x)
+	
 
 func _set_skin_color(color: Color) -> void:
 	head.modulate = color

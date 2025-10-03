@@ -13,10 +13,13 @@ var game_state:GameState
 
 @onready var portrait: CharacterPortrait = %CharacterPortrait
 @onready var start_day_button: BaseButton = %StartDayButton
+@onready var passport_button: BaseButton = %PassportButton
 
 
 func _ready() -> void:
+	Events.character_stamped.connect(_on_character_stamped)
 	portrait.hide()
+	passport_button.hide()
 	generate()
 	
 
@@ -47,24 +50,26 @@ func generate() -> void:
 	for destination in target:
 		for _i in target[destination]:
 			GSLogger.info("Generating character with destination: %s" % Types.Destination.keys()[destination])
-			character_queue.append(_generate_character(destination))
+			character_queue.append(Globals.character_generator.generate_for_destination(destination, ruleset))
 	
 	for _i in range(num_extra, extra_souls):
 		GSLogger.info("Generating extra character")
 		character_queue.append(Globals.character_generator.generate())
 		
+	for character in character_queue:
+		character.destination = ruleset.expected_fate_for(character)
 	
 	character_queue.shuffle()
 	
 
-func _generate_character(destination: Types.Destination = Types.Destination.RETURN) -> Character:
-	var character = Character.new()
+func next_character() -> void:
+	var character = character_queue.front()
+	Events.character_entered.emit(character)
 	
-	# TODO: configure character based on rules
-	
-	Globals.character_generator.complete(character)
-	return character
-	
+	# TODO: character enter animation / sfx
+	portrait.show()
+	passport_button.show()
+
 
 func _count_character(character: Character, target: Dictionary[Types.Destination, int]) -> int:
 	var destination = ruleset.expected_fate_for(character)
@@ -82,7 +87,49 @@ func _on_manual_button_pressed():
 func _on_start_day_button_pressed():
 	Events.day_started.emit()
 	start_day_button.hide()
+	next_character()
 	
 
 func _on_scheduled_deaths_button_pressed():
 	Events.show_list_requested.emit()
+	
+
+func _on_passport_button_pressed():
+	Events.show_passport_requested.emit()
+	
+
+func _on_return_stamp_pressed():
+	Events.stamp_requested.emit(Types.Destination.RETURN)
+	
+
+func _on_heaven_stamp_pressed():
+	Events.stamp_requested.emit(Types.Destination.HEAVEN)
+	
+
+func _on_reincarnation_stamp_pressed():
+	Events.stamp_requested.emit(Types.Destination.REINCARNATE)
+	
+
+func _on_purgatory_stamp_pressed():
+	Events.stamp_requested.emit(Types.Destination.PURGATORY)
+	
+
+func _on_hell_stamp_pressed():
+	Events.stamp_requested.emit(Types.Destination.HELL)
+	
+
+func _on_character_stamped(_destination: Types.Destination, _expected: Types.Destination) -> void:
+	# TODO: character leave animation/sfx
+	portrait.hide()
+	passport_button.hide()
+	
+	character_queue.pop_front()
+	Events.character_left.emit()
+	
+	if character_queue.is_empty():
+		Events.day_finished.emit()
+	else:
+		await get_tree().create_timer(0.5).timeout
+		next_character()
+	
+	

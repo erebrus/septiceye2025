@@ -20,11 +20,9 @@ rules = Array[ExtResource("2_7hvae")]([ExtResource("3_t1chq"), SubResource("Reso
 metadata/_custom_type_script = "uid://bbst45rxgww2y"
 
 [node name="BaseLevel" instance=ExtResource("1_1ky7t")]
-extra_souls = null
 quotas = Dictionary[int, int]({
 0: 2,
 1: 1,
 4: 1
 })
 ruleset = SubResource("Resource_b7rnw")
-character_queue = null

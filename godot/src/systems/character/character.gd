@@ -74,6 +74,7 @@ var hair_config: HairConfig:
 	get:
 		return Globals.character_generator.hairs[hair]
 
+var destination: Types.Destination
 
 
 func get_trait(soul_trait: Trait) -> int:

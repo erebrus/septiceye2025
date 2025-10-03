@@ -4,6 +4,9 @@ class_name Game extends Node2D
 @export var game_state:GameState
 
 
+var current_character: Character
+
+
 @onready var level_manager: LevelManager = $LevelManager
 @onready var fade_panel: FadePanel = %FadePanel
 
@@ -18,6 +21,8 @@ func _ready():
 	level_manager.load_first_level()
 	Debug.set_levels(level_manager.levels)
 	Globals.game = self
+	
+	Events.character_entered.connect(func(x): current_character = x)
 	
 
 func _on_level_ended():

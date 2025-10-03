@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://lqtollaovard"]
+[gd_scene load_steps=12 format=3 uid="uid://lqtollaovard"]
 
 [ext_resource type="Script" uid="uid://b4ytavk038x8p" path="res://src/base_level.gd" id="1_mnxva"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_82ww6"]
 [ext_resource type="Texture2D" uid="uid://d1eeu4nkovikv" path="res://assets/gfx/ui/manual_button.png" id="2_mo2dc"]
 [ext_resource type="Texture2D" uid="uid://whvv60cor3mh" path="res://assets/gfx/ui/list_button.png" id="3_82ww6"]
 [ext_resource type="Texture2D" uid="uid://cfjk2jkra6qrk" path="res://assets/gfx/ui/open_button.png" id="4_0xb2g"]
+[ext_resource type="Texture2D" uid="uid://bkvms4464mdak" path="res://assets/gfx/ui/passport_button.png" id="5_l54d2"]
+[ext_resource type="Texture2D" uid="uid://caa4e1h1cy5t3" path="res://assets/gfx/ui/stamp_return_button.png" id="6_0xb2g"]
+[ext_resource type="Texture2D" uid="uid://dy0gwmkf1c4ca" path="res://assets/gfx/ui/stamp_heaven_button.png" id="7_ohl3f"]
+[ext_resource type="Texture2D" uid="uid://bs8y1eotbsair" path="res://assets/gfx/ui/stamp_hell_button.png" id="7_vmobq"]
+[ext_resource type="Texture2D" uid="uid://cvtbohlm1ao1g" path="res://assets/gfx/ui/stamp_reincarnate_button.png" id="8_l54d2"]
+[ext_resource type="Texture2D" uid="uid://dmntkf05b26qg" path="res://assets/gfx/ui/stamp_purgatory_button.png" id="9_m2fog"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_mnxva")
-extra_souls = null
-quotas = null
-character_queue = null
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("2_82ww6")]
 unique_name_in_owner = true
@@ -43,6 +46,18 @@ texture_hover = ExtResource("3_82ww6")
 texture_disabled = ExtResource("3_82ww6")
 metadata/_edit_use_anchors_ = true
 
+[node name="PassportButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 976.0
+offset_top = 720.0
+offset_right = 1215.0
+offset_bottom = 1049.0
+texture_normal = ExtResource("5_l54d2")
+texture_pressed = ExtResource("5_l54d2")
+texture_hover = ExtResource("5_l54d2")
+texture_disabled = ExtResource("5_l54d2")
+metadata/_edit_use_anchors_ = true
+
 [node name="StartDayButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
 offset_left = 51.0
@@ -56,16 +71,66 @@ texture_disabled = ExtResource("4_0xb2g")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReturnStamp" type="TextureButton" parent="."]
-offset_left = 24.0
-offset_top = 718.0
-offset_right = 263.0
-offset_bottom = 1047.0
-texture_normal = ExtResource("2_mo2dc")
-texture_pressed = ExtResource("2_mo2dc")
-texture_hover = ExtResource("2_mo2dc")
-texture_disabled = ExtResource("2_mo2dc")
+offset_left = 41.0
+offset_top = 393.0
+offset_right = 280.0
+offset_bottom = 497.0
+texture_normal = ExtResource("6_0xb2g")
+texture_pressed = ExtResource("6_0xb2g")
+texture_hover = ExtResource("6_0xb2g")
+texture_disabled = ExtResource("6_0xb2g")
+metadata/_edit_use_anchors_ = true
+
+[node name="HeavenStamp" type="TextureButton" parent="."]
+offset_left = 39.0
+offset_top = 539.0
+offset_right = 278.0
+offset_bottom = 643.0
+texture_normal = ExtResource("7_ohl3f")
+texture_pressed = ExtResource("7_ohl3f")
+texture_hover = ExtResource("7_ohl3f")
+texture_disabled = ExtResource("7_ohl3f")
+metadata/_edit_use_anchors_ = true
+
+[node name="ReincarnationStamp" type="TextureButton" parent="."]
+offset_left = 35.0
+offset_top = 670.0
+offset_right = 274.0
+offset_bottom = 774.0
+texture_normal = ExtResource("8_l54d2")
+texture_pressed = ExtResource("8_l54d2")
+texture_hover = ExtResource("8_l54d2")
+texture_disabled = ExtResource("8_l54d2")
+metadata/_edit_use_anchors_ = true
+
+[node name="PurgatoryStamp" type="TextureButton" parent="."]
+offset_left = 38.0
+offset_top = 806.0
+offset_right = 277.0
+offset_bottom = 910.0
+texture_normal = ExtResource("9_m2fog")
+texture_pressed = ExtResource("9_m2fog")
+texture_hover = ExtResource("9_m2fog")
+texture_disabled = ExtResource("9_m2fog")
+metadata/_edit_use_anchors_ = true
+
+[node name="HellStamp" type="TextureButton" parent="."]
+offset_left = 30.0
+offset_top = 944.0
+offset_right = 269.0
+offset_bottom = 1048.0
+texture_normal = ExtResource("7_vmobq")
+texture_pressed = ExtResource("7_vmobq")
+texture_hover = ExtResource("7_vmobq")
+texture_disabled = ExtResource("7_vmobq")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]
+[connection signal="pressed" from="PassportButton" to="." method="_on_passport_button_pressed"]
 [connection signal="pressed" from="StartDayButton" to="." method="_on_start_day_button_pressed"]
+[connection signal="pressed" from="ReturnStamp" to="." method="_on_return_stamp_pressed"]
+[connection signal="pressed" from="HeavenStamp" to="." method="_on_heaven_stamp_pressed"]
+[connection signal="pressed" from="ReincarnationStamp" to="." method="_on_reincarnation_stamp_pressed"]
+[connection signal="pressed" from="PurgatoryStamp" to="." method="_on_purgatory_stamp_pressed"]
+[connection signal="pressed" from="HellStamp" to="." method="_on_hell_stamp_pressed"]
