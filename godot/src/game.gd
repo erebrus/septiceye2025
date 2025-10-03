@@ -6,6 +6,9 @@ class_name Game extends Node2D
 
 @onready var level_manager: LevelManager = $LevelManager
 @onready var fade_panel: FadePanel = %FadePanel
+@onready var name_generator: SoulNameGenerator = $NameGenerator
+
+
 
 func _ready():
 	Events.level_ended.connect(_on_level_ended)
@@ -13,7 +16,9 @@ func _ready():
 	level_manager.load_first_level()
 	Debug.set_levels(level_manager.levels)
 	Globals.game = self
-
+	GSLogger.info(name_generator.generate_female_name())
+	GSLogger.info(name_generator.generate_male_name())
+	
 func _on_level_ended():
 	fade_panel.fade_out()
 	await fade_panel.fade_out_completed
