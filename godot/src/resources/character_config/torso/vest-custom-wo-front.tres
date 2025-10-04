@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TorsoConfig" load_steps=3 format=3 uid="uid://dv61n3gme2i1u"]
 
-[ext_resource type="Texture2D" uid="uid://bgwlprnoujn23" path="res://assets/gfx/Characters/torso_vest_back.png" id="1_vkxhf"]
+[ext_resource type="Texture2D" uid="uid://bgwlprnoujn23" path="res://assets/gfx/Characters/torso_vest_back_norecolor.png" id="1_vkxhf"]
 [ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="3_aj82e"]
 
 [resource]

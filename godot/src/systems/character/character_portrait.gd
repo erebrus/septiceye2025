@@ -64,10 +64,14 @@ func _set_recolor(part: String) -> void:
 		return
 	
 	var config = character.parts[part]
-	if not config.back_no_recolor:
+	if config.back_no_recolor:
+		sprites[part].back().modulate = Color.WHITE
+	else:
 		sprites[part].back().modulate = character.get_color_code(config.back_color)
 		
-	if not config.front_no_recolor:
+	if config.front_no_recolor:
+		sprites[part].front().modulate = Color.WHITE
+	else:
 		sprites[part].front().modulate = character.get_color_code(config.front_color)
 	
 

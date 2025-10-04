@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgwlprnoujn23"
-path="res://.godot/imported/torso_vest_back.png-2032ad904f60a9c7884466c1b8900b03.ctex"
+uid="uid://cko4ijk5lubuw"
+path="res://.godot/imported/torso_vest_back_norecolor.png-5f8a993195bf9d2d381bfd039c1e2c8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/Characters/torso_vest_back.png"
-dest_files=["res://.godot/imported/torso_vest_back.png-2032ad904f60a9c7884466c1b8900b03.ctex"]
+source_file="res://assets/gfx/Characters/torso_vest_back_norecolor.png"
+dest_files=["res://.godot/imported/torso_vest_back_norecolor.png-5f8a993195bf9d2d381bfd039c1e2c8b.ctex"]
 
 [params]
 

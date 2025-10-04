@@ -29,6 +29,20 @@ enum SkinColor {
 	BROWN
 }
 
+enum ClothesColor1 {
+	UNKNOWN,
+	RED,
+	BLUE,
+	BLACK,
+}
+
+enum ClothesColor2 {
+	UNKNOWN,
+	RED,
+	BLUE,
+	BLACK,
+}
+
 enum ColorChannel {
 	NONE,
 	HAIR,
@@ -52,7 +66,11 @@ var skin_color_code: Color:
 	get:
 		return Globals.character_generator.skin_colors[skin_color]
 
+var clothes_1_color: ClothesColor1
+var clothes_2_color: ClothesColor2
+
 var parts: Dictionary[String, PartConfig]
+var colors: Dictionary[ColorChannel, int]
 
 var destination: Types.Destination
 
@@ -77,7 +95,11 @@ func set_trait(soul_trait: Trait, value: int) -> void:
 		_: GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
 
 func get_color_code(channel: ColorChannel) -> Color:
+	var gen = Globals.character_generator
 	match channel:
-		ColorChannel.HAIR: return hair_color_code
-		ColorChannel.SKIN: return skin_color_code
+		ColorChannel.HAIR: return gen.hair_colors[hair_color]
+		ColorChannel.SKIN: return gen.skin_colors[skin_color]
+		ColorChannel.CLOTHES_1: return gen.clothes_1_colors[clothes_1_color]
+		ColorChannel.CLOTHES_2: return gen.clothes_2_colors[clothes_2_color]
 		_: return Color.WHITE
+	

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TorsoConfig" load_steps=4 format=3 uid="uid://bhof7xr87msy7"]
 
-[ext_resource type="Texture2D" uid="uid://bus7xcaf5jwy6" path="res://assets/gfx/Characters/torso_suit_back.png" id="1_2vttt"]
+[ext_resource type="Texture2D" uid="uid://bus7xcaf5jwy6" path="res://assets/gfx/Characters/torso_suit_back_norecolor.png" id="1_2vttt"]
 [ext_resource type="Texture2D" uid="uid://bxlud1yhwo3h5" path="res://assets/gfx/Characters/torso_suit_front.png" id="2_psd6q"]
 [ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="3_m0o16"]
 
@@ -10,5 +10,6 @@ part = "torso"
 variant = "suit"
 back_texture = ExtResource("1_2vttt")
 front_texture = ExtResource("2_psd6q")
+back_no_recolor = true
 back_color = 3
 front_color = 4

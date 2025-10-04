@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bus7xcaf5jwy6"
-path="res://.godot/imported/torso_suit_back.png-8d2b9c4193251decda8aad4f4fedfc6e.ctex"
+path="res://.godot/imported/torso_suit_back_norecolor.png-5f7a31d772cf6aaa535c3965801186f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/Characters/torso_suit_back.png"
-dest_files=["res://.godot/imported/torso_suit_back.png-8d2b9c4193251decda8aad4f4fedfc6e.ctex"]
+source_file="res://assets/gfx/Characters/torso_suit_back_norecolor.png"
+dest_files=["res://.godot/imported/torso_suit_back_norecolor.png-5f7a31d772cf6aaa535c3965801186f8.ctex"]
 
 [params]
 

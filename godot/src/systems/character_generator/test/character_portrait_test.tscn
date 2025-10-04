@@ -51,6 +51,14 @@ text = "Hair Color"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Label2" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+
+[node name="HairColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Label6" type="Label" parent="VBoxContainer2/Container"]
 layout_mode = 2
 text = "Skin Color"
@@ -59,20 +67,42 @@ text = "Skin Color"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer2/Container"]
+[node name="Label3" type="Label" parent="VBoxContainer2/Container"]
 layout_mode = 2
-text = "Hair"
 
-[node name="HairColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
+[node name="SkinColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label3" type="Label" parent="VBoxContainer2/Container"]
+[node name="Label9" type="Label" parent="VBoxContainer2/Container"]
 layout_mode = 2
-text = "Skin"
+text = "Clothes 1 Color"
 
-[node name="SkinColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
+[node name="Clothes1Options" type="OptionButton" parent="VBoxContainer2/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+
+[node name="Clothes1Color" type="ColorPickerButton" parent="VBoxContainer2/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label10" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+text = "Clothes 2 Color"
+
+[node name="Clothes2Options" type="OptionButton" parent="VBoxContainer2/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+
+[node name="Clothes2Color" type="ColorPickerButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -92,7 +122,11 @@ offset_bottom = 371.0
 [connection signal="item_selected" from="VBoxContainer2/Container/ReligionOptions" to="." method="_on_religion_options_item_selected"]
 [connection signal="item_selected" from="VBoxContainer2/Container/GenderOptions" to="." method="_on_gender_options_item_selected"]
 [connection signal="item_selected" from="VBoxContainer2/Container/HairColorOptions" to="." method="_on_hair_color_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer2/Container/SkinColorOptions" to="." method="_on_skin_color_options_item_selected"]
 [connection signal="color_changed" from="VBoxContainer2/Container/HairColor" to="." method="_on_hair_color_color_changed"]
+[connection signal="item_selected" from="VBoxContainer2/Container/SkinColorOptions" to="." method="_on_skin_color_options_item_selected"]
 [connection signal="color_changed" from="VBoxContainer2/Container/SkinColor" to="." method="_on_skin_color_color_changed"]
+[connection signal="item_selected" from="VBoxContainer2/Container/Clothes1Options" to="." method="_on_clothes_1_options_item_selected"]
+[connection signal="color_changed" from="VBoxContainer2/Container/Clothes1Color" to="." method="_on_clothes_1_color_color_changed"]
+[connection signal="item_selected" from="VBoxContainer2/Container/Clothes2Options" to="." method="_on_clothes_2_options_item_selected"]
+[connection signal="color_changed" from="VBoxContainer2/Container/Clothes2Color" to="." method="_on_clothes_2_color_color_changed"]
 [connection signal="pressed" from="VBoxContainer2/Generate" to="." method="_on_generate_pressed"]

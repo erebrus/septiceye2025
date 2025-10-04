@@ -10,6 +10,8 @@ var part_options: Dictionary[String, OptionButton]
 @onready var gender_options = %GenderOptions
 @onready var hair_color_options = %HairColorOptions
 @onready var skin_color_options = %SkinColorOptions
+@onready var clothes_1_color_options = %Clothes1Options
+@onready var clothes_2_color_options = %Clothes2Options
 
 @onready var container: Container = %Container
 
@@ -25,6 +27,10 @@ func _ready() -> void:
 		hair_color_options.add_item(i, Character.HairColor[i])
 	for i in Character.SkinColor:
 		skin_color_options.add_item(i, Character.SkinColor[i])
+	for i in Character.ClothesColor1:
+		clothes_1_color_options.add_item(i, Character.ClothesColor1[i])
+	for i in Character.ClothesColor2:
+		clothes_2_color_options.add_item(i, Character.ClothesColor2[i])
 	
 	for part in generator.parts_config:
 		var variants = generator.parts_config[part]
@@ -55,6 +61,9 @@ func _on_generate_pressed():
 	character.gender = gender_options.selected
 	character.hair_color = hair_color_options.selected
 	character.skin_color = skin_color_options.selected
+	character.clothes_1_color = clothes_1_color_options.selected
+	character.clothes_2_color = clothes_2_color_options.selected
+	
 	for part in generator.parts_config:
 		var index = part_options[part].selected
 		if index > 0:
@@ -62,8 +71,10 @@ func _on_generate_pressed():
 	
 	generator.complete(character)
 	
-	%HairColor.color = character.hair_color_code
-	%SkinColor.color = character.skin_color_code
+	%HairColor.color = character.get_color_code(Character.ColorChannel.HAIR)
+	%SkinColor.color = character.get_color_code(Character.ColorChannel.SKIN)
+	%Clothes1Color.color = character.get_color_code(Character.ColorChannel.CLOTHES_1)
+	%Clothes2Color.color = character.get_color_code(Character.ColorChannel.CLOTHES_2)
 	
 	portrait.character = character
 	passport.character = character
@@ -89,6 +100,16 @@ func _on_skin_color_options_item_selected(index):
 	_update() 
 	
 
+
+func _on_clothes_1_options_item_selected(index):
+	portrait.character.clothes_1_color = index
+	_update() 
+
+
+func _on_clothes_2_options_item_selected(index):
+	portrait.character.clothes_2_color = index
+	
+
 func _on_part_selected(index: int, part: String):
 	if  index == 0:
 		return
@@ -107,3 +128,11 @@ func _on_skin_color_color_changed(color):
 	generator.skin_colors[portrait.character.skin_color] = color
 	_update()
 	
+
+func _on_clothes_1_color_color_changed(color):
+	generator.clothes_1_colors[portrait.character.clothes_1_color] = color
+	_update()
+
+func _on_clothes_2_color_color_changed(color):
+	generator.clothes_2_colors[portrait.character.clothes_2_color] = color
+	_update()

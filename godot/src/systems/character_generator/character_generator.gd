@@ -3,8 +3,9 @@ class_name CharacterGenerator extends Node
 @export var part_config_path: String
 
 @export var hair_colors: Dictionary[Character.HairColor, Color]
-
 @export var skin_colors: Dictionary[Character.SkinColor, Color]
+@export var clothes_1_colors: Dictionary[Character.ClothesColor1, Color]
+@export var clothes_2_colors: Dictionary[Character.ClothesColor2, Color]
 
 
 var parts_config: Dictionary[String, Dictionary]
@@ -38,6 +39,12 @@ func complete(character: Character) -> void:
 	
 	if character.skin_color == Character.SkinColor.UNKNOWN:
 		character.skin_color = skin_colors.keys().pick_random()
+	
+	if character.clothes_1_color == Character.ClothesColor1.UNKNOWN:
+		character.clothes_1_color = clothes_1_colors.keys().pick_random()
+	
+	if character.clothes_2_color == Character.ClothesColor2.UNKNOWN:
+		character.clothes_2_color = clothes_2_colors.keys().pick_random()
 	
 	for part in parts_config:
 		if part in character.parts:

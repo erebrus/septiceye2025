@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TorsoConfig" load_steps=4 format=3 uid="uid://c15cohwcp40tf"]
 
-[ext_resource type="Texture2D" uid="uid://bgwlprnoujn23" path="res://assets/gfx/Characters/torso_vest_back.png" id="1_vkxhf"]
+[ext_resource type="Texture2D" uid="uid://cko4ijk5lubuw" path="res://assets/gfx/Characters/torso_vest_back_norecolor.png" id="1_vkxhf"]
 [ext_resource type="Texture2D" uid="uid://cp1573ex3qtsy" path="res://assets/gfx/Characters/torso_vest_front.png" id="2_av4tq"]
 [ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="3_aj82e"]
 
@@ -10,5 +10,6 @@ part = "torso"
 variant = "vest"
 back_texture = ExtResource("1_vkxhf")
 front_texture = ExtResource("2_av4tq")
+back_no_recolor = true
 back_color = 3
 front_color = 4
