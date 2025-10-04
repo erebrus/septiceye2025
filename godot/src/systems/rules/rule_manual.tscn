@@ -1,27 +1,270 @@
-[gd_scene load_steps=2 format=3 uid="uid://vm05pthnusdv"]
+[gd_scene load_steps=13 format=3 uid="uid://vm05pthnusdv"]
 
+[ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_gf6d5"]
 [ext_resource type="Script" uid="uid://daks1tf3pmy73" path="res://src/systems/rules/rule_manual.gd" id="1_o7oyl"]
+[ext_resource type="Texture2D" uid="uid://cum3op2bkbmg7" path="res://assets/gfx/workspace/Tome_Manual.png" id="2_y65m3"]
+[ext_resource type="Texture2D" uid="uid://cpmy0hyniy3wl" path="res://assets/gfx/workspace/BookTab_Tea.png" id="4_5fynn"]
+[ext_resource type="Texture2D" uid="uid://bhhvjk1btejf0" path="res://assets/gfx/workspace/BookTab_Home.png" id="4_cjlfp"]
+[ext_resource type="Texture2D" uid="uid://ds3w4pm5ucwgq" path="res://assets/gfx/workspace/BookTab_Snail.png" id="5_rijv2"]
+[ext_resource type="Texture2D" uid="uid://yowglbb8n77v" path="res://assets/gfx/workspace/BookTab_Star.png" id="6_wwbgt"]
+[ext_resource type="Texture2D" uid="uid://clgx44a2x1axc" path="res://assets/gfx/workspace/BookTab_Luminara.png" id="7_ueclx"]
+[ext_resource type="Texture2D" uid="uid://b6gxousuyiq5w" path="res://assets/gfx/workspace/snailicon.png" id="8_ueclx"]
+[ext_resource type="Texture2D" uid="uid://devr81nyd7eim" path="res://assets/gfx/workspace/staricon.png" id="9_t10fu"]
+[ext_resource type="Texture2D" uid="uid://ck5cujr00l7rq" path="res://assets/gfx/workspace/teaicon.png" id="10_wc20c"]
+[ext_resource type="Texture2D" uid="uid://d056cfupjm0nu" path="res://assets/gfx/workspace/luminaraicon.png" id="11_cjlfp"]
 
-[node name="RuleManual" type="PopupPanel"]
-oversampling_override = 1.0
-size = Vector2i(345, 166)
-visible = true
+[node name="RuleManual" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gf6d5")
 script = ExtResource("1_o7oyl")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 341.0
-offset_bottom = 162.0
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("2_y65m3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="GenericButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 358.0
+offset_top = 13.0
+offset_right = 484.0
+offset_bottom = 129.0
+texture_normal = ExtResource("4_cjlfp")
+texture_pressed = ExtResource("4_cjlfp")
+texture_hover = ExtResource("4_cjlfp")
+
+[node name="ReligionButton1" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1073.0
+offset_top = 13.0
+offset_right = 1175.0
+offset_bottom = 119.0
+texture_normal = ExtResource("5_rijv2")
+texture_pressed = ExtResource("5_rijv2")
+texture_hover = ExtResource("5_rijv2")
+
+[node name="ReligionButton2" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 24.0
+offset_right = 1310.0
+offset_bottom = 127.0
+texture_normal = ExtResource("6_wwbgt")
+texture_pressed = ExtResource("6_wwbgt")
+texture_hover = ExtResource("6_wwbgt")
+
+[node name="ReligionButton3" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1335.0
+offset_top = 22.0
+offset_right = 1436.0
+offset_bottom = 125.0
+texture_normal = ExtResource("4_5fynn")
+texture_pressed = ExtResource("4_5fynn")
+texture_hover = ExtResource("4_5fynn")
+
+[node name="ReligionButton4" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1463.0
+offset_top = 17.0
+offset_right = 1574.0
+offset_bottom = 120.0
+texture_normal = ExtResource("7_ueclx")
+texture_pressed = ExtResource("7_ueclx")
+texture_hover = ExtResource("7_ueclx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_top = 190
+theme_override_constants/margin_right = 350
+theme_override_constants/margin_bottom = 200
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 55
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="LeftPage" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/LeftPage"]
+layout_mode = 2
+border_width = 5.0
+
+[node name="GenericTitle" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Rules For Everybody"
+text = "Principles for the categorization of souls to their proper afterlife"
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="RuleContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="ReligionTitle1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle1"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("8_ueclx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle1"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Principles for Walkers of The Path of the Cosmic Snail"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ReligionTitle2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle2"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("9_t10fu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Principles for The Fellowship of the Laughing Star"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ReligionTitle3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle3"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("10_wc20c")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Principles for Drinkers of The Order of the Eternal Tea"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ReligionTitle4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle4"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("11_cjlfp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/ReligionTitle4"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Principles for The Luminara Sect"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RightPage" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+
+[node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/RightPage"]
+layout_mode = 2
+border_color = Color(0, 1, 0.083333254, 1)
+border_width = 5.0
+
+[node name="GenericContent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GenericRules" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ReligionContent1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ReligionRules1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent1"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ReligionContent2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ReligionRules2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ReligionContent3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ReligionRules3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ReligionContent4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ReligionRules4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent4"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

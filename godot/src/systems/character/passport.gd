@@ -27,6 +27,7 @@ func _setup() -> void:
 	
 	for claim in character.claims:
 		_create_claim(claim)
+	
 
 func _create_claim(claim: Claim) -> void:
 	var scene = ClaimScene.instantiate()

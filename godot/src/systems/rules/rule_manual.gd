@@ -1,4 +1,4 @@
-class_name RuleManual extends PopupPanel
+class_name RuleManual extends Control
 
 var ruleset: RuleSet:
 	set(value):
@@ -7,20 +7,80 @@ var ruleset: RuleSet:
 			_setup()
 	
 
-@onready var container: Container = %RuleContainer
-
+@onready var pages = [
+	Page.new(%GenericTitle, %GenericContent, %GenericRules, %GenericButton),
+	Page.new(%ReligionTitle1, %ReligionContent1, %ReligionRules1, %ReligionButton1),
+	Page.new(%ReligionTitle2, %ReligionContent2, %ReligionRules2, %ReligionButton2),
+	Page.new(%ReligionTitle3, %ReligionContent3, %ReligionRules3, %ReligionButton3),
+	Page.new(%ReligionTitle4, %ReligionContent4, %ReligionRules4, %ReligionButton4),
+]
 
 func _ready() -> void:
 	if ruleset != null:
 		_setup()
 	
-	Events.show_manual_requested.connect(popup)
+	Events.show_manual_requested.connect(show)
 	
 
 func _setup() -> void:
-	for rule in ruleset.rules:
-		var label = Label.new()
-		label.text = rule.description
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.custom_minimum_size = Vector2(500,0)
-		container.add_child(label)
+	for religion in Types.Religion.values():
+		var rules: Array[Rule]
+		rules.assign(ruleset.rules.filter(func(x): return x.religion == religion))
+		pages[religion].setup(rules)
+		pages[religion].hide()
+		pages[religion].button.pressed.connect(_on_tab_pressed.bind(religion))
+	
+	pages.front().show()
+	
+
+func _on_tab_pressed(religion: Types.Religion) -> void:
+	for r in Types.Religion.values():
+		if r == religion:
+			pages[r].show()
+		else:
+			pages[r].hide()
+	
+
+func _on_gui_input(event: InputEvent):
+	if event.is_action_released("left_click"):
+		hide()
+	
+
+class Page:
+	var title: Control
+	var content: Control
+	var container: Container
+	var button: BaseButton
+	
+	func _init(_title: Control, _content: Control, _container: Container, _button: BaseButton) -> void:
+		title = _title
+		content = _content
+		container = _container
+		button = _button
+		
+		
+	
+	func setup(rules: Array[Rule]) -> void:
+		for label in container.get_children():
+			label.queue_free()
+		
+		for rule in rules:
+			var label = Label.new()
+			label.text = rule.description
+			label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			label.custom_minimum_size = Vector2(50,0)
+			label.theme_type_variation = "HeaderSmall"
+			container.add_child(label)
+	
+	func show() -> void:
+		_set_visibility(true)
+		
+	func hide() -> void:
+		_set_visibility(false)
+		
+	func _set_visibility(value: bool) -> void:
+		title.visible = value
+		content.visible = value
+		
+	
