@@ -72,6 +72,7 @@ var clothes_2_color: ClothesColor2
 
 var parts: Dictionary[String, PartConfig]
 var colors: Dictionary[ColorChannel, int]
+var claims: Array[Claim]
 
 var destination: Types.Destination
 

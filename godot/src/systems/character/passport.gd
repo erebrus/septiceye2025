@@ -1,5 +1,8 @@
 class_name Passport extends MarginContainer
 
+@export var ClaimScene: PackedScene
+
+
 var character: Character:
 	set(value):
 		character = value
@@ -21,6 +24,14 @@ func _setup() -> void:
 	%Name.text = character.name
 	%Gender.text = Character.Gender.keys()[character.gender].to_lower()
 	%Religion.text = Types.Religion.keys()[character.religion].to_lower()
+	
+	for claim in character.claims:
+		_create_claim(claim)
+
+func _create_claim(claim: Claim) -> void:
+	var scene = ClaimScene.instantiate()
+	scene.claim = claim
+	%ClaimsContainer.add_child(scene)
 	
 
 func _on_stamp_requested(destination: Types.Destination) -> void:

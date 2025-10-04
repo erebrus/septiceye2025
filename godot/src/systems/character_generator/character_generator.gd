@@ -1,5 +1,9 @@
 class_name CharacterGenerator extends Node
 
+const CLAIM_DATA = preload("res://src/resources/claims.csv")
+const FOLLOW_UP_DATA = preload("res://src/resources/follow_ups.csv")
+
+
 @export var part_config_path: String
 
 @export var hair_colors: Dictionary[Character.HairColor, Color]
@@ -7,11 +11,13 @@ class_name CharacterGenerator extends Node
 @export var clothes_1_colors: Dictionary[Character.ClothesColor1, Color]
 @export var clothes_2_colors: Dictionary[Character.ClothesColor2, Color]
 
-
 var parts_config: Dictionary[String, Dictionary]
 
 var genders: Array[Character.Gender]
 var religions: Array[Types.Religion]
+
+var claims: Dictionary[String, Array]
+
 
 @onready var name_generator: SoulNameGenerator = $NameGenerator
 
@@ -23,9 +29,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	_initialize_missing_configs()
+	_initialize_claims()
 	
 
-func complete(character: Character) -> void:
+func complete(character: Character, min_claims: int = 0) -> void:
 	if character.religion == Types.Religion.UNKNOWN:
 		character.religion = religions.pick_random()
 	
@@ -53,24 +60,36 @@ func complete(character: Character) -> void:
 		
 		var allowed_values = character.filter_part_allowed_values(part, parts_config[part].keys())
 		_set_part(character, part, allowed_values)
+		
+	var allowed_topics = claims.keys()
+	for claim in character.claims:
+		allowed_topics.erase(claim.topic)
+	
+	for i in range(character.claims.size(), min_claims):
+		var topic = allowed_topics.pick_random()
+		allowed_topics.erase(topic)
+		
+		assert(not allowed_topics.is_empty())
+		character.claims.append(claims[topic].pick_random())
+		
 	
 
-func generate() -> Character:
+func generate(min_claims: int = 0) -> Character:
 	var character = Character.new()
-	complete(character)
+	complete(character, min_claims)
 	return character
 	
 
-func generate_for_rule(rule: Rule) -> Character:
+func generate_for_rule(rule: Rule, min_claims: int = 0) -> Character:
 	var character = Character.new()
 	if rule.religion != Types.Religion.UNKNOWN:
 		character.religion = rule.religion
 	rule.make_character_meet(character)
-	complete(character)
+	complete(character, min_claims)
 	return character
 	
 
-func generate_for_destination(destination: Types.Destination, ruleset: RuleSet) -> Character:
+func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, min_claims: int = 0) -> Character:
 	var character = Character.new()
 	character.religion = religions.pick_random()
 	
@@ -83,7 +102,7 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet) 
 		elif destination in rule.unmet_destinations:
 			rule.make_character_not_meet(character)
 	
-	complete(character)
+	complete(character, min_claims)
 	character.destination = ruleset.expected_fate_for(character)
 	
 	return character
@@ -168,5 +187,46 @@ func _load_part_directory(path: String) -> void:
 		GSLogger.error("An error occurred when trying to access the path.")
 	
 
+func _initialize_claims() -> void:
+	GSLogger.info("Loading claims")
+	var unused_claims: Array[String]
+	var claim_dict: Dictionary
+	for row in CLAIM_DATA.records.slice(1):
+		claim_dict[row[1]] = row
+		unused_claims.append(row[1])
+	
+	for row in FOLLOW_UP_DATA.records.slice(1):
+		var claim_id = row[0]
+		var final_claims = row[1].split(";")
+		var follow_up = row[2]
+		
+		assert(claim_dict.has(claim_id), "Follow up with unknown claim id %s" % claim_id)
+		
+		var claim = _create_claim(claim_dict[claim_id])
+		claim.ids.assign(final_claims)
+		claim.follow_up = follow_up
+		
+		unused_claims.erase(claim_id)
+		
+	for claim_id in unused_claims:
+		GSLogger.info("Adding claim without followup %s" % claim_id)
+		var claim = _create_claim(claim_dict[claim_id])
+		claim.ids = [claim_id]
+		claim.follow_up = "I have nothing more to say about it."
+	
+	GSLogger.info("%s claims loaded" % claims.size())
+	
 
+func _create_claim(claim_data: Array) -> Claim:
+	var claim = Claim.new()
+	claim.topic = claim_data[0]
+	claim.statement = claim_data[2]
+	
+	if claim.topic not in claims:
+		var array: Array[Claim]
+		claims[claim.topic] = array
+	
+	claims[claim.topic].append(claim)
+	
+	return claim
 	

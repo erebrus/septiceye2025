@@ -4,6 +4,7 @@ class_name BaseLevel extends Node
 @export var override_game_state: GameState
 
 @export var extra_souls: int = 5
+@export var claims_per_soul: int = 2
 
 @export var quotas: Dictionary[Types.Destination, int]
 @export var ruleset: RuleSet
@@ -39,13 +40,13 @@ func generate() -> void:
 	
 	for character in character_queue:
 		GSLogger.info("Counting custom character")
-		Globals.character_generator.complete(character)
+		Globals.character_generator.complete(character, claims_per_soul)
 		character.destination = ruleset.expected_fate_for(character)
 		num_extra += _count_character(character, target)
 		
 	for rule in ruleset.rules:
 		GSLogger.info("Generating character which meets rule: %s" % rule)
-		var character = Globals.character_generator.generate_for_rule(rule)
+		var character = Globals.character_generator.generate_for_rule(rule, claims_per_soul)
 		character.destination = ruleset.expected_fate_for(character)
 		character_queue.append(character)
 		num_extra += _count_character(character, target)
@@ -53,11 +54,11 @@ func generate() -> void:
 	for destination in target:
 		for _i in target[destination]:
 			GSLogger.info("Generating character with destination: %s" % Types.Destination.keys()[destination])
-			character_queue.append(Globals.character_generator.generate_for_destination(destination, ruleset))
+			character_queue.append(Globals.character_generator.generate_for_destination(destination, ruleset, claims_per_soul))
 	
 	for _i in range(num_extra, extra_souls):
 		GSLogger.info("Generating extra character")
-		var character = Globals.character_generator.generate()
+		var character = Globals.character_generator.generate(claims_per_soul)
 		character.destination = ruleset.expected_fate_for(character)
 		character_queue.append(character)
 		

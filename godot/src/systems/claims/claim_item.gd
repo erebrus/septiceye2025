@@ -1,0 +1,21 @@
+extends MarginContainer
+
+var claim: Claim:
+	set(value):
+		claim = value
+		if is_node_ready():
+			_setup()
+	
+
+func _ready() -> void:
+	if claim != null:
+		_setup()
+	
+
+func _setup() -> void:
+	%Label.text = claim.statement
+	
+
+func _on_gui_input(event: InputEvent):
+	if event.is_action_released("left_click"):
+		GSLogger.info("start dialog: %s" % claim.follow_up)
