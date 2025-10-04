@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://nelqlwpkpmpe"]
+
+[ext_resource type="Texture2D" uid="uid://b32c037ks5ur2" path="res://assets/gfx/Characters/hair_messybangs_back.png" id="1_6pbcv"]
+[ext_resource type="Texture2D" uid="uid://ccmrjl8a3dldb" path="res://assets/gfx/Characters/hair_messybangs_front.png" id="2_bcvck"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_fcb1a"]
+
+[resource]
+script = ExtResource("3_fcb1a")
+back_texture = ExtResource("1_6pbcv")
+front_texture = ExtResource("2_bcvck")

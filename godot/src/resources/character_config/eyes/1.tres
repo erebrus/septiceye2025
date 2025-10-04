@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://cw02wu7aextfk"]
+
+[ext_resource type="Texture2D" uid="uid://ytju8kbwvpxe" path="res://assets/gfx/Characters/eyes_1_front.png" id="1_pd4rf"]
+[ext_resource type="Texture2D" uid="uid://i665ndhi1roi" path="res://assets/gfx/Characters/eyes_1_back.png" id="1_sbdxt"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_sbdxt"]
+
+[resource]
+script = ExtResource("2_sbdxt")
+back_texture = ExtResource("1_sbdxt")
+front_texture = ExtResource("1_pd4rf")

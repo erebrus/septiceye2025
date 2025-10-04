@@ -1,25 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv04tvpd5gpyu"]
+[gd_scene load_steps=3 format=3 uid="uid://dv04tvpd5gpyu"]
 
 [ext_resource type="Script" uid="uid://pe1k2mikbyrj" path="res://src/systems/character_generator/character_generator.gd" id="1_0kokg"]
-[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="2_en7og"]
-[ext_resource type="Resource" uid="uid://d0pj68si4fkis" path="res://src/resources/character_config/torso_01.tres" id="3_ygk50"]
-[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="4_wfmaq"]
-[ext_resource type="Resource" uid="uid://cok5tkw4eou3o" path="res://src/resources/character_config/head_01.tres" id="5_se2ii"]
-[ext_resource type="Script" uid="uid://d371rvsktyom5" path="res://src/systems/character_generator/hair_config.gd" id="6_wfmaq"]
-[ext_resource type="Resource" uid="uid://ck1oicj8h5jdt" path="res://src/resources/character_config/hair_01.tres" id="7_se2ii"]
 [ext_resource type="Script" uid="uid://b0wlvlxmntrlj" path="res://src/systems/character_generator/name_generator.gd" id="8_yy7tn"]
 
 [node name="CharacterGenerator" type="Node"]
 script = ExtResource("1_0kokg")
-torsos = Dictionary[int, ExtResource("2_en7og")]({
-0: ExtResource("3_ygk50")
-})
-heads = Dictionary[int, ExtResource("4_wfmaq")]({
-0: ExtResource("5_se2ii")
-})
-hairs = Dictionary[int, ExtResource("6_wfmaq")]({
-0: ExtResource("7_se2ii")
-})
 hair_colors = Dictionary[int, Color]({
 1: Color(0.05490196, 0.32941177, 0.28627452, 1),
 2: Color(0.6392157, 0.26666668, 0.10980392, 1),

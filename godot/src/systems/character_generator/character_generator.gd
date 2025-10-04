@@ -4,7 +4,7 @@ class_name CharacterGenerator extends Node
 
 @export var heads: Dictionary[Character.Head, PartConfig]
 
-@export var hairs: Dictionary[Character.Hair, HairConfig]
+@export var hairs: Dictionary[Character.Hair, PartConfig]
 
 @export var hair_colors: Dictionary[Character.HairColor, Color]
 

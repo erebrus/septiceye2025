@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://b8md26taq4rs1"]
+
+[ext_resource type="Texture2D" uid="uid://bqjufqk0sen12" path="res://assets/gfx/Characters/face_young_front.png" id="1_qq4nd"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_o8pnh"]
+
+[resource]
+script = ExtResource("2_o8pnh")
+front_texture = ExtResource("1_qq4nd")

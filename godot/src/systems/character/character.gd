@@ -70,7 +70,7 @@ var head_config: PartConfig:
 		return Globals.character_generator.heads[head]
 
 var hair: Hair
-var hair_config: HairConfig:
+var hair_config: PartConfig:
 	get:
 		return Globals.character_generator.hairs[hair]
 
