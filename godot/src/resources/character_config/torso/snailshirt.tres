@@ -10,3 +10,4 @@ variant = "snailshirt"
 back_texture = ExtResource("1_g6nlt")
 back_color = 3
 front_color = 4
+religion = 1

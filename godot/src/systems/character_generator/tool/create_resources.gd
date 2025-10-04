@@ -88,6 +88,15 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 			resource.back_no_recolor = true
 			resource.front_no_recolor = true
 	
+	if variant.to_lower().contains("snail"):
+		resource.religion = Types.Religion.SNAIL
+	if variant.to_lower().contains("star"):
+		resource.religion = Types.Religion.STAR
+	if variant.to_lower().contains("tea"):
+		resource.religion = Types.Religion.TEA
+	if variant.to_lower().contains("luminara") or variant.to_lower().contains("cross"):
+		resource.religion = Types.Religion.LUMINARA
+	
 	print("Saving resource %s" % resource_path)
 	ResourceSaver.save(resource, resource_path)
 	

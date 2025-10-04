@@ -10,3 +10,4 @@ variant = "crossshirt"
 back_texture = ExtResource("1_b5pe2")
 back_color = 3
 front_color = 4
+religion = 4

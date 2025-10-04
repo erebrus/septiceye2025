@@ -12,9 +12,9 @@ enum Destination {
 
 enum Religion {
 	UNKNOWN,
-	A,
-	B,
-	C,
-	D
+	SNAIL,
+	STAR,
+	TEA,
+	LUMINARA
 }
  

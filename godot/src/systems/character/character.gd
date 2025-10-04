@@ -5,6 +5,7 @@ enum Trait {
 	GENDER,
 	HAIR_COLOR,
 	SKIN_COLOR,
+	RELIGION_TSHIRT,
 }
 
 enum Gender {
@@ -81,6 +82,7 @@ func get_trait(soul_trait: Trait) -> int:
 		Trait.GENDER: return gender
 		Trait.HAIR_COLOR: return hair_color
 		Trait.SKIN_COLOR: return skin_color
+		Trait.RELIGION_TSHIRT: return parts["torso"].religion
 	
 	GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
 	return 0
@@ -92,7 +94,10 @@ func set_trait(soul_trait: Trait, value: int) -> void:
 		Trait.GENDER: gender = value as Gender
 		Trait.HAIR_COLOR: hair_color = value as HairColor
 		Trait.SKIN_COLOR: skin_color = value as SkinColor
+		Trait.RELIGION_TSHIRT: parts["torso"] = Globals.character_generator.get_religion_part("torso", value)
 		_: GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
+	
+
 
 func get_color_code(channel: ColorChannel) -> Color:
 	var gen = Globals.character_generator

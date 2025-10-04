@@ -10,3 +10,4 @@ variant = "starshirt"
 back_texture = ExtResource("1_u0uj7")
 back_color = 3
 front_color = 4
+religion = 2

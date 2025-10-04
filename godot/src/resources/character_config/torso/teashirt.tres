@@ -10,3 +10,4 @@ variant = "teashirt"
 back_texture = ExtResource("1_atj45")
 back_color = 3
 front_color = 4
+religion = 3

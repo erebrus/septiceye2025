@@ -12,4 +12,8 @@ class_name PartConfig extends Resource
 @export var back_color: Character.ColorChannel
 @export var front_color: Character.ColorChannel
 
+@export var religion: Types.Religion
+
+@export var gender: Character.Gender
+
 @export var allowed_parts: Dictionary[String, Array]

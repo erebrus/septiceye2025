@@ -104,9 +104,16 @@ func get_trait_values(soul_trait: Character.Trait) -> Array:
 		Character.Trait.GENDER: return genders
 		Character.Trait.HAIR_COLOR: return hair_colors.keys()
 		Character.Trait.SKIN_COLOR: return skin_colors.keys()
+		Character.Trait.RELIGION_TSHIRT: return Types.Religion.values()
 	
 	GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
 	return [] 
+	
+
+func get_religion_part(part: String, religion: Types.Religion) -> PartConfig:
+	var variants = parts_config[part].values()
+	var religion_variants = variants.filter(func(x): return x.religion == religion or religion == Types.Religion.UNKNOWN)
+	return religion_variants.pick_random()
 	
 
 func _initialize_missing_configs() -> void:
