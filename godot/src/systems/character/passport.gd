@@ -1,4 +1,4 @@
-class_name Passport extends PopupPanel
+class_name Passport extends MarginContainer
 
 var character: Character:
 	set(value):
@@ -11,7 +11,8 @@ func _ready() -> void:
 	if character != null:
 		_setup()
 	
-	Events.show_passport_requested.connect(popup)
+	hide()
+	Events.show_passport_requested.connect(show)
 	Events.stamp_requested.connect(_on_stamp_requested)
 	Events.character_entered.connect(func(x): character = x)
 	

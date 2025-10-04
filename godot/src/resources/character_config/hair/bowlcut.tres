@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://cwelhx0o272ur"]
+
+[ext_resource type="Texture2D" uid="uid://qe7mqh416cfd" path="res://assets/gfx/Characters/hair_bowlcut_back.png" id="1_rtxld"]
+[ext_resource type="Texture2D" uid="uid://cynq6ka0vre08" path="res://assets/gfx/Characters/hair_bowlcut_front.png" id="2_i6fvl"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_jdofs"]
+
+[resource]
+script = ExtResource("3_jdofs")
+part = "hair"
+variant = "bowlcut"
+back_texture = ExtResource("1_rtxld")
+front_texture = ExtResource("2_i6fvl")
+back_color = 1
+front_color = 1

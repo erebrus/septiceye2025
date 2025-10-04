@@ -5,6 +5,7 @@
 
 [node name="CharacterGenerator" type="Node"]
 script = ExtResource("1_0kokg")
+part_config_path = "res://src/resources/character_config/"
 hair_colors = Dictionary[int, Color]({
 1: Color(0.05490196, 0.32941177, 0.28627452, 1),
 2: Color(0.6392157, 0.26666668, 0.10980392, 1),

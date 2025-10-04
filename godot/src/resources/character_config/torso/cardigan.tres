@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TorsoConfig" load_steps=4 format=3 uid="uid://t7imyenfvsh8"]
+
+[ext_resource type="Texture2D" uid="uid://dyna775lmr3ag" path="res://assets/gfx/Characters/torso_cardigan_back.png" id="1_onape"]
+[ext_resource type="Texture2D" uid="uid://bk31wepsyexxh" path="res://assets/gfx/Characters/torso_cardigan_front.png" id="2_6kqhb"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="3_y448i"]
+
+[resource]
+script = ExtResource("3_y448i")
+part = "torso"
+variant = "cardigan"
+back_texture = ExtResource("1_onape")
+front_texture = ExtResource("2_6kqhb")
+back_color = 3
+front_color = 4

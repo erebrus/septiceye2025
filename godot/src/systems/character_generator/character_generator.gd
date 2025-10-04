@@ -1,15 +1,13 @@
 class_name CharacterGenerator extends Node
 
-@export var torsos: Dictionary[Character.Torso, TorsoConfig]
-
-@export var heads: Dictionary[Character.Head, PartConfig]
-
-@export var hairs: Dictionary[Character.Hair, PartConfig]
+@export var part_config_path: String
 
 @export var hair_colors: Dictionary[Character.HairColor, Color]
 
 @export var skin_colors: Dictionary[Character.SkinColor, Color]
 
+
+var parts_config: Dictionary[String, Dictionary]
 
 var genders: Array[Character.Gender]
 var religions: Array[Types.Religion]
@@ -41,7 +39,22 @@ func complete(character: Character) -> void:
 	if character.skin_color == Character.SkinColor.UNKNOWN:
 		character.skin_color = skin_colors.keys().pick_random()
 	
-	# TODO: randomize character generation taking into account allowed combinations (and level config?)
+	for part in parts_config:
+		if part in character.parts:
+			# part already pre-configured, skip
+			continue
+		
+		var allowed_values =  parts_config[part].keys().duplicate()
+		for config: PartConfig in character.parts.values():
+			if part in config.allowed_parts:
+				GameUtils._array_interect(allowed_values, config.allowed_parts[part])
+			
+		if allowed_values.is_empty():
+			# TODO: error only if it's mandatory part
+			continue
+		
+		var variant = allowed_values.pick_random()
+		character.parts[part] = parts_config[part][variant]
 	
 
 func generate() -> Character:
@@ -90,5 +103,37 @@ func get_trait_values(soul_trait: Character.Trait) -> Array:
 	
 
 func _initialize_missing_configs() -> void:
-	# TODO: load all textures, figure out the part type and part id, and create default PartConfig
-	pass
+	_load_part_directory(part_config_path)
+	
+
+func _load_part_directory(path: String) -> void:
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		
+		while file_name != "":
+			if dir.current_is_dir():
+				_load_part_directory(path.path_join(file_name))
+			elif file_name.get_extension() == "tres":
+				GSLogger.info("Loading part %s %s" % [path, file_name])
+				var res = load(path.path_join(file_name))
+				if not res is PartConfig:
+					GSLogger.warn("Resource is not a PartConfig")
+					continue
+				var config: PartConfig = res
+				
+				if not config.part in parts_config:
+					var dict: Dictionary[String, PartConfig]
+					parts_config[config.part] = dict
+				
+				parts_config[config.part][config.variant] = config
+				
+			
+			file_name = dir.get_next()
+	else:
+		GSLogger.error("An error occurred when trying to access the path.")
+	
+
+
+	

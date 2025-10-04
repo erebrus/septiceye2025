@@ -13,21 +13,6 @@ enum Gender {
 	FEMALE
 }
 
-enum Torso {
-	UNKNOWN,
-	DEFAULT,
-}
-
-enum Head {
-	UNKNOWN,
-	DEFAULT,
-}
-
-enum Hair {
-	UNKNOWN,
-	DEFAULT,
-}
-
 enum HairColor {
 	UNKNOWN,
 	GREEN,
@@ -42,6 +27,14 @@ enum SkinColor {
 	BEIGE,
 	RED, 
 	BROWN
+}
+
+enum ColorChannel {
+	NONE,
+	HAIR,
+	SKIN,
+	CLOTHES_1,
+	CLOTHES_2,
 }
 
 var name: String
@@ -59,20 +52,7 @@ var skin_color_code: Color:
 	get:
 		return Globals.character_generator.skin_colors[skin_color]
 
-var torso: Torso
-var torso_config: TorsoConfig:
-	get:
-		return Globals.character_generator.torsos[torso]
-
-var head: Head
-var head_config: PartConfig:
-	get:
-		return Globals.character_generator.heads[head]
-
-var hair: Hair
-var hair_config: PartConfig:
-	get:
-		return Globals.character_generator.hairs[hair]
+var parts: Dictionary[String, PartConfig]
 
 var destination: Types.Destination
 
@@ -95,3 +75,9 @@ func set_trait(soul_trait: Trait, value: int) -> void:
 		Trait.HAIR_COLOR: hair_color = value as HairColor
 		Trait.SKIN_COLOR: skin_color = value as SkinColor
 		_: GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
+
+func get_color_code(channel: ColorChannel) -> Color:
+	match channel:
+		ColorChannel.HAIR: return hair_color_code
+		ColorChannel.SKIN: return skin_color_code
+		_: return Color.WHITE

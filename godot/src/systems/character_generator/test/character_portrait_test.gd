@@ -1,5 +1,7 @@
 extends Node
 
+var part_options: Dictionary[String, OptionButton]
+
 @onready var portrait = $CharacterPortrait
 @onready var passport = $Passport
 @onready var generator = Globals.character_generator
@@ -9,12 +11,12 @@ extends Node
 @onready var hair_color_options = %HairColorOptions
 @onready var skin_color_options = %SkinColorOptions
 
-@onready var torso_options = %TorsoOptions
-@onready var head_options = %HeadOptions
-@onready var hair_options = %HairOptions
+@onready var container: Container = %Container
 
 
 func _ready() -> void:
+	%Passport.show()
+	
 	for i in Types.Religion:
 		religion_options.add_item(i, Types.Religion[i])
 	for i in Character.Gender:
@@ -24,13 +26,21 @@ func _ready() -> void:
 	for i in Character.SkinColor:
 		skin_color_options.add_item(i, Character.SkinColor[i])
 	
-	for i in Character.Torso:
-		torso_options.add_item(i, Character.Torso[i])
-	for i in Character.Head:
-		head_options.add_item(i, Character.Head[i])
-	for i in Character.Hair:
-		hair_options.add_item(i, Character.Hair[i])
-	
+	for part in generator.parts_config:
+		var variants = generator.parts_config[part]
+		var label = Label.new()
+		label.text = part
+		container.add_child(label)
+		var options = OptionButton.new()
+		options.add_item("Any")
+		
+		for variant in variants:
+			options.add_item(variant)
+		options.item_selected.connect(_on_part_selected.bind(part))
+		
+		container.add_child(options)
+		part_options[part] = options
+		
 	_on_generate_pressed()
 	
 
@@ -41,19 +51,20 @@ func _update() -> void:
 
 func _on_generate_pressed():
 	var character = Character.new()
-	Types.Religion = religion_options.selected
+	character.religion = religion_options.selected
 	character.gender = gender_options.selected
 	character.hair_color = hair_color_options.selected
 	character.skin_color = skin_color_options.selected
+	for part in generator.parts_config:
+		var index = part_options[part].selected
+		if index > 0:
+			character.parts[part] = generator.parts_config[part].values()[index-1]
 	
 	generator.complete(character)
 	
-	torso_options.select(character.torso)
-	head_options.select(character.head)
-	hair_options.select(character.hair)
-	
 	%HairColor.color = character.hair_color_code
 	%SkinColor.color = character.skin_color_code
+	
 	portrait.character = character
 	passport.character = character
 	
@@ -78,25 +89,21 @@ func _on_skin_color_options_item_selected(index):
 	_update() 
 	
 
-func _on_torso_options_item_selected(index):
-	portrait.character.torso = index
-	_update() 
+func _on_part_selected(index: int, part: String):
+	if  index == 0:
+		return
 	
-
-func _on_head_options_item_selected(index):
-	portrait.character.head = index
-	_update() 
-	
-
-func _on_hair_options_item_selected(index):
-	portrait.character.hair = index
-	_update() 
+	var config = generator.parts_config[part].values()[index-1]
+	portrait.character.parts[part] = config
+	_update()
 	
 
 func _on_hair_color_color_changed(color):
-	portrait._set_hair_color(color)
+	generator.hair_colors[portrait.character.hair_color] = color
+	_update()
 	
 
 func _on_skin_color_color_changed(color):
-	portrait._set_skin_color(color)
+	generator.skin_colors[portrait.character.skin_color] = color
+	_update()
 	

@@ -10,13 +10,15 @@ var character: Character:
 
 @onready var generator: CharacterGenerator = Globals.character_generator
 
-@onready var torso: Sprite2D = %Torso
-
-@onready var head: Sprite2D = %Head
-@onready var eyes: Sprite2D = %Eyes
-
-@onready var hair_back: Sprite2D = %HairBack
-@onready var hair_front: Sprite2D = %HairFront
+@onready var sprites: Dictionary[String, Array] = {
+	"torso": [ %TorsoFront, %TorsoBack ],
+	"face": [ %HeadFront, %HeadBack ],
+	"hair": [ %HairFront, %HairBack ],
+	"eyebrows": [ %EyebrowsFront, %EyebrowsBack ],
+	"eyes": [ %EyesFront, %EyesBack ],
+	"nose": [ %NoseFront, %NoseBack ],
+	"mouth": [ %MouthFront, %MouthBack ],
+}
 
 func _ready() -> void:
 	if character != null:
@@ -26,28 +28,58 @@ func _ready() -> void:
 	
 
 func _set_skin_color(color: Color) -> void:
-	head.modulate = color
-	eyes.modulate = color
+	sprites["face"].back().modulate = color
+	sprites["face"].front().modulate = color
+	
+	sprites["eyes"].front().modulate = color
+	
+	sprites["nose"].front().modulate = color
+	sprites["nose"].back().modulate = color
+	
+	sprites["mouth"].front().modulate = color
+	sprites["mouth"].back().modulate = color
 	
 
 func _set_hair_color(color: Color) -> void:
-	hair_back.modulate = color
-	hair_front.modulate = color
+	sprites["hair"].back().modulate = color
+	sprites["hair"].front().modulate = color
+	sprites["eyebrows"].back().modulate = color
+	sprites["eyebrows"].front().modulate = color
 	
 
 func _setup() -> void:
-	if character.torso_config == null:
+	if character.parts.is_empty():
 		return
-	%BehindTorso.position = character.torso_config.head_position
-	%InFrontOfTorso.position = character.torso_config.head_position
 	
-	_set_skin_color(character.skin_color_code)
-	_set_hair_color(character.hair_color_code)
+	%BehindTorso.position = character.parts["torso"].head_position
+	%InFrontOfTorso.position = character.parts["torso"].head_position
 	
-	_set_sprite(torso, character.torso_config.texture)
-	_set_sprite(head, character.head_config.texture)
-	_set_sprite(hair_back, character.hair_config.texture)
-	_set_sprite(hair_front, character.hair_config.front_texture)
+	for part in sprites:
+		_set_sprites(part)
+		_set_recolor(part)
+	
+
+func _set_recolor(part: String) -> void:
+	if not part in character.parts:
+		return
+	
+	var config = character.parts[part]
+	if not config.back_no_recolor:
+		sprites[part].back().modulate = character.get_color_code(config.back_color)
+		
+	if not config.front_no_recolor:
+		sprites[part].front().modulate = character.get_color_code(config.front_color)
+	
+
+func _set_sprites(part: String) -> void:
+	if not part in character.parts:
+		sprites[part].back().hide()
+		sprites[part].front().hide()
+		return
+	
+	var config = character.parts[part]
+	_set_sprite(sprites[part].back(), config.back_texture)
+	_set_sprite(sprites[part].front(), config.front_texture)
 	
 
 func _set_sprite(sprite: Sprite2D, texture: Texture2D) -> void:

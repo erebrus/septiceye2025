@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TorsoConfig" load_steps=4 format=3 uid="uid://c3npax4l3aoou"]
+
+[ext_resource type="Texture2D" uid="uid://b3w7t3e2odsus" path="res://assets/gfx/Characters/torso_shirt_back.png" id="1_oh82w"]
+[ext_resource type="Texture2D" uid="uid://dx88t8ax8k3o3" path="res://assets/gfx/Characters/torso_shirt_front.png" id="2_v27vi"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="3_0f3ex"]
+
+[resource]
+script = ExtResource("3_0f3ex")
+part = "torso"
+variant = "shirt"
+back_texture = ExtResource("1_oh82w")
+front_texture = ExtResource("2_v27vi")
+back_color = 3
+front_color = 4

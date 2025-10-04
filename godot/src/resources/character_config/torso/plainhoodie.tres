@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TorsoConfig" load_steps=3 format=3 uid="uid://dvsrc2vpd4kq0"]
+
+[ext_resource type="Texture2D" uid="uid://bnuv5a4b7mn85" path="res://assets/gfx/Characters/torso_plainhoodie_back.png" id="1_6km4n"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="2_hibvx"]
+
+[resource]
+script = ExtResource("2_hibvx")
+part = "torso"
+variant = "plainhoodie"
+back_texture = ExtResource("1_6km4n")
+back_color = 3
+front_color = 4

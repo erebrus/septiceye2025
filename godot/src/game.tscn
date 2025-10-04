@@ -26,10 +26,12 @@ override_level = ExtResource("4_pk08u")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
-[node name="ScheduledDeaths" parent="HUDLayer" instance=ExtResource("5_pk08u")]
-unique_name_in_owner = true
-
 [node name="Passport" parent="HUDLayer" instance=ExtResource("6_wqvko")]
+unique_name_in_owner = true
+offset_right = 72.0
+offset_bottom = 77.0
+
+[node name="ScheduledDeaths" parent="HUDLayer" instance=ExtResource("5_pk08u")]
 unique_name_in_owner = true
 
 [node name="RuleManual" parent="HUDLayer" instance=ExtResource("7_cdx1q")]

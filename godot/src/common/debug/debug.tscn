@@ -10,13 +10,7 @@ script = ExtResource("1_k56ks")
 
 [node name="DebugPanel" parent="." instance=ExtResource("2_j5q3p")]
 unique_name_in_owner = true
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1030.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -115.0
 
 [node name="VersionContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

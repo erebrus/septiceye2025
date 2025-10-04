@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TorsoConfig" load_steps=3 format=3 uid="uid://c7u0afgmewxyi"]
+
+[ext_resource type="Texture2D" uid="uid://dtx6m3ttrytyb" path="res://assets/gfx/Characters/torso_snailshirt_back.png" id="1_g6nlt"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="2_ox6py"]
+
+[resource]
+script = ExtResource("2_ox6py")
+part = "torso"
+variant = "snailshirt"
+back_texture = ExtResource("1_g6nlt")
+back_color = 3
+front_color = 4

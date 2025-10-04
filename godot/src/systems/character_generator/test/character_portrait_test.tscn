@@ -13,84 +13,86 @@ events = [SubResource("InputEventAction_mhq3f")]
 [node name="CharacterPortraitTest" type="Node"]
 script = ExtResource("1_nmdu8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
+position = Vector2(1477, 585)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 114.0
 grow_vertical = 2
 
-[node name="ReligionOptions" type="OptionButton" parent="VBoxContainer"]
+[node name="Container" type="GridContainer" parent="VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+text = "Religion"
+
+[node name="ReligionOptions" type="OptionButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GenderOptions" type="OptionButton" parent="VBoxContainer"]
+[node name="Label4" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+text = "Gender"
+
+[node name="GenderOptions" type="OptionButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HairColorOptions" type="OptionButton" parent="VBoxContainer"]
+[node name="Label5" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+text = "Hair Color"
+
+[node name="HairColorOptions" type="OptionButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SkinColorOptions" type="OptionButton" parent="VBoxContainer"]
+[node name="Label6" type="Label" parent="VBoxContainer2/Container"]
+layout_mode = 2
+text = "Skin Color"
+
+[node name="SkinColorOptions" type="OptionButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TorsoOptions" type="OptionButton" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HeadOptions" type="OptionButton" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HairOptions" type="OptionButton" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer2/Container"]
 layout_mode = 2
 text = "Hair"
 
-[node name="HairColor" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer"]
+[node name="HairColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label3" type="Label" parent="VBoxContainer2/Container"]
 layout_mode = 2
 text = "Skin"
 
-[node name="SkinColor" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="SkinColor" type="ColorPickerButton" parent="VBoxContainer2/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Generate" type="Button" parent="VBoxContainer"]
+[node name="Generate" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_nmdu8")
 text = "Generate!"
 
-[node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
-position = Vector2(1477, 585)
-
 [node name="Passport" parent="." instance=ExtResource("3_p6mq6")]
-offset_left = 783.0
-offset_top = 555.0
-offset_right = 850.0
-offset_bottom = 632.0
+unique_name_in_owner = true
+offset_left = 684.0
+offset_top = 294.0
+offset_right = 756.0
+offset_bottom = 371.0
 
-[connection signal="item_selected" from="VBoxContainer/ReligionOptions" to="." method="_on_religion_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/GenderOptions" to="." method="_on_gender_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/HairColorOptions" to="." method="_on_hair_color_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/SkinColorOptions" to="." method="_on_skin_color_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/TorsoOptions" to="." method="_on_torso_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/HeadOptions" to="." method="_on_head_options_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/HairOptions" to="." method="_on_hair_options_item_selected"]
-[connection signal="color_changed" from="VBoxContainer/HBoxContainer/HairColor" to="." method="_on_hair_color_color_changed"]
-[connection signal="color_changed" from="VBoxContainer/HBoxContainer2/SkinColor" to="." method="_on_skin_color_color_changed"]
-[connection signal="pressed" from="VBoxContainer/Generate" to="." method="_on_generate_pressed"]
+[connection signal="item_selected" from="VBoxContainer2/Container/ReligionOptions" to="." method="_on_religion_options_item_selected"]
+[connection signal="item_selected" from="VBoxContainer2/Container/GenderOptions" to="." method="_on_gender_options_item_selected"]
+[connection signal="item_selected" from="VBoxContainer2/Container/HairColorOptions" to="." method="_on_hair_color_options_item_selected"]
+[connection signal="item_selected" from="VBoxContainer2/Container/SkinColorOptions" to="." method="_on_skin_color_options_item_selected"]
+[connection signal="color_changed" from="VBoxContainer2/Container/HairColor" to="." method="_on_hair_color_color_changed"]
+[connection signal="color_changed" from="VBoxContainer2/Container/SkinColor" to="." method="_on_skin_color_color_changed"]
+[connection signal="pressed" from="VBoxContainer2/Generate" to="." method="_on_generate_pressed"]

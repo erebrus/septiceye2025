@@ -59,3 +59,7 @@ func _on_load_level_button_pressed() -> void:
 	var level_idx = level_selection.selected
 	Globals.game.level_manager.load_level(level_idx)
 	
+
+
+func _on_character_generator_pressed():
+	get_tree().change_scene_to_file("res://src/systems/character_generator/test/character_portrait_test.tscn")

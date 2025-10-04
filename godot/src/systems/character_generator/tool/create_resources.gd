@@ -4,6 +4,7 @@ extends EditorScript
 const ASSET_PATH = "res://assets/gfx/Characters"
 const RESOURCE_PATH = "res://src/resources/character_config"
 
+const OVERWRITE = true
 
 func _run() -> void:
 	var assets := _find_assets(ASSET_PATH)
@@ -44,7 +45,8 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 	var resource_path = RESOURCE_PATH.path_join(bodypart).path_join(variant + ".tres")
 	if FileAccess.file_exists(resource_path):
 		print("Resource %s already exists" % resource_path)
-		return
+		if not OVERWRITE:
+			return
 		
 	var resource:PartConfig
 	
@@ -52,7 +54,10 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 		resource = TorsoConfig.new()
 	else:
 		resource = PartConfig.new()
-		
+	
+	resource.part = bodypart
+	resource.variant = variant
+	
 	for asset in assets:
 		var parts = _filename_parts(asset)
 		if parts.size() > 2:
@@ -66,6 +71,23 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 			resource.back_texture = load(asset)
 			resource.back_no_recolor = parts.back() == "norecolor"
 		
+	match bodypart:
+		"torso":
+			resource.back_color = Character.ColorChannel.CLOTHES_1
+			resource.front_color = Character.ColorChannel.CLOTHES_2
+		"face", "nose":
+			resource.back_color = Character.ColorChannel.SKIN
+			resource.front_color = Character.ColorChannel.SKIN
+		"eyes", "mouth":
+			resource.back_no_recolor = true
+			resource.front_color = Character.ColorChannel.SKIN
+		"hair", "eyebrows", "facialhair":
+			resource.back_color = Character.ColorChannel.HAIR
+			resource.front_color = Character.ColorChannel.HAIR
+		_:
+			resource.back_no_recolor = true
+			resource.front_no_recolor = true
+	
 	print("Saving resource %s" % resource_path)
 	ResourceSaver.save(resource, resource_path)
 	
