@@ -11,8 +11,8 @@ script = ExtResource("4_45v6v")
 target = 2
 allowed_values = [2]
 description = "Only people with properly orange hair will go to heaven"
-met_destinations = Array[int]([1, 2, 3, 4])
-unmet_destinations = Array[int]([2, 3, 4])
+met_destinations = Array[int]([1, 2, 3, 4, 0])
+unmet_destinations = Array[int]([2, 3, 4, 0])
 metadata/_custom_type_script = "uid://bm8uyy561ekt6"
 
 [sub_resource type="Resource" id="Resource_b7rnw"]
