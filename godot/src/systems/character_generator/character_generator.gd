@@ -192,8 +192,8 @@ func _initialize_claims() -> void:
 	var unused_claims: Array[String]
 	var claim_dict: Dictionary
 	for row in CLAIM_DATA.records.slice(1):
-		claim_dict[row[1]] = row
-		unused_claims.append(row[1])
+		claim_dict[row[2]] = row
+		unused_claims.append(row[2])
 	
 	for row in FOLLOW_UP_DATA.records.slice(1):
 		var claim_id = row[0]
@@ -219,7 +219,7 @@ func _initialize_claims() -> void:
 
 func _create_claim(claim_data: Array) -> Claim:
 	var claim = Claim.new()
-	claim.topic = claim_data[0]
+	claim.topic = claim_data[1]
 	claim.statement = claim_data[2]
 	
 	if claim.topic not in claims:
