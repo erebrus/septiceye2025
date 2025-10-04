@@ -1,26 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://l2dskqk2haet"]
+[gd_scene load_steps=9 format=3 uid="uid://l2dskqk2haet"]
 
 [ext_resource type="Script" uid="uid://c4miawmnjpugl" path="res://src/systems/list/scheduled_deaths.gd" id="1_2i7o8"]
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_8tshg"]
 [ext_resource type="PackedScene" uid="uid://dqs2dylldp06q" path="res://src/systems/list/character_name.tscn" id="2_sllgi"]
+[ext_resource type="Texture2D" uid="uid://ba8piesg4q4r6" path="res://assets/gfx/workspace/list.png" id="4_rth0c"]
+[ext_resource type="FontFile" uid="uid://n3yncfrd4rnc" path="res://assets/fonts/Kalam/Kalam-Regular.ttf" id="5_pr34d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tshg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sllgi"]
-content_margin_left = 12.0
-content_margin_top = 12.0
-content_margin_right = 12.0
-content_margin_bottom = 12.0
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr34d"]
+
+[sub_resource type="Theme" id="Theme_rth0c"]
+HeaderSmall/colors/font_color = Color(0.20784314, 0.12941177, 0.039215688, 1)
+HeaderSmall/font_sizes/font_size = 24
+HeaderSmall/fonts/font = ExtResource("5_pr34d")
 
 [node name="ScheduledDeaths" type="PopupPanel"]
 oversampling_override = 1.0
-size = Vector2i(275, 100)
+size = Vector2i(695, 1045)
 visible = true
 theme = ExtResource("1_8tshg")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8tshg")
@@ -28,18 +25,28 @@ script = ExtResource("1_2i7o8")
 NameScene = ExtResource("2_sllgi")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 275.0
-offset_bottom = 100.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sllgi")
+offset_right = 695.0
+offset_bottom = 1045.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pr34d")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
+texture = ExtResource("4_rth0c")
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-text = "Scheduled Deaths"
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 100
 
-[node name="NameContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="ReferenceRect" type="ReferenceRect" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+border_width = 5.0
+
+[node name="NameContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_rth0c")
+theme_override_constants/h_separation = 80

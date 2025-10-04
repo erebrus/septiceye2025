@@ -2,7 +2,7 @@ class_name ScheduledDeaths extends PopupPanel
 
 @export var NameScene: PackedScene
 
-@onready var container: Container = %NameContainer
+@onready var container: GridContainer = %NameContainer
 
 
 func _ready() -> void:
@@ -18,6 +18,10 @@ func set_state(state: GameState):
 	var queue := state.character_queue.duplicate()
 	queue.shuffle()
 	
+	if queue.size() > 16:
+		container.columns = 2
+	else:
+		container.columns = 1
 	for character in queue:
 		if character.is_in_list:
 			var character_name = NameScene.instantiate()
