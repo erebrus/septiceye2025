@@ -18,11 +18,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GSLogger="*res://addons/gs_logger/logger.gd"
 Types="*res://src/common/types.gd"
 GameUtils="*res://src/common/utils.gd"
 Events="*res://src/common/events.gd"
 Globals="*res://src/common/globals.tscn"
-GSLogger="*res://addons/gs_logger/logger.gd"
 Debug="*res://src/common/debug/debug.tscn"
 LayerNames="*res://addons/layerNames/layerNames.gd"
 

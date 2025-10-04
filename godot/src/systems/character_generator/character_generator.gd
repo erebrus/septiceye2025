@@ -133,9 +133,13 @@ func _set_part(character: Character, part: String, allowed_values: Array[String]
 
 func _initialize_missing_configs() -> void:
 	_load_part_directory(part_config_path)
+	if parts_config.is_empty():
+		GSLogger.error("No parts loaded!")
 	
 
 func _load_part_directory(path: String) -> void:
+	GSLogger.info("Loading part configs in %s" % path)
+	
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
@@ -144,9 +148,9 @@ func _load_part_directory(path: String) -> void:
 		while file_name != "":
 			if dir.current_is_dir():
 				_load_part_directory(path.path_join(file_name))
-			elif file_name.get_extension() == "tres":
+			else:
 				GSLogger.info("Loading part %s %s" % [path, file_name])
-				var res = load(path.path_join(file_name))
+				var res = load(path.path_join(file_name.trim_suffix(".remap")))
 				if not res is PartConfig:
 					GSLogger.warn("Resource is not a PartConfig")
 					continue
@@ -157,7 +161,7 @@ func _load_part_directory(path: String) -> void:
 					parts_config[config.part] = dict
 				
 				parts_config[config.part][config.variant] = config
-				
+				GSLogger.info("Added config %s %s" % [config.part, config.variant])
 			
 			file_name = dir.get_next()
 	else:
