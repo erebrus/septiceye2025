@@ -51,17 +51,8 @@ func complete(character: Character) -> void:
 			# part already pre-configured, skip
 			continue
 		
-		var allowed_values =  parts_config[part].keys().duplicate()
-		for config: PartConfig in character.parts.values():
-			if part in config.allowed_parts:
-				GameUtils._array_interect(allowed_values, config.allowed_parts[part])
-			
-		if allowed_values.is_empty():
-			# TODO: error only if it's mandatory part
-			continue
-		
-		var variant = allowed_values.pick_random()
-		character.parts[part] = parts_config[part][variant]
+		var allowed_values = character.filter_part_allowed_values(part, parts_config[part].keys())
+		_set_part(character, part, allowed_values)
 	
 
 func generate() -> Character:
@@ -98,6 +89,21 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet) 
 	return character
 	
 
+func choose_trait(character: Character, soul_trait: Character.Trait, allowed_values: Array) -> void:
+	match soul_trait:
+		Character.Trait.RELIGION_TSHIRT:
+			var variants: Array[String]
+			for religion in allowed_values:
+				for value in get_religion_parts("torso", religion):
+					if not value in variants:
+						variants.append(value)
+				
+			var values = character.filter_part_allowed_values("torso", variants)
+			_set_part(character, "torso", values)
+		_:
+			character.set_trait(soul_trait, allowed_values.pick_random())
+	
+
 func get_trait_values(soul_trait: Character.Trait) -> Array:
 	match soul_trait:
 		Character.Trait.RELIGION: return religions
@@ -110,10 +116,19 @@ func get_trait_values(soul_trait: Character.Trait) -> Array:
 	return [] 
 	
 
-func get_religion_part(part: String, religion: Types.Religion) -> PartConfig:
+func get_religion_parts(part: String, religion: Types.Religion) -> Array:
 	var variants = parts_config[part].values()
 	var religion_variants = variants.filter(func(x): return x.religion == religion or religion == Types.Religion.UNKNOWN)
-	return religion_variants.pick_random()
+	return religion_variants.map(func(x): return x.variant)
+	
+
+func _set_part(character: Character, part: String, allowed_values: Array[String]) -> void:
+	if allowed_values.is_empty():
+		# TODO: error only if it's mandatory part
+		return
+	
+	var variant = allowed_values.pick_random()
+	character.parts[part] = parts_config[part][variant]
 	
 
 func _initialize_missing_configs() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc82ulrvcacy5"]
+[gd_scene load_steps=9 format=3 uid="uid://cc82ulrvcacy5"]
 
 [ext_resource type="PackedScene" uid="uid://lqtollaovard" path="res://src/base_level.tscn" id="1_1ky7t"]
 [ext_resource type="Script" uid="uid://bfef4h1fj64rt" path="res://src/systems/rules/rule.gd" id="2_7hvae"]
@@ -15,9 +15,19 @@ met_destinations = Array[int]([1, 2, 3, 4, 0])
 unmet_destinations = Array[int]([2, 3, 4, 0])
 metadata/_custom_type_script = "uid://bm8uyy561ekt6"
 
+[sub_resource type="Resource" id="Resource_7hvae"]
+script = ExtResource("4_45v6v")
+target = 4
+allowed_values = [1]
+religion = 1
+description = "Followers of the Snail religion must wear a symbol of their faith on their clothes or go to eternal purgatory"
+met_destinations = Array[int]([0, 1, 2, 4])
+unmet_destinations = Array[int]([0, 3])
+metadata/_custom_type_script = "uid://bm8uyy561ekt6"
+
 [sub_resource type="Resource" id="Resource_b7rnw"]
 script = ExtResource("5_q3sum")
-rules = Array[ExtResource("2_7hvae")]([ExtResource("3_t1chq"), SubResource("Resource_202rx")])
+rules = Array[ExtResource("2_7hvae")]([ExtResource("3_t1chq"), SubResource("Resource_202rx"), SubResource("Resource_7hvae")])
 metadata/_custom_type_script = "uid://bbst45rxgww2y"
 
 [node name="BaseLevel" instance=ExtResource("1_1ky7t")]

@@ -76,6 +76,14 @@ var colors: Dictionary[ColorChannel, int]
 var destination: Types.Destination
 
 
+func filter_part_allowed_values(part: String, values: Array[String]) -> Array[String]:
+	var allowed_values: Array[String] = values.duplicate()
+	for config in parts.values():
+		if part in config.allowed_parts:
+			GameUtils._array_interect(allowed_values, config.allowed_parts[part])
+	return allowed_values
+	
+
 func get_trait(soul_trait: Trait) -> int:
 	match soul_trait:
 		Trait.RELIGION: return religion
@@ -94,10 +102,9 @@ func set_trait(soul_trait: Trait, value: int) -> void:
 		Trait.GENDER: gender = value as Gender
 		Trait.HAIR_COLOR: hair_color = value as HairColor
 		Trait.SKIN_COLOR: skin_color = value as SkinColor
-		Trait.RELIGION_TSHIRT: parts["torso"] = Globals.character_generator.get_religion_part("torso", value)
+		Trait.RELIGION_TSHIRT: GSLogger.error("part traits should be handled by generator")
 		_: GSLogger.error("Unknown trait %s" % Character.Trait.keys()[soul_trait])
 	
-
 
 func get_color_code(channel: ColorChannel) -> Color:
 	var gen = Globals.character_generator

@@ -17,7 +17,8 @@ script = ExtResource("1_mnxva")
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("2_82ww6")]
 unique_name_in_owner = true
-position = Vector2(960, 550)
+position = Vector2(986, 402)
+scale = Vector2(0.8, 0.8)
 
 [node name="DeskPlaceholder" type="Polygon2D" parent="."]
 position = Vector2(0, 179)

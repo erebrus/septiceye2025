@@ -29,8 +29,8 @@ func is_met_by(character: Character) -> bool:
 	
 
 func make_character_meet(character: Character) -> void:
-	character.set_trait(target, get_allowed_values().pick_random())
+	Globals.character_generator.choose_trait(character, target, get_allowed_values())
 	
 
 func make_character_not_meet(character: Character) -> void:
-	character.set_trait(target, get_forbidden_values().pick_random())
+	Globals.character_generator.choose_trait(character, target, get_forbidden_values())
