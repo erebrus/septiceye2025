@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dij6fum0ibnv8"]
+[gd_scene load_steps=8 format=3 uid="uid://dij6fum0ibnv8"]
 
 [ext_resource type="Script" uid="uid://dy5rpcuu0y6pi" path="res://src/systems/day/shutter/shutter.gd" id="1_vx1tg"]
+[ext_resource type="Texture2D" uid="uid://q38hdib3yvc" path="res://assets/gfx/workspace/Window_Shutter.png" id="2_qv512"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdmcp"]
-size = Vector2(1290, 1061)
+size = Vector2(822, 782)
 
 [sub_resource type="Animation" id="Animation_qv512"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Polygon2D:position:y")
+tracks/0/path = NodePath("Sprite2D:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,12 +25,12 @@ resource_name = "close"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Polygon2D:position:y")
+tracks/0/path = NodePath("Sprite2D:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-1000, 0, 0, 0.6333333, 12.119751, 0, -0.06666666, -583.52234, 0, 0),
+"points": PackedFloat32Array(-800, 0, 0, 0.6333333, 12.119751, 0, -0.06666666, -583.52234, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -38,12 +39,12 @@ resource_name = "open"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Polygon2D:position:y")
+tracks/0/path = NodePath("Sprite2D:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.3699215, -12.019869, -1000, -0.09674519, 324.9965, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.3699215, -12.019869, -800, -0.09674519, 324.9965, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -57,12 +58,8 @@ _data = {
 [node name="Shutter" type="Area2D"]
 script = ExtResource("1_vx1tg")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.08235294, 0.10980392, 0.11764706, 1)
-polygon = PackedVector2Array(-590, -476, 650, -470, 686, 577, -590, 539)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(54, 48.5)
+position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_pdmcp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -70,5 +67,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_jf5i4")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qv512")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
