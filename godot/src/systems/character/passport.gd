@@ -36,6 +36,8 @@ func _create_claim(claim: Claim) -> void:
 	
 
 func _on_stamp_requested(destination: Types.Destination) -> void:
+	if character == null:
+		return
 	# TODO open passport and stamp it 
 	GSLogger.info("Stamped character with %s (expected: %s)" % [
 		Types.Destination.keys()[destination],

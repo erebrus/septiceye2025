@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0gwmkf1c4ca"
-path="res://.godot/imported/stamp_heaven_button.png-58e305f4408a4110671d70be9c1fb9fe.ctex"
+uid="uid://ba8piesg4q4r6"
+path="res://.godot/imported/list.png-d9d13530b94b7d268d6c5436dd5633ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/ui/stamp_heaven_button.png"
-dest_files=["res://.godot/imported/stamp_heaven_button.png-58e305f4408a4110671d70be9c1fb9fe.ctex"]
+source_file="res://assets/gfx/workspace/list.png"
+dest_files=["res://.godot/imported/list.png-d9d13530b94b7d268d6c5436dd5633ee.ctex"]
 
 [params]
 

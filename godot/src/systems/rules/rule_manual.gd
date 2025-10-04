@@ -20,6 +20,7 @@ func _ready() -> void:
 		_setup()
 	
 	Events.show_manual_requested.connect(show)
+	hide()
 	
 
 func _setup() -> void:

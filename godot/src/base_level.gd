@@ -13,11 +13,11 @@ var game_state:GameState
 @export var character_queue: Array[Character]
 
 @onready var portrait: CharacterPortrait = %CharacterPortrait
-@onready var start_day_button: BaseButton = %StartDayButton
 @onready var passport_button: BaseButton = %PassportButton
 
 
 func _ready() -> void:
+	Events.day_started.connect(_on_day_started)
 	Events.character_stamped.connect(_on_character_stamped)
 	portrait.hide()
 	passport_button.hide()
@@ -86,12 +86,6 @@ func _on_manual_button_pressed():
 	Events.show_manual_requested.emit()
 	
 
-func _on_start_day_button_pressed():
-	Events.day_started.emit()
-	start_day_button.hide()
-	next_character()
-	
-
 func _on_scheduled_deaths_button_pressed():
 	Events.show_list_requested.emit()
 	
@@ -118,6 +112,11 @@ func _on_purgatory_stamp_pressed():
 
 func _on_hell_stamp_pressed():
 	Events.stamp_requested.emit(Types.Destination.HELL)
+	
+
+func _on_day_started() -> void:
+	await get_tree().create_timer(0.5).timeout
+	next_character()
 	
 
 func _on_character_stamped(_destination: Types.Destination, _expected: Types.Destination) -> void:
