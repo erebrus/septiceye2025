@@ -1,4 +1,4 @@
-passport claim,follow up claim(s),follow up text
+passport_claim,follow_up_claims,follow_up_text
 tea_mindful,tea_mindful,I always brew my tea mindfully. 
 tea_mindful,tea_anger,"The tea always calms me down. By the time I'm finished brewing it, all my anger is gone. "
 tea_anger,tea_anger,"I have anger issues, and sadly I always brew my tea in anger."
@@ -7,3 +7,59 @@ ice_tea,ice_tea,"I don't believe that cold tea is a wasted wisdom, therefore I d
 first_sip_share,first_sip_share,"My first tea of the day is always shared with my mom, she takes the first sip and I drink after her."
 first_sip_share,first_sip_share,Sometimes I don't have anyone to share my tea with. Then I pour the first drops of The Holy Beverage to the soil of my favorite plant. 
 first_sip_denied,first_sip_denied; second_sip_shared,"There are times when I forget to share my first tea of the day with someone, so I try to find someone to at least have the second sip."
+tea_hot,tea_hot,"I always drink my tea extremely hot, I believe the Sacred Beverage works better this way. "
+tea_cold,tea_cold,"Often I forget about my tea and drink it cold. I know it's a heresy, but I'm drinking it anyway."
+tea_lukewarm,tea_lukewarm,"The Sacred Beverage is usually too hot for me to drink right away, so I wait for it to be slightly cooler. "
+tea_hot,tea_lukewarm,"I try my best to drink the tea hot, but I burned myself too many times already, therefore I'm waiting a few minutes for it to cool down."
+reflect_once,reflect_once,"Once a week I reflect on my life and decisions, it's my small ritual."
+reflect_once,reflect_more,I try to reflect more than once a week on my faith and life. It brings me peace when I ponder often.
+reflect_more,reflect_more,"Everyday I think about my existance and reflect on the Sacred Beverage, I'm certain it brings me closer to the Holy Leaves. "
+no_reflect,no_reflect,"Reflecting on life is not my favorite practice. There are times when I do it, but usually I try to avoid it."
+throw_leaves,throw_leaves,"I live in an apartment complex, there's no place I can discard the Holy Leaves accordingly, I usually just throw them away in the garbage can."
+bury_leaves,bury_leaves,"Every time after I'm done with my Sacred Beverage I go out and bury the Holy Leaves in the dirt. When it's winter, I put them in my plants' soil."
+reuse_leaves,reuse_leaves,"I hate wasting food, so I collect the tea leaves and reuse them to make the Sacred Beverage the next day. "
+carry_snail,carry_snail,"I don't leave my house without the Divine Shell, I feel almost naked without it. "
+carry_snail,no_carry_snail,"Sometimes I forget to carry the Divine Shell, I hope the Cosmic Snail is not angry about it. I sweat it doesn't happen often."
+no_carry_snail,no_carry_snail,"I feel like showing off my religion is too much, so I don't bring my Divine Shell with me when I go out. "
+running,running,Running makes me feel like I'm alive.
+moving_fast,running,"I move faster than everyone, and even sometims I jog for a bit."
+moving_fast,moving_fast,"I live in a big city, it's hard to move slow, I have to walk faster or I'll be crushed by the crowd."
+moving_slow,moving_slow,"Each step should be cherished as a gift from the Cosmic Snail, therefore I always walk slowly and mindfully. "
+moving_slow,moving_snail,Being the Cosmic Snail devotee means to walk slowly like Him. I always try to match the Perfect Pace.
+moving_snail,moving_snail,The Cosmic Snail gave us the Perfect Pace and this rule always defines my life. It doesn't matter if I'm late if I pleased the Cosmic Snail.
+stop_once_aday,stop_once_aday,Everyday I try to find something small and beautiful to admire in the name of the Cosmic Snail.
+stop_more_aday,stop_more_aday,"Every single time when I notice something tiny to cherish, I stop and admire it. Often I feel the presence of the Cosmic Snail when I do it. "
+no_stop,no_stop,I have a busy life and it's hard to stop and admire something small every day. 
+harm_snail,harm_snail,Once I stepped on a snail. Immediately I felt His anger upon me.
+dont_protect,dont_protect,"I always forget to look for tiny creatures who needs protection, I know I missed plenty of them."
+protect,protect,"When I see a small creature who needs help, I always stop and assist them, there're no exceptions."
+laugh,laugh,"Even when I don't feel like it, I always try to find something to laught about or even have a giggle."
+fake_giggle,fake_giggle,"Sometimes I have to force myself to even giggle, to fulfill the Celestial Star's need."
+no_laugh,no_laugh,"I can go weeks without laughing, I don't even try to force myself to find something funny. "
+no_laugh,fake_giggle,"When I cannot find anything to laught about, I just giggle for a minute and call it a day. "
+jokes_cruel,jokes_cruel,"I love dark humor, but I think the Celestial Star don't find it funny. "
+jokes_generous,jokes_generous,"People say I always have something funny, but friendly to tell about them. I love spreading the Good Laugh. "
+jokes_mixed,jokes_mixed,Sometimes I forget myself and drop a risky joke. They're not always as funny as I thought. 
+serious_always,serious_always,"I'm an important person, my life is difficult and I have to keep my emotions at bay all the time."
+serious_one,serious_one,I usually have one dedicated day to be more serious and ponder about the happiness the Celestial Star brings into my life. 
+no_serious,no_serious,"The Celestial Star blesses me every day with happiness and laughter, I don't have time to be sad or serious, I cherish Her blessing. "
+cry,cry,When I feel like crying I allow myself to release all the emotions. It clears my mind and allows me to appreciate the Celesital Star even more.
+no_cry,no_cry,I don't like crying and I don't believe it acutally releases my emotions. Happiness and laughter are key to getting rid of crying at all.
+cry_hold_back,cry_hold_back,"Sometimes when I feel the tears coming to my eyes, I try to distract myself and don't let them run down my cheeks. "
+no_cry,cry_hold_back,"My family thinks I cannot cry, but the truth is I always hold the tears and try to forget about it. "
+wish,wish,When I see a star I make a wish and I hope it'll come true one day.
+wish_laugh,wish_laugh,"Every night I look at the sky and when I see the brightes star I believe it's the Celestial one. I make a wish and giggle after, I know She listenes to me. "
+no_wish,no_wish,"I look at the night sky, but I don't know what to wish for. "
+light_lamp_twice,light_lamp_twice,"Every day, at dawn and dusk I light a candle. I haven't missed a single day. "
+light_lamp_once,light_lamp_once,"Sometimes I forget to light a lamp the second time during the day, usually I'm just too tired to do it."
+no_light_lamp,no_light_lamp,"My life is too busy to wake up every morning and light a candle, and I'm too sleepy to do it at dawn."
+lie_darkness,lie_darkness,I cannot sleep when there's any source of light nearby.
+lie_with_light,lie_with_light,I have a special small lamp I put on my bedside table so the Eternal Light can accompany me when I'm asleep.
+share_light,share_light,When I see a lost soul I always give them a lit candle so they can be blessed buy the Eternal Light.
+no_share_light,no_share_light,"I don't know how to approach people who are lost in life, I know the Eternal Light would guide them, but I have no idea how to show them Her blessing."
+release_doubts_new_moon,release_doubts_new_moon,Each new moon I pray to the Eternal Light and release all my doubts and worries to Her.
+release_doubts_other,release_doubts_other,"Sometimes I forget about the new moon and try to contact the Eternal Light on the other phases, but I don't feel Her presence."
+no_release,no_release,"Rarely I release my worries during the new moon, I usually forget about the moon phases."
+blow_flame_breath,blow_flame_breath,"I don't have time to wait for the flame to die naturally, I just blow it out by myself."
+blow_flame_snuff,blow_flame_snuff,Every time I gently snuff the flame and let it die. 
+blow_flame_naturally,blow_flame_naturally,I personally think that letting the air blow out the flame is the most sacred way to blow out the candle. 
