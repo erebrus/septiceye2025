@@ -63,3 +63,7 @@ func _on_load_level_button_pressed() -> void:
 
 func _on_character_generator_pressed():
 	get_tree().change_scene_to_file("res://src/systems/character_generator/test/character_portrait_test.tscn")
+
+
+func _on_end_day_pressed():
+	Events.day_finished.emit()

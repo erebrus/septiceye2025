@@ -69,6 +69,11 @@ layout_mode = 2
 focus_mode = 0
 text = "Character Generator"
 
+[node name="EndDay" type="Button" parent="VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "End Day"
+
 [node name="GameOver" type="Button" parent="VBoxContainer/HFlowContainer"]
 layout_mode = 2
 focus_mode = 0
@@ -85,5 +90,6 @@ text = "Win Game
 [connection signal="toggled" from="VBoxContainer/HFlowContainer2/Invulnerable" to="." method="_on_invulnerable_toggled"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer3/LoadLevelButton" to="." method="_on_load_level_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/CharacterGenerator" to="." method="_on_character_generator_pressed"]
+[connection signal="pressed" from="VBoxContainer/HFlowContainer/EndDay" to="." method="_on_end_day_pressed"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/GameOver" to="." method="_on_game_over_pressed"]
 [connection signal="pressed" from="VBoxContainer/HFlowContainer/WinGame" to="." method="_on_win_game_pressed"]
