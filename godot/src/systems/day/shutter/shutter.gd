@@ -1,5 +1,7 @@
 extends Area2D
 
+signal opened
+
 @onready var open_sfx: AudioStreamPlayer = $openSfx
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
@@ -18,6 +20,7 @@ func open():
 	$openSfx.play()
 	animation_player.play("open")
 	await animation_player.animation_finished
+	opened.emit()
 	Events.day_started.emit()
 	
 

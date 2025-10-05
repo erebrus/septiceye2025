@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy7n873unauuc"]
+[gd_scene load_steps=8 format=3 uid="uid://dy7n873unauuc"]
 
 [ext_resource type="PackedScene" uid="uid://lqtollaovard" path="res://src/base_level.tscn" id="1_7h72w"]
+[ext_resource type="Script" uid="uid://clf5gwktqy8om" path="res://src/levels/level_1.gd" id="2_bn18y"]
 [ext_resource type="Script" uid="uid://bfef4h1fj64rt" path="res://src/systems/rules/rule.gd" id="2_p5vq3"]
 [ext_resource type="Resource" uid="uid://p436vlmmyqd0" path="res://src/resources/rules/scheduled_rule.tres" id="3_aqvoi"]
 [ext_resource type="Script" uid="uid://bbst45rxgww2y" path="res://src/systems/rules/ruleset.gd" id="5_1k4r7"]
+[ext_resource type="PackedScene" uid="uid://0axdup41mrit" path="res://src/systems/tutorial/tutorial_tip.tscn" id="5_ghtb1"]
 
 [sub_resource type="Resource" id="Resource_b7rnw"]
 script = ExtResource("5_1k4r7")
@@ -11,9 +13,43 @@ rules = Array[ExtResource("2_p5vq3")]([ExtResource("3_aqvoi")])
 metadata/_custom_type_script = "uid://bbst45rxgww2y"
 
 [node name="BaseLevel" instance=ExtResource("1_7h72w")]
+script = ExtResource("2_bn18y")
 quotas = Dictionary[int, int]({
 0: 3,
 1: 2,
 4: 1
 })
 ruleset = SubResource("Resource_b7rnw")
+
+[node name="Tutorial" type="Control" parent="." index="16"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OpenManual" parent="Tutorial" index="0" instance=ExtResource("5_ghtb1")]
+unique_name_in_owner = true
+position = Vector2(1432, 695)
+arrow = 2
+text = "Click the manual to review it"
+
+[node name="CheckList" parent="Tutorial" index="1" instance=ExtResource("5_ghtb1")]
+position = Vector2(515, 565)
+text = "Click the list to check expected arrivals"
+dismiss_on_click = false
+
+[node name="OpenShutter" parent="Tutorial" index="2" instance=ExtResource("5_ghtb1")]
+position = Vector2(1077, 710)
+text = "Click the shutter to start the day"
+
+[node name="OpenPassport" parent="Tutorial" index="3" instance=ExtResource("5_ghtb1")]
+position = Vector2(1216, 804)
+arrow = 3
+text = "Click the passport to review it"
+dismiss_on_click = false
+
+[connection signal="opened" from="Shutter" to="Tutorial/OpenPassport" method="trigger"]
+[connection signal="pressed" from="ScheduledDeathsButton" to="Tutorial/CheckList" method="dismiss"]
+[connection signal="pressed" from="PassportButton" to="Tutorial/OpenPassport" method="dismiss"]
+[connection signal="dismissed" from="Tutorial/OpenManual" to="Tutorial/CheckList" method="trigger"]
+[connection signal="dismissed" from="Tutorial/CheckList" to="Tutorial/OpenShutter" method="trigger"]

@@ -43,6 +43,7 @@ func _ready() -> void:
 	
 	close()
 	
+	Events.show_passport_requested.connect(%FollowUpTip.trigger)
 	Events.show_passport_requested.connect(show)
 	Events.day_finished.connect(close)
 	Events.stamp_requested.connect(_on_stamp_requested)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6s4mcqvyfcgw"]
+[gd_scene load_steps=25 format=3 uid="uid://6s4mcqvyfcgw"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_q01ny"]
 [ext_resource type="Script" uid="uid://pegvw8kdiebg" path="res://src/systems/character/passport.gd" id="1_v2lgc"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://b354faw7u1nqr" path="res://assets/sfx/Dialog_mid.wav" id="14_ldqqt"]
 [ext_resource type="Texture2D" uid="uid://b3sat46t0nnlo" path="res://assets/gfx/ui/dialogbox.png" id="14_sm6r0"]
 [ext_resource type="AudioStream" uid="uid://durikdxeexmdb" path="res://assets/sfx/Dialog_high.wav" id="15_p1fxb"]
+[ext_resource type="PackedScene" uid="uid://0axdup41mrit" path="res://src/systems/tutorial/tutorial_tip.tscn" id="23_64k1g"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sl6sr"]
 streams_count = 3
@@ -224,6 +225,20 @@ size_flags_vertical = 0
 text = "This is a test"
 autowrap_mode = 3
 
+[node name="FollowUpTip" parent="." instance=ExtResource("23_64k1g")]
+unique_name_in_owner = true
+position = Vector2(1249, 333)
+arrow = 2
+text = "Click a claim to follow up"
+
+[node name="EXIT" parent="." instance=ExtResource("23_64k1g")]
+unique_name_in_owner = true
+visible = true
+position = Vector2(1092, 329)
+arrow = 2
+text = "Press ESC to close"
+
 [connection signal="finished" from="LowBabbleSfx" to="." method="_on_babble_sfx_finished"]
 [connection signal="finished" from="MidBabbleSfx" to="." method="_on_babble_sfx_finished"]
 [connection signal="finished" from="HighBabbleSfx" to="." method="_on_babble_sfx_finished"]
+[connection signal="dismissed" from="FollowUpTip" to="EXIT" method="trigger"]
