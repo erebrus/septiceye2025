@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vm05pthnusdv"]
+[gd_scene load_steps=18 format=3 uid="uid://vm05pthnusdv"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_gf6d5"]
 [ext_resource type="Script" uid="uid://daks1tf3pmy73" path="res://src/systems/rules/rule_manual.gd" id="1_o7oyl"]
@@ -9,9 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://yowglbb8n77v" path="res://assets/gfx/workspace/BookTab_Star.png" id="6_wwbgt"]
 [ext_resource type="Texture2D" uid="uid://clgx44a2x1axc" path="res://assets/gfx/workspace/BookTab_Luminara.png" id="7_ueclx"]
 [ext_resource type="Texture2D" uid="uid://b6gxousuyiq5w" path="res://assets/gfx/workspace/snailicon.png" id="8_ueclx"]
+[ext_resource type="Texture2D" uid="uid://covudcrjxgy4v" path="res://assets/gfx/workspace/DeskStamp_Revive.png" id="9_eda0o"]
 [ext_resource type="Texture2D" uid="uid://devr81nyd7eim" path="res://assets/gfx/workspace/staricon.png" id="9_t10fu"]
+[ext_resource type="Texture2D" uid="uid://bacn44qbvx7c0" path="res://assets/gfx/workspace/DeskStamp_Heaven.png" id="10_1jski"]
 [ext_resource type="Texture2D" uid="uid://ck5cujr00l7rq" path="res://assets/gfx/workspace/teaicon.png" id="10_wc20c"]
 [ext_resource type="Texture2D" uid="uid://d056cfupjm0nu" path="res://assets/gfx/workspace/luminaraicon.png" id="11_cjlfp"]
+[ext_resource type="Texture2D" uid="uid://bfdc5x2ca6o72" path="res://assets/gfx/workspace/DeskStamp_Reincarnate.png" id="11_ufjbu"]
+[ext_resource type="Texture2D" uid="uid://kb1bldjhq722" path="res://assets/gfx/workspace/DeskStamp_Purgatory.png" id="12_q1drc"]
+[ext_resource type="Texture2D" uid="uid://dykwqxu53uj5j" path="res://assets/gfx/workspace/DeskStamp_Hell.png" id="13_hfv0g"]
 
 [node name="RuleManual" type="Control"]
 layout_mode = 3
@@ -117,17 +122,95 @@ border_width = 5.0
 
 [node name="GenericTitle" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme_override_constants/separation = 120
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-text = "Principles for the categorization of souls to their proper afterlife"
-horizontal_alignment = 1
+theme_type_variation = &"HeaderMedium"
+text = "Choose the correct stamp to send the soul to their deserved fate"
 autowrap_mode = 3
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+modulate = Color(0.9, 0.834, 0.71999997, 0.78431374)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_eda0o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+text = "Return to life"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+modulate = Color(0.9, 0.834, 0.71999997, 0.78431374)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("10_1jski")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+text = "Ascend to Heaven"
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+modulate = Color(0.9, 0.834, 0.71999997, 0.78431374)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("11_ufjbu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+text = "Reincarnate for a second opportunity"
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+modulate = Color(0.9, 0.834, 0.71999997, 0.78431374)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_q1drc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+text = "Repent in Purgatory"
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+modulate = Color(0.9, 0.834, 0.71999997, 0.78431374)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("13_hfv0g")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label5" type="Label" parent="MarginContainer/HBoxContainer/LeftPage/GenericTitle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+text = "Suffer in Hell"
 
 [node name="ReligionTitle1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
 unique_name_in_owner = true
@@ -194,6 +277,7 @@ autowrap_mode = 3
 
 [node name="ReligionTitle4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPage"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 120
 
@@ -225,6 +309,14 @@ border_width = 5.0
 [node name="GenericContent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Principles affecting all souls"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="GenericRules" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
 unique_name_in_owner = true

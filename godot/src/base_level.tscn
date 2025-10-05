@@ -94,10 +94,10 @@ texture_disabled = ExtResource("6_m2fog")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReturnStamp" type="TextureButton" parent="."]
-offset_left = 149.0
-offset_top = 644.0
-offset_right = 255.0
-offset_bottom = 834.0
+offset_left = 18.0
+offset_top = 642.0
+offset_right = 124.0
+offset_bottom = 832.0
 texture_normal = ExtResource("8_m2fog")
 texture_pressed = ExtResource("8_m2fog")
 texture_hover = ExtResource("8_m2fog")
@@ -105,10 +105,10 @@ texture_disabled = ExtResource("8_m2fog")
 metadata/_edit_use_anchors_ = true
 
 [node name="HeavenStamp" type="TextureButton" parent="."]
-offset_left = 253.0
-offset_top = 648.0
-offset_right = 361.0
-offset_bottom = 838.0
+offset_left = 120.0
+offset_top = 644.0
+offset_right = 228.0
+offset_bottom = 834.0
 texture_normal = ExtResource("9_a04hb")
 texture_pressed = ExtResource("9_a04hb")
 texture_hover = ExtResource("9_a04hb")
@@ -116,10 +116,10 @@ texture_disabled = ExtResource("9_a04hb")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReincarnationStamp" type="TextureButton" parent="."]
-offset_left = 356.0
-offset_top = 668.0
-offset_right = 436.0
-offset_bottom = 838.0
+offset_left = 230.0
+offset_top = 666.0
+offset_right = 310.0
+offset_bottom = 836.0
 texture_normal = ExtResource("10_ofrd7")
 texture_pressed = ExtResource("10_ofrd7")
 texture_hover = ExtResource("10_ofrd7")
@@ -127,9 +127,9 @@ texture_disabled = ExtResource("10_ofrd7")
 metadata/_edit_use_anchors_ = true
 
 [node name="PurgatoryStamp" type="TextureButton" parent="."]
-offset_left = 22.0
+offset_left = 309.0
 offset_top = 693.0
-offset_right = 159.0
+offset_right = 446.0
 offset_bottom = 834.0
 texture_normal = ExtResource("11_f5raj")
 texture_pressed = ExtResource("11_f5raj")
