@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://bkoaof7dc2ya"]
 
-[ext_resource type="Texture2D" uid="uid://ccoqt2fi0gjec" path="res://assets/gfx/Characters/nose_basic_front.png" id="1_g3olj"]
+[ext_resource type="Texture2D" uid="uid://5i471v4rfw33" path="res://assets/gfx/Characters/nose_basic_front.png" id="1_g3olj"]
 [ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_ekw2t"]
 
 [resource]
