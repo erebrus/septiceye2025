@@ -1,8 +1,8 @@
 extends Control
-const MET_QUOTA_POINTS:=20
+const MET_QUOTA_POINTS:=50
 const NOT_MET_QUOTA_POINTS:=-50
-const CORRECT=10
-const INCORRECT=-15
+const CORRECT=15
+const INCORRECT=-10
 var correct:=0
 var incorrect:=0
 
