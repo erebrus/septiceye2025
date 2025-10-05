@@ -63,7 +63,7 @@ func _set_recolor(part: String) -> void:
 		else:
 			sprites[part].front().modulate = character.get_color_code(config.front_color)
 		
-		if part == "eyes":
+		if part == "eyes" or part == "mouth":
 			sprites[part].back().modulate = Color(1,1,1,0.5)
 			
 		

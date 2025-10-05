@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://bugkts32m3lcb"]
+
+[ext_resource type="Texture2D" uid="uid://cii3tm5a7bb32" path="res://assets/gfx/Characters/hair_wet_front.png" id="1_34npy"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_1e8oi"]
+
+[resource]
+script = ExtResource("2_1e8oi")
+part = "hair"
+variant = "wet"
+front_texture = ExtResource("1_34npy")
+back_color = 1
+front_color = 1

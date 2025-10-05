@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://cqdgcafh1w8dy"]
+
+[ext_resource type="Texture2D" uid="uid://d3qxvhvfe4mwp" path="res://assets/gfx/Characters/hair_cloudy_back.png" id="1_xwiab"]
+[ext_resource type="Texture2D" uid="uid://ccbtcb6qh5epi" path="res://assets/gfx/Characters/hair_cloudy_front.png" id="2_tgg5s"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_dlxf6"]
+
+[resource]
+script = ExtResource("3_dlxf6")
+part = "hair"
+variant = "cloudy"
+back_texture = ExtResource("1_xwiab")
+front_texture = ExtResource("2_tgg5s")
+back_color = 1
+front_color = 1

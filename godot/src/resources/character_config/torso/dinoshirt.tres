@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TorsoConfig" load_steps=3 format=3 uid="uid://c76ljl8n3f1j7"]
+
+[ext_resource type="Texture2D" uid="uid://uah73pa4je6y" path="res://assets/gfx/Characters/torso_dinoshirt_back.png" id="1_50d1o"]
+[ext_resource type="Script" uid="uid://bhn321dgoro4h" path="res://src/systems/character_generator/torso_config.gd" id="2_38f5u"]
+
+[resource]
+script = ExtResource("2_38f5u")
+part = "torso"
+variant = "dinoshirt"
+back_texture = ExtResource("1_50d1o")
+back_color = 3
+front_color = 4

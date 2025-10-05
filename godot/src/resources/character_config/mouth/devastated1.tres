@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://c34xhbu2re8wm"]
+
+[ext_resource type="Texture2D" uid="uid://ct3ji8d4jhqk7" path="res://assets/gfx/Characters/mouth_devastated1_front.png" id="1_27pyj"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_baijp"]
+
+[resource]
+script = ExtResource("2_baijp")
+part = "mouth"
+variant = "devastated1"
+front_texture = ExtResource("1_27pyj")
+back_no_recolor = true
+front_color = 2

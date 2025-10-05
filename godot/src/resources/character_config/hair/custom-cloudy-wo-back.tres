@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://cd88furvklsa2"]
+
+[ext_resource type="Texture2D" uid="uid://ccbtcb6qh5epi" path="res://assets/gfx/Characters/hair_cloudy_front.png" id="2_ivkuu"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_8fkqh"]
+
+[resource]
+script = ExtResource("3_8fkqh")
+part = "hair"
+variant = "custom-cloudy-wo-back"
+front_texture = ExtResource("2_ivkuu")
+back_color = 1
+front_color = 1
