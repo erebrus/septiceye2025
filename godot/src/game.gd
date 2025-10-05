@@ -19,6 +19,7 @@ var rules:Array[Rule]=[]
 
 func _ready():
 	load_rules()
+
 	Events.level_ended.connect(_on_level_ended)
 	fade_panel.fade_in()
 	

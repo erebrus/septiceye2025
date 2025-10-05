@@ -8,7 +8,7 @@ class_name GameState extends Resource
 
 
 func get_position_for_score(score:int)->Types.JobTitle:
-	for i in range(Types.JobTitle.values().size()-1,-1):
+	for i in range(Types.JobTitle.values().size()-1,0,-1):
 		if score > level_points[i]:
 			return i
 	return Types.JobTitle.GRIM_REAPER

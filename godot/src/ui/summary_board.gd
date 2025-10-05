@@ -1,7 +1,8 @@
 extends Control
 const MET_QUOTA_POINTS:=50
 const NOT_MET_QUOTA_POINTS:=-50
-
+const CORRECT=10
+const INCORRECT=-15
 var correct:=0
 var incorrect:=0
 
@@ -22,14 +23,18 @@ var score:=0
 var need_restart:=false
 func _ready() -> void:
 	Events.character_stamped.connect(_on_character_stamped)
+	Events.day_finished.connect(on_day_finished)
 	
+func on_day_finished():
+	show()
+	run()
 func _on_character_stamped(destination: Types.Destination, expected: Types.Destination):
 	if destination==expected:
 		correct += 1
-		score += 10
+		score += CORRECT
 	else:
 		incorrect += 1
-		score -= 15
+		score -= INCORRECT
 		
 	match destination:
 		Types.Destination.RETURN:
@@ -45,6 +50,7 @@ func _on_character_stamped(destination: Types.Destination, expected: Types.Desti
 
 func reset():
 	button.text="Next Day"
+	button.hide()
 	day_label.text = "Day %d - Summary" % [(Globals.game.level_manager.current_level_idx+1)]
 	hide_all_rows()
 	correct=0
@@ -58,39 +64,50 @@ func reset():
 	score=0
 
 	points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
-
+	points.hide()
+	promotion.hide()
 func run():
 	
 	var interval = .5
 	await get_tree().create_timer(interval).timeout
-	show_row(0,"Correctly Processed:","%d" % correct, "%d" %(correct*10))
+	show_row(0,"","", "Score" )
+	show_row(1,"Correctly Processed:","%d" % correct, "%d" %(correct*CORRECT))
 	await get_tree().create_timer(interval).timeout
-	show_row(1,"Incorrectly Processed:","%d" % incorrect, "%d" %(correct*-15))
+	show_row(2,"Incorrectly Processed:","%d" % incorrect, "%d" %(incorrect*INCORRECT))
 	await get_tree().create_timer(interval).timeout
-	do_quota_row(2, "Back To Life Quota:", back_to_life, Globals.game.game_state.quotas[Types.Destination.RETURN])
+	do_quota_row(3, "Back To Life Quota:", back_to_life, Types.Destination.RETURN)
 	await get_tree().create_timer(interval).timeout
-	do_quota_row(3, "Heaven Quota:", heaven, Globals.game.game_state.quotas[Types.Destination.HEAVEN])
+	do_quota_row(4, "Heaven Quota:", heaven, Types.Destination.HEAVEN)
 	await get_tree().create_timer(interval).timeout
-	do_quota_row(4, "Reincarnation Quota:", reincarnation, Globals.game.game_state.quotas[Types.Destination.REINCARNATE])
+	do_quota_row(5, "Reincarnation Quota:", reincarnation, Types.Destination.REINCARNATE)
 	await get_tree().create_timer(interval).timeout
-	do_quota_row(5, "Purgatory Quota:", purgatory, Globals.game.game_state.quotas[Types.Destination.PURGATORY])
+	do_quota_row(6, "Purgatory Quota:", purgatory, Types.Destination.PURGATORY)
 	await get_tree().create_timer(interval).timeout
-	do_quota_row(6, "Hell Quota:", hell, Globals.game.game_state.quotas[Types.Destination.HELL])
+	do_quota_row(7, "Hell Quota:", hell, Types.Destination.HELL)
 	await get_tree().create_timer(interval).timeout
 
-	show_row(7,"","", "" )
+	show_row(8,"","", "" )
 	
-	show_row(8,"Total:","", "%d" % score)
+	show_row(9,"Total:","", "%d" % score)
 	await get_tree().create_timer(interval).timeout
 	
 
-	var previous_job:=Globals.game.game_state.current_job_title
-	Globals.game.game_state.current_points+=score
-	points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
+	var previous_job := Globals.game.game_state.current_job_title
+	var previous_score := Globals.game.game_state.current_points
+	#Globals.game.game_state.current_points+=score
+	points.text = "Current Job Rating: %d" % previous_score
+	points.show()
+	for i in range(score):
+		Globals.game.game_state.current_points+=1
+		points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
+		await get_tree().process_frame
+		
 	var new_job=Globals.game.game_state.get_position_for_score(Globals.game.game_state.current_points)
+	promotion.text=""
+	promotion.show()
 	if new_job!=previous_job:
 		Globals.game.game_state.current_job_title=new_job
-		Events.job_change.emit(new_job, previous_job)
+		Events.job_changed.emit(new_job, previous_job)
 		if new_job > previous_job:
 			promotion.text= "Promoted to %s" % Types.JOB_TITLES[new_job]
 		else:
@@ -107,8 +124,12 @@ func run():
 	
 	if Globals.game.level_manager.is_last_level():
 		do_end()
+	button.show()
 
-func do_quota_row(idx:int, label:String, value:int, quota:int):
+func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
+	var quota:=0
+	if fate in Globals.game.game_state.quotas:
+		quota = Globals.game.game_state.quotas[fate]
 	var quota_points=MET_QUOTA_POINTS if value >= quota else NOT_MET_QUOTA_POINTS
 	show_row(idx,label, \
 		"%d/%d" % [value,quota],\

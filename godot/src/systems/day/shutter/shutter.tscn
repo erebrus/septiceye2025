@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dij6fum0ibnv8"]
+[gd_scene load_steps=10 format=3 uid="uid://dij6fum0ibnv8"]
 
 [ext_resource type="Script" uid="uid://dy5rpcuu0y6pi" path="res://src/systems/day/shutter/shutter.gd" id="1_vx1tg"]
 [ext_resource type="Texture2D" uid="uid://q38hdib3yvc" path="res://assets/gfx/workspace/Window_Shutter.png" id="2_qv512"]
-[ext_resource type="AudioStream" uid="uid://cx653y6kil1qh" path="res://assets/sfx/character_entering_1.wav" id="3_q6gwv"]
-[ext_resource type="AudioStream" uid="uid://cyadq6dw21iw8" path="res://assets/sfx/character_entering_2.wav" id="4_iiln2"]
-[ext_resource type="AudioStream" uid="uid://c4bm10j0bex0j" path="res://assets/sfx/character_entering_3.wav" id="5_scn53"]
+[ext_resource type="AudioStream" uid="uid://nupvtg6fshew" path="res://assets/sfx/Shutter_open.wav" id="3_jf5i4"]
+[ext_resource type="AudioStream" uid="uid://b0v144d7vq4u" path="res://assets/sfx/Shutter_close.wav" id="4_gmitv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdmcp"]
 size = Vector2(822, 782)
@@ -58,14 +57,6 @@ _data = {
 &"open": SubResource("Animation_vx1tg")
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ikkb"]
-streams_count = 3
-stream_0/stream = ExtResource("3_q6gwv")
-stream_1/stream = ExtResource("4_iiln2")
-stream_2/stream = ExtResource("5_scn53")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q6gwv"]
-
 [node name="Shutter" type="Area2D"]
 script = ExtResource("1_vx1tg")
 
@@ -83,9 +74,9 @@ libraries = {
 texture = ExtResource("2_qv512")
 
 [node name="openSfx" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_6ikkb")
+stream = ExtResource("3_jf5i4")
 
 [node name="closeSfx" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_q6gwv")
+stream = ExtResource("4_gmitv")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
