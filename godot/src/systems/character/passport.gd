@@ -103,8 +103,6 @@ func _start_talking() -> void:
 	talk_tween = create_tween()
 	talk_tween.tween_property(follow_up, "visible_characters", num_characters, num_characters / talk_speed)
 	
-	#talk_tween.play()
-	
 	await talk_tween.finished
 	
 	is_talking = false

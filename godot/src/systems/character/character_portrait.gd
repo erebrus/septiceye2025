@@ -22,6 +22,7 @@ var character: Character:
 	"eyes": [ %EyesFront, %EyesBack ],
 	"nose": [ %NoseFront, %NoseBack ],
 	"mouth": [ %MouthFront, %MouthBack ],
+	"beard": [ %BeardFront, %BeardBack ],
 }
 
 func _ready() -> void:

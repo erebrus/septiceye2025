@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://baw5h30eaxkaf"]
+
+[ext_resource type="Texture2D" uid="uid://feqvhcxguxov" path="res://assets/gfx/Characters/nose_round_front.png" id="1_rx5wi"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_p2e12"]
+
+[resource]
+script = ExtResource("2_p2e12")
+part = "nose"
+variant = "round"
+front_texture = ExtResource("1_rx5wi")
+back_color = 2
+front_color = 2

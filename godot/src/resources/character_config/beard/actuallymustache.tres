@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://bqvi7rcxgjsaw"]
+
+[ext_resource type="Texture2D" uid="uid://2attepd4fpj0" path="res://assets/gfx/Characters/beard_actuallymustache_front.png" id="1_xsvir"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_qu8gi"]
+
+[resource]
+script = ExtResource("2_qu8gi")
+part = "beard"
+variant = "actuallymustache"
+front_texture = ExtResource("1_xsvir")
+back_color = 1
+front_color = 1
+gender = 1

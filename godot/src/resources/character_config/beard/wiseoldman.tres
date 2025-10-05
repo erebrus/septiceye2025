@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://cufhgbxw7x1t5"]
+
+[ext_resource type="Texture2D" uid="uid://deg5fapl22vik" path="res://assets/gfx/Characters/beard_wiseoldman_front.png" id="1_5mjpu"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_s22tm"]
+
+[resource]
+script = ExtResource("2_s22tm")
+part = "beard"
+variant = "wiseoldman"
+front_texture = ExtResource("1_5mjpu")
+back_color = 1
+front_color = 1
+gender = 1
