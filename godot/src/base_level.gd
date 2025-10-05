@@ -43,6 +43,7 @@ func set_state(_game_state:GameState):
 	
 	for destination in quotas:
 		game_state.quotas[destination] = 0
+	summary_board.set_quotas(quotas)
 	
 	game_state.character_queue = character_queue
 	

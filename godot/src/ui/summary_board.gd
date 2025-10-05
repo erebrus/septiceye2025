@@ -1,5 +1,5 @@
 extends Control
-const MET_QUOTA_POINTS:=50
+const MET_QUOTA_POINTS:=20
 const NOT_MET_QUOTA_POINTS:=-50
 const CORRECT=10
 const INCORRECT=-15
@@ -12,6 +12,7 @@ var reincarnation:=0
 var purgatory:=0
 var hell:=0
 
+var quotas:Dictionary[Types.Destination, int]= {}
 var score:=0
 @onready var button: Button = $BG/Button
 
@@ -34,7 +35,7 @@ func _on_character_stamped(destination: Types.Destination, expected: Types.Desti
 		score += CORRECT
 	else:
 		incorrect += 1
-		score -= INCORRECT
+		score += INCORRECT
 		
 	match destination:
 		Types.Destination.RETURN:
@@ -128,9 +129,9 @@ func run():
 
 func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
 	var quota:=0
-	if fate in Globals.game.game_state.quotas:
-		quota = Globals.game.game_state.quotas[fate]
-	var quota_points=MET_QUOTA_POINTS if value >= quota else NOT_MET_QUOTA_POINTS
+	if fate in quotas:
+		quota = quotas[fate]
+	var quota_points=0 if quota == 0 else MET_QUOTA_POINTS if value >= quota else NOT_MET_QUOTA_POINTS
 	show_row(idx,label, \
 		"%d/%d" % [value,quota],\
 		"%d" %(quota_points))
@@ -163,3 +164,10 @@ func show_row(row_idx:int, label:String, value:String, credits:String):
 func hide_all_rows():
 	for c in grid.get_children():
 		c.hide()
+
+func set_quotas(level_quotas:Dictionary[Types.Destination, int]):
+	quotas=level_quotas.duplicate()
+	for dest in Types.Destination.values():
+		if dest not in quotas:
+			quotas[dest]=0
+	
