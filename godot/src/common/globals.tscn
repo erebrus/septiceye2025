@@ -21,6 +21,7 @@ stream_2/volume = 0.0
 [node name="Globals" type="Node"]
 process_mode = 3
 script = ExtResource("1_noqpm")
+religion_names = Array[String](["The Path of the Cosmic Snail", "The Fellowship of the Laughing Star", "The Order of the Eternal Tea", "The Luminara Sect"])
 
 [node name="MusicManager" type="Node" parent="."]
 script = ExtResource("3_h14hn")

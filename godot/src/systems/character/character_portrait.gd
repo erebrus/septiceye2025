@@ -1,6 +1,10 @@
 class_name CharacterPortrait extends Node2D
 
 
+@export var should_override_color: bool = false
+@export var override_color: Color = Color.WHITE
+
+
 var character: Character:
 	set(value):
 		character = value
@@ -27,26 +31,6 @@ func _ready() -> void:
 	Events.character_entered.connect(func(x): character = x)
 	
 
-func _set_skin_color(color: Color) -> void:
-	sprites["face"].back().modulate = color
-	sprites["face"].front().modulate = color
-	
-	sprites["eyes"].front().modulate = color
-	
-	sprites["nose"].front().modulate = color
-	sprites["nose"].back().modulate = color
-	
-	sprites["mouth"].front().modulate = color
-	sprites["mouth"].back().modulate = color
-	
-
-func _set_hair_color(color: Color) -> void:
-	sprites["hair"].back().modulate = color
-	sprites["hair"].front().modulate = color
-	sprites["eyebrows"].back().modulate = color
-	sprites["eyebrows"].front().modulate = color
-	
-
 func _setup() -> void:
 	if character.parts.is_empty():
 		return
@@ -63,16 +47,20 @@ func _set_recolor(part: String) -> void:
 	if not part in character.parts:
 		return
 	
-	var config = character.parts[part]
-	if config.back_no_recolor:
-		sprites[part].back().modulate = Color.WHITE
+	if should_override_color:
+		sprites[part].front().modulate = override_color
+		sprites[part].back().modulate = override_color
 	else:
-		sprites[part].back().modulate = character.get_color_code(config.back_color)
-		
-	if config.front_no_recolor:
-		sprites[part].front().modulate = Color.WHITE
-	else:
-		sprites[part].front().modulate = character.get_color_code(config.front_color)
+		var config = character.parts[part]
+		if config.back_no_recolor:
+			sprites[part].back().modulate = Color.WHITE
+		else:
+			sprites[part].back().modulate = character.get_color_code(config.back_color)
+			
+		if config.front_no_recolor:
+			sprites[part].front().modulate = Color.WHITE
+		else:
+			sprites[part].front().modulate = character.get_color_code(config.front_color)
 	
 
 func _set_sprites(part: String) -> void:

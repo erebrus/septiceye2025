@@ -6,6 +6,8 @@ const GAME_SCENE_PATH = "res://src/game.tscn"
 const GameDataPath = "user://conf.cfg"
 var config:ConfigFile
 
+@export var religion_names: Array[String]
+
 var in_game:=false
 var in_dialogue:=false
 

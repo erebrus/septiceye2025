@@ -1,46 +1,121 @@
-[gd_scene load_steps=3 format=3 uid="uid://6s4mcqvyfcgw"]
+[gd_scene load_steps=11 format=3 uid="uid://6s4mcqvyfcgw"]
 
+[ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_q01ny"]
 [ext_resource type="Script" uid="uid://pegvw8kdiebg" path="res://src/systems/character/passport.gd" id="1_v2lgc"]
 [ext_resource type="PackedScene" uid="uid://crsp4y50gmdt1" path="res://src/systems/claims/claim_item.tscn" id="2_8p8kv"]
+[ext_resource type="Texture2D" uid="uid://b6gxousuyiq5w" path="res://assets/gfx/workspace/snailicon.png" id="4_6n713"]
+[ext_resource type="Texture2D" uid="uid://bj5ygmt7asrci" path="res://assets/gfx/workspace/passport.png" id="4_j0bfy"]
+[ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="5_0mcsw"]
+[ext_resource type="Texture2D" uid="uid://devr81nyd7eim" path="res://assets/gfx/workspace/staricon.png" id="5_nru6l"]
+[ext_resource type="Texture2D" uid="uid://ck5cujr00l7rq" path="res://assets/gfx/workspace/teaicon.png" id="6_o5paw"]
+[ext_resource type="Texture2D" uid="uid://dah8y0o4xo6kf" path="res://assets/gfx/workspace/passportphotoborder.png" id="6_py2vp"]
+[ext_resource type="Texture2D" uid="uid://d056cfupjm0nu" path="res://assets/gfx/workspace/luminaraicon.png" id="7_q2sf0"]
 
 [node name="Passport" type="MarginContainer"]
+theme = ExtResource("1_q01ny")
 script = ExtResource("1_v2lgc")
 ClaimScene = ExtResource("2_8p8kv")
+religion_icons = Array[Texture2D]([ExtResource("4_6n713"), ExtResource("5_nru6l"), ExtResource("6_o5paw"), ExtResource("7_q2sf0")])
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
+texture = ExtResource("4_j0bfy")
+
+[node name="PanelContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ReferenceRect" type="ReferenceRect" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+border_width = 5.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 13
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HeaderInfo" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HeaderInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Religion" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+
+[node name="ReligionIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nru6l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 columns = 2
 
-[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderSmall"
 text = "Name:"
 
-[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GenderLabel" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="GenderLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderSmall"
 text = "Gender:"
 
-[node name="Gender" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="Gender" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ReligionLabel" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HeaderInfo"]
 layout_mode = 2
-text = "Religion:"
+theme_override_constants/margin_bottom = -16
 
-[node name="Religion" type="Label" parent="PanelContainer/VBoxContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 17
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.82, 0.82, 0.82, 0.59607846)
+
+[node name="CharacterPortrait" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer" instance=ExtResource("5_0mcsw")]
 unique_name_in_owner = true
+position = Vector2(104.99999, 127.000015)
+scale = Vector2(0.2, 0.2)
+should_override_color = true
+override_color = Color(0.67, 0.58558005, 0.48240003, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_py2vp")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ClaimsContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Lifestyle Claims"
+
+[node name="ClaimsContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

@@ -23,6 +23,15 @@ func _ready() -> void:
 	hide()
 	
 
+func _input(event: InputEvent):
+	if not visible:
+		return
+	
+	if event.is_action_released("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		hide()
+	
+
 func _setup() -> void:
 	for religion in Types.Religion.values():
 		var rules: Array[Rule]

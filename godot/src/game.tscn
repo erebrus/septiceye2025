@@ -29,8 +29,17 @@ override_level = ExtResource("4_pk08u")
 
 [node name="Passport" parent="HUDLayer" instance=ExtResource("6_wqvko")]
 unique_name_in_owner = true
-offset_right = 72.0
-offset_bottom = 77.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -427.0
+offset_right = -59.0
+offset_bottom = 427.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="ScheduledDeaths" parent="HUDLayer" instance=ExtResource("5_pk08u")]
 unique_name_in_owner = true
