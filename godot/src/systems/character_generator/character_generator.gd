@@ -1,7 +1,7 @@
 class_name CharacterGenerator extends Node
 
-const CLAIM_DATA = preload("res://src/resources/claims.csv")
-const FOLLOW_UP_DATA = preload("res://src/resources/follow_ups.csv")
+const CLAIM_DATA_PATH = "res://src/resources/claims.csv"
+const FOLLOW_UP_DATA_PATH = "res://src/resources/follow_ups.csv"
 
 
 @export var part_config_path: String
@@ -189,13 +189,16 @@ func _load_part_directory(path: String) -> void:
 
 func _initialize_claims() -> void:
 	GSLogger.info("Loading claims")
+	var claim_data = GameUtils.read_csv_file(CLAIM_DATA_PATH, true)
+	var follow_up_data = GameUtils.read_csv_file(FOLLOW_UP_DATA_PATH, true)
+	
 	var unused_claims: Array[String]
 	var claim_dict: Dictionary
-	for row in CLAIM_DATA.records.slice(1):
+	for row in claim_data:
 		claim_dict[row[2]] = row
 		unused_claims.append(row[2])
 	
-	for row in FOLLOW_UP_DATA.records.slice(1):
+	for row in follow_up_data:
 		var claim_id = row[0]
 		var final_claims = row[1].split(";")
 		var follow_up = row[2]

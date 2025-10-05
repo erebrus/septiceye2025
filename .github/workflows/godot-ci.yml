@@ -30,7 +30,7 @@ jobs:
       run: |
         cd godot
         mkdir -v -p build/html
-        godot -v --headless --verbose --import --export-release "Web" build/html/index.html
+        godot --headless --verbose --import --export-release "Web" build/html/index.html
     - name: Publish to Itch.io
       uses: josephbmanley/butler-publish-itchio-action@master
       env:
