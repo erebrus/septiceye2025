@@ -12,6 +12,9 @@ signal show_passport_requested
 @warning_ignore("unused_signal")
 signal stamp_requested(destination: Types.Destination)
 
+
+@warning_ignore("unused_signal")
+signal pre_day_started(quotas:Dictionary[Types.Destination, int], extra_souls:int, ruleset: RuleSet)
 @warning_ignore("unused_signal")
 signal day_started
 @warning_ignore("unused_signal")

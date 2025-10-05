@@ -22,6 +22,7 @@ func _ready() -> void:
 	portrait.hide()
 	passport_button.hide()
 	generate()
+	Events.pre_day_started.emit(quotas, extra_souls, ruleset)
 	
 
 func set_state(_game_state:GameState):
