@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://2dcifqx7orvu" path="res://assets/gfx/ui/startscreen.png" id="2_esdhr"]
 [ext_resource type="Texture2D" uid="uid://caebo4q0m756n" path="res://assets/gfx/ui/startbutton.png" id="4_1wl0k"]
 [ext_resource type="PackedScene" uid="uid://to3p8qv7p8yo" path="res://addons/sj/components/ui/settings/volume_slider.tscn" id="4_h2rxl"]
-[ext_resource type="Texture2D" uid="uid://dg0bh8n46l8ox" path="res://assets/gfx/ui/gametitle.png" id="6_1wl0k"]
+[ext_resource type="Texture2D" uid="uid://cxjrn3dckmv3s" path="res://assets/gfx/ui/gametitle.png" id="6_1wl0k"]
 
 [node name="StartScreen" type="TextureRect"]
 anchors_preset = 15
@@ -23,6 +23,7 @@ offset_left = 123.0
 offset_top = 610.0
 offset_right = 842.0
 offset_bottom = 936.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_1wl0k")
 
 [node name="VBoxContainer" type="GridContainer" parent="."]

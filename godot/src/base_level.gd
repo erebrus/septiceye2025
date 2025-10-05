@@ -85,9 +85,11 @@ func generate() -> void:
 func next_character() -> void:
 	var character = character_queue.front()
 	Events.character_entered.emit(character)
-	
-	# TODO: character enter animation / sfx
+	$sfx/CharacterSfx.play()
+	portrait.modulate.a=0
 	portrait.show()
+	var tween:=get_tree().create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(portrait,"modulate",Color.WHITE,1)
 	passport_button.show()
 
 

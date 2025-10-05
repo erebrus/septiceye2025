@@ -1,6 +1,12 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal on_lose
+@warning_ignore("unused_signal")
+signal on_survived
+@warning_ignore("unused_signal")
+signal on_win
+@warning_ignore("unused_signal")
 signal level_ended()
 
 @warning_ignore("unused_signal")

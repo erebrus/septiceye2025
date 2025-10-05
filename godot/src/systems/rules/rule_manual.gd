@@ -6,6 +6,7 @@ var ruleset: RuleSet:
 		if is_node_ready():
 			_setup()
 	
+@onready var page_sfx: AudioStreamPlayer = $sfx/page
 
 @onready var pages = [
 	Page.new(%GenericTitle, %GenericContent, %GenericRules, %GenericButton),
@@ -19,10 +20,12 @@ func _ready() -> void:
 	if ruleset != null:
 		_setup()
 	
-	Events.show_manual_requested.connect(show)
+	Events.show_manual_requested.connect(on_requested)
 	hide()
 	
-
+func on_requested():	
+	show()
+	page_sfx.play()
 func _input(event: InputEvent):
 	if not visible:
 		return
@@ -44,6 +47,7 @@ func _setup() -> void:
 	
 
 func _on_tab_pressed(religion: Types.Religion) -> void:
+	page_sfx.play()
 	for r in Types.Religion.values():
 		if r == religion:
 			pages[r].show()

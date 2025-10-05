@@ -73,6 +73,46 @@ text = "RULES HAVE CHANGED"
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 layer = 5
 
+[node name="WinScreen" type="TextureRect" parent="OverlayLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoseScreen" type="TextureRect" parent="OverlayLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SurviveScreen" type="TextureRect" parent="OverlayLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SurviveScreen2" type="TextureRect" parent="OverlayLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SurviveScreen3" type="TextureRect" parent="OverlayLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="FadePanel" parent="OverlayLayer" instance=ExtResource("4_wqvko")]
 unique_name_in_owner = true
 metadata/_edit_lock_ = true
@@ -97,3 +137,4 @@ stream = ExtResource("14_tqu6b")
 [connection signal="game_completed" from="LevelManager" to="." method="_on_level_manager_game_completed"]
 [connection signal="level_ready" from="LevelManager" to="." method="_on_level_manager_level_ready"]
 [connection signal="level_unloaded" from="LevelManager" to="." method="_on_level_manager_level_unloaded"]
+[connection signal="gui_input" from="OverlayLayer/WinScreen" to="." method="_on_screen_gui_input"]

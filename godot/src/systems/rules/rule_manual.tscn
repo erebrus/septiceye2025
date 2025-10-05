@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vm05pthnusdv"]
+[gd_scene load_steps=23 format=3 uid="uid://vm05pthnusdv"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_gf6d5"]
 [ext_resource type="Script" uid="uid://daks1tf3pmy73" path="res://src/systems/rules/rule_manual.gd" id="1_o7oyl"]
@@ -17,6 +17,17 @@
 [ext_resource type="Texture2D" uid="uid://bfdc5x2ca6o72" path="res://assets/gfx/workspace/DeskStamp_Reincarnate.png" id="11_ufjbu"]
 [ext_resource type="Texture2D" uid="uid://kb1bldjhq722" path="res://assets/gfx/workspace/DeskStamp_Purgatory.png" id="12_q1drc"]
 [ext_resource type="Texture2D" uid="uid://dykwqxu53uj5j" path="res://assets/gfx/workspace/DeskStamp_Hell.png" id="13_hfv0g"]
+[ext_resource type="AudioStream" uid="uid://bugswypforeb8" path="res://assets/sfx/ManualPage_1.wav" id="18_hfv0g"]
+[ext_resource type="AudioStream" uid="uid://dklsy1mnjbvjj" path="res://assets/sfx/ManualPage_2.wav" id="19_fqhep"]
+[ext_resource type="AudioStream" uid="uid://cqork0qqjxl81" path="res://assets/sfx/ManualPage_3.wav" id="20_g0r2n"]
+[ext_resource type="AudioStream" uid="uid://cs7t457ijy3kn" path="res://assets/sfx/ManualPage_4.wav" id="21_3e55q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t7e1e"]
+streams_count = 4
+stream_0/stream = ExtResource("18_hfv0g")
+stream_1/stream = ExtResource("19_fqhep")
+stream_2/stream = ExtResource("20_g0r2n")
+stream_3/stream = ExtResource("21_3e55q")
 
 [node name="RuleManual" type="Control"]
 layout_mode = 3
@@ -366,5 +377,10 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="page" type="AudioStreamPlayer" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_t7e1e")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

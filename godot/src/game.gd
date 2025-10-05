@@ -16,10 +16,12 @@ var current_character: Character
 @onready var rule_manual: RuleManual = %RuleManual
 
 var rules:Array[Rule]=[]
-
+var game_over:=false
 func _ready():
 	load_rules()
-
+	Events.on_win.connect(_on_win)
+	Events.on_lose.connect(_on_lose)
+	Events.on_survived.connect(_on_survived)
 	Events.level_ended.connect(_on_level_ended)
 	fade_panel.fade_in()
 	
@@ -103,4 +105,37 @@ func get_rules_for_day() -> Array[Rule]:
 		if day >= rule.start_day and day <= rule.end_day:
 			ret.append(rule)
 	return ret
+
+func _on_survived():
+	$OverlayLayer/SurviveScreen.show()
+	await get_tree().create_timer(2).timeout
+	$OverlayLayer/SurviveScreen2.show()
+	await get_tree().create_timer(2).timeout
+	$OverlayLayer/SurviveScreen3.show()
+	game_over=true
+	await get_tree().create_timer(5).timeout
+	Globals.go_to_main_menu()
+
+
+func _on_lose():
+	$OverlayLayer/LoseScreen.show()
+	game_over=true
+	await get_tree().create_timer(5).timeout
+	Globals.go_to_main_menu()
+		
+func _on_win():
+	$OverlayLayer/WinScreen.show()
+	game_over=true
+	await get_tree().create_timer(5).timeout
+	Globals.go_to_main_menu()
+
+func _on_screen_gui_input(event: InputEvent) -> void:
+	if not game_over:
+		return
+	if event is InputEventMouseButton:
+		var mev:= event as InputEventMouseButton
+		if mev.pressed and mev.button_index==MOUSE_BUTTON_LEFT:
+			Globals.go_to_main_menu()
+	if Input.is_action_just_pressed("ui_cancel"):
+		Globals.go_to_main_menu()
 	
