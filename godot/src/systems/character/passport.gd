@@ -1,10 +1,11 @@
-class_name Passport extends MarginContainer
+class_name Passport extends Control
 
 @export var ClaimScene: PackedScene
 
 @export var religion_icons: Array[Texture2D]
 @export var stamp_textures: Array[Texture2D]
 
+@export var talk_speed: float = 200.0
 
 var character: Character:
 	set(value):
@@ -15,16 +16,33 @@ var character: Character:
 
 var stamping: bool = false
 
+var male_babble_sfx: Array[AudioStreamPlayer]
+var female_babble_sfx: Array[AudioStreamPlayer]
+var character_sfx: AudioStreamPlayer
+
+var talk_tween: Tween
+var is_talking: bool = false
+
 @onready var stamp_sfx: AudioStreamPlayer = %StampSfx
 @onready var stamp: Sprite2D = %Stamp
+@onready var dialog: Control = %Dialog
+@onready var follow_up: Label = %FollowUpLabel
+
 
 func _ready() -> void:
 	assert(religion_icons.size() == Globals.character_generator.religions.size())
 	
+	male_babble_sfx.append(%LowBabbleSfx)
+	male_babble_sfx.append(%MidBabbleSfx)
+	
+	female_babble_sfx.append(%MidBabbleSfx)
+	female_babble_sfx.append(%LowBabbleSfx)
+	
 	if character != null:
 		_setup()
 	
-	hide()
+	close()
+	
 	Events.show_passport_requested.connect(show)
 	Events.day_finished.connect(close)
 	Events.stamp_requested.connect(_on_stamp_requested)
@@ -33,10 +51,9 @@ func _ready() -> void:
 
 func close() -> void:
 	hide()
+	dialog.hide()
 	
-	# TODO: close dialog?
-	
-	
+
 func _input(event: InputEvent):
 	if not visible:
 		return
@@ -48,6 +65,11 @@ func _input(event: InputEvent):
 
 func _setup() -> void:
 	stamp.hide()
+	
+	if character.gender == Character.Gender.MALE:
+		character_sfx = male_babble_sfx.pick_random()
+	else:
+		character_sfx = female_babble_sfx.pick_random()
 	
 	%ReligionIcon.texture = religion_icons[character.religion - 1]
 	%Religion.text = Globals.religion_names[character.religion - 1]
@@ -66,7 +88,35 @@ func _setup() -> void:
 func _create_claim(claim: Claim) -> void:
 	var scene = ClaimScene.instantiate()
 	scene.claim = claim
+	scene.claim_selected.connect(_on_claim_selected)
 	%ClaimsContainer.add_child(scene)
+	
+
+func _start_talking() -> void:
+	if talk_tween:
+		talk_tween.kill()
+	
+	is_talking = true
+	character_sfx.play()
+	
+	var num_characters = follow_up.text.length()
+	talk_tween = create_tween()
+	talk_tween.tween_property(follow_up, "visible_characters", num_characters, num_characters / talk_speed)
+	
+	#talk_tween.play()
+	
+	await talk_tween.finished
+	
+	is_talking = false
+	character_sfx.stop()
+	
+
+func _on_claim_selected(claim: Claim) -> void:
+	follow_up.text = claim.follow_up
+	follow_up.visible_characters = 0
+	
+	dialog.show()
+	_start_talking()
 	
 
 func _on_stamp_requested(destination: Types.Destination) -> void:
@@ -99,3 +149,13 @@ func _on_stamp_requested(destination: Types.Destination) -> void:
 	Events.character_stamped.emit(destination, character.destination)
 	stamping = false
 	
+
+
+func _on_babble_sfx_finished():
+	if not is_talking:
+		return
+	
+	await get_tree().create_timer(randf_range(0.05, 0.2)).timeout
+	
+	if is_talking:
+		character_sfx.play()

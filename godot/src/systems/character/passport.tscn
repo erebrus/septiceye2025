@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6s4mcqvyfcgw"]
+[gd_scene load_steps=24 format=3 uid="uid://6s4mcqvyfcgw"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_q01ny"]
 [ext_resource type="Script" uid="uid://pegvw8kdiebg" path="res://src/systems/character/passport.gd" id="1_v2lgc"]
@@ -17,7 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://8y1licur0f7x" path="res://assets/sfx/Stamp_3.wav" id="10_7gr4v"]
 [ext_resource type="Texture2D" uid="uid://ko5xlsxualc3" path="res://assets/gfx/workspace/Stamp_Ink_Reincarnate.png" id="10_sm6r0"]
 [ext_resource type="Texture2D" uid="uid://cha1buvuyjlgr" path="res://assets/gfx/workspace/Stamp_Ink_Purgatory.png" id="11_ldqqt"]
+[ext_resource type="AudioStream" uid="uid://bc5d7nrstie5g" path="res://assets/sfx/Dialog_low.wav" id="13_8usfm"]
 [ext_resource type="Texture2D" uid="uid://uo18gtnt1pjf" path="res://assets/gfx/workspace/Stamp_Ink_Hell.png" id="14_g7k7r"]
+[ext_resource type="AudioStream" uid="uid://b354faw7u1nqr" path="res://assets/sfx/Dialog_mid.wav" id="14_ldqqt"]
+[ext_resource type="Texture2D" uid="uid://b3sat46t0nnlo" path="res://assets/gfx/ui/dialogbox.png" id="14_sm6r0"]
+[ext_resource type="AudioStream" uid="uid://durikdxeexmdb" path="res://assets/sfx/Dialog_high.wav" id="15_p1fxb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sl6sr"]
 streams_count = 3
@@ -25,52 +29,88 @@ stream_0/stream = ExtResource("8_e855r")
 stream_1/stream = ExtResource("9_voyc6")
 stream_2/stream = ExtResource("10_7gr4v")
 
-[node name="Passport" type="MarginContainer"]
+[node name="Passport" type="Control"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1924.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
 theme = ExtResource("1_q01ny")
 script = ExtResource("1_v2lgc")
 ClaimScene = ExtResource("2_8p8kv")
 religion_icons = Array[Texture2D]([ExtResource("4_6n713"), ExtResource("5_nru6l"), ExtResource("6_o5paw"), ExtResource("7_q2sf0")])
 stamp_textures = Array[Texture2D]([ExtResource("8_sl6sr"), ExtResource("9_8usfm"), ExtResource("10_sm6r0"), ExtResource("11_ldqqt"), ExtResource("14_g7k7r")])
+talk_speed = 100.0
+
+[node name="LowBabbleSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_8usfm")
+bus = &"Sfx"
+
+[node name="MidBabbleSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_ldqqt")
+bus = &"Sfx"
+
+[node name="HighBabbleSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_p1fxb")
+bus = &"Sfx"
 
 [node name="StampSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_sl6sr")
 bus = &"Sfx"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Passport" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 1308.0
+offset_top = 130.0
+offset_right = 1889.0
+offset_bottom = 984.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Passport"]
 layout_mode = 2
 texture = ExtResource("4_j0bfy")
 
-[node name="PanelContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="MarginContainer" parent="Passport"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="ReferenceRect" type="ReferenceRect" parent="PanelContainer"]
+[node name="ReferenceRect" type="ReferenceRect" parent="Passport/PanelContainer"]
 visible = false
 layout_mode = 2
 border_width = 5.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Passport/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="HeaderInfo" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HeaderInfo" type="HBoxContainer" parent="Passport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HeaderInfo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Religion" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+[node name="Religion" type="Label" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 
-[node name="ReligionIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+[node name="ReligionIcon" type="TextureRect" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -78,73 +118,110 @@ texture = ExtResource("5_nru6l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
+[node name="NameLabel" type="Label" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Name:"
 
-[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
+[node name="Name" type="Label" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GenderLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
+[node name="GenderLabel" type="Label" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Gender:"
 
-[node name="Gender" type="Label" parent="PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
+[node name="Gender" type="Label" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HeaderInfo"]
+[node name="MarginContainer" type="MarginContainer" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo"]
 layout_mode = 2
 theme_override_constants/margin_bottom = -16
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 11
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 17
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.82, 0.82, 0.82, 0.59607846)
 
-[node name="CharacterPortrait" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer" instance=ExtResource("5_0mcsw")]
+[node name="CharacterPortrait" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/MarginContainer/MarginContainer" instance=ExtResource("5_0mcsw")]
 unique_name_in_owner = true
 position = Vector2(104.99999, 127.000015)
 scale = Vector2(0.2, 0.2)
 should_override_color = true
 override_color = Color(0.67, 0.58558005, 0.48240003, 1)
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Passport/PanelContainer/VBoxContainer/HeaderInfo/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("6_py2vp")
 metadata/_edit_lock_ = true
 
-[node name="ClaimsContent" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="ClaimsContent" type="VBoxContainer" parent="Passport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ClaimsContent"]
+[node name="Label" type="Label" parent="Passport/PanelContainer/VBoxContainer/ClaimsContent"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Lifestyle Claims"
 
-[node name="ClaimsContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ClaimsContent"]
+[node name="ClaimsContainer" type="VBoxContainer" parent="Passport/PanelContainer/VBoxContainer/ClaimsContent"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(430, 707)
+[node name="Marker2D" type="Marker2D" parent="Passport"]
+position = Vector2(426, 707)
 
-[node name="Stamp" type="Sprite2D" parent="Marker2D"]
+[node name="Stamp" type="Sprite2D" parent="Passport/Marker2D"]
 unique_name_in_owner = true
 position = Vector2(25, 20)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_g7k7r")
+
+[node name="Dialog" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 508.0
+offset_top = 616.0
+offset_right = 1331.0
+offset_bottom = 862.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Dialog"]
+layout_mode = 2
+texture = ExtResource("14_sm6r0")
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 40
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Dialog/MarginContainer"]
+layout_mode = 2
+border_width = 5.0
+
+[node name="FollowUpLabel" type="Label" parent="Dialog/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "This is a test"
+autowrap_mode = 3
+
+[connection signal="finished" from="LowBabbleSfx" to="." method="_on_babble_sfx_finished"]
+[connection signal="finished" from="MidBabbleSfx" to="." method="_on_babble_sfx_finished"]
+[connection signal="finished" from="HighBabbleSfx" to="." method="_on_babble_sfx_finished"]

@@ -1,5 +1,8 @@
 extends MarginContainer
 
+signal claim_selected(claim: Claim)
+
+
 var claim: Claim:
 	set(value):
 		claim = value
@@ -18,4 +21,4 @@ func _setup() -> void:
 
 func _on_gui_input(event: InputEvent):
 	if event.is_action_released("left_click"):
-		GSLogger.info("start dialog: %s" % claim.follow_up)
+		claim_selected.emit(claim)
