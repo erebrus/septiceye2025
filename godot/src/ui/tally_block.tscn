@@ -22,7 +22,7 @@ layout_mode = 0
 offset_right = 105.0
 offset_bottom = 90.0
 scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = -13
+theme_override_constants/separation = -15
 
 [node name="Tally1" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2

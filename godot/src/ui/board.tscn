@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://j4hf2qioo8lp"]
+[gd_scene load_steps=5 format=3 uid="uid://j4hf2qioo8lp"]
 
+[ext_resource type="Theme" uid="uid://b8a2lkmwfxsb7" path="res://src/ui/board.tres" id="1_8p14j"]
 [ext_resource type="Script" uid="uid://x702vr1icq7t" path="res://src/ui/board.gd" id="1_g3sq5"]
 [ext_resource type="Texture2D" uid="uid://cye8e0d4w1fow" path="res://assets/gfx/workspace/Desk_Chalkboard.png" id="1_liw60"]
 [ext_resource type="PackedScene" uid="uid://ddtmbsydhepfy" path="res://src/ui/tally_line.tscn" id="2_g3sq5"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8p14j")
 script = ExtResource("1_g3sq5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -44,7 +46,7 @@ expected = 10
 
 [node name="ReincarnationTally" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("2_g3sq5")]
 layout_mode = 2
-title = "Reincarnation"
+title = "Reincarnate"
 expected = 10
 
 [node name="PurgatoryTally" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("2_g3sq5")]

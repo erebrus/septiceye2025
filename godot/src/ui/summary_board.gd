@@ -14,7 +14,7 @@ var hell:=0
 
 var quotas:Dictionary[Types.Destination, int]= {}
 var score:=0
-@onready var button: Button = $BG/Button
+@onready var button: Button = %Button
 
 @onready var day_label: Label = $BG/Margin/VBox/DayLabel
 @onready var grid: GridContainer = $BG/Margin/VBox/Margin/Grid

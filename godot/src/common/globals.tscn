@@ -34,6 +34,8 @@ bus = &"Music"
 
 [node name="UiSfx" type="Node" parent="."]
 script = ExtResource("5_fmvy8")
+button_press_auto_connect = false
+button_hover_auto_connect = false
 
 [node name="click_sfx" type="AudioStreamPlayer" parent="UiSfx"]
 process_mode = 3

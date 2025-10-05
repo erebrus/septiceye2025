@@ -28,6 +28,9 @@ func reset():
 	GameUtils.clear_node(tally_container)
 
 func add():
+	if count >= 15:
+		return
+	
 	if count == tally_container.get_child_count()*5:
 		_add_new_block()
 	get_last_block().add()
