@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg6ab18dpdldu"]
+
+[ext_resource type="PackedScene" uid="uid://lqtollaovard" path="res://src/base_level.tscn" id="1_jtaio"]
+[ext_resource type="Script" uid="uid://bfef4h1fj64rt" path="res://src/systems/rules/rule.gd" id="2_sqyf7"]
+[ext_resource type="Resource" uid="uid://p436vlmmyqd0" path="res://src/resources/rules/scheduled_rule.tres" id="3_ii74t"]
+[ext_resource type="Script" uid="uid://bbst45rxgww2y" path="res://src/systems/rules/ruleset.gd" id="4_dwngo"]
+
+[sub_resource type="Resource" id="Resource_b7rnw"]
+script = ExtResource("4_dwngo")
+rules = Array[ExtResource("2_sqyf7")]([ExtResource("3_ii74t")])
+metadata/_custom_type_script = "uid://bbst45rxgww2y"
+
+[node name="BaseLevel" instance=ExtResource("1_jtaio")]
+quotas = Dictionary[int, int]({
+0: 3,
+1: 2,
+4: 1
+})
+ruleset = SubResource("Resource_b7rnw")

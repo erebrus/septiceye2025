@@ -1,15 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=23 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
 [ext_resource type="Resource" uid="uid://7vtuecoxqef2" path="res://src/start_state.tres" id="2_pk08u"]
 [ext_resource type="PackedScene" uid="uid://cc82ulrvcacy5" path="res://src/levels/test_level.tscn" id="4_pk08u"]
 [ext_resource type="PackedScene" uid="uid://cdm2fhla0kigd" path="res://src/common/fade_panel.tscn" id="4_wqvko"]
-[ext_resource type="PackedScene" uid="uid://dy7n873unauuc" path="res://src/levels/test_level2.tscn" id="5_4bcji"]
+[ext_resource type="PackedScene" uid="uid://dy7n873unauuc" path="res://src/levels/level1.tscn" id="5_4bcji"]
 [ext_resource type="PackedScene" uid="uid://l2dskqk2haet" path="res://src/systems/list/scheduled_deaths.tscn" id="5_pk08u"]
+[ext_resource type="PackedScene" uid="uid://ch78j0ivke1g" path="res://src/levels/level2.tscn" id="5_sv437"]
+[ext_resource type="PackedScene" uid="uid://bg6ab18dpdldu" path="res://src/levels/level3.tscn" id="6_6fytc"]
 [ext_resource type="PackedScene" uid="uid://6s4mcqvyfcgw" path="res://src/systems/character/passport.tscn" id="6_wqvko"]
 [ext_resource type="PackedScene" uid="uid://vm05pthnusdv" path="res://src/systems/rules/rule_manual.tscn" id="7_cdx1q"]
+[ext_resource type="PackedScene" uid="uid://drcpn3gkau8sy" path="res://src/levels/level4.tscn" id="7_ra4no"]
+[ext_resource type="PackedScene" uid="uid://bupmpqex4beji" path="res://src/levels/level5.tscn" id="8_xcy6g"]
+[ext_resource type="PackedScene" uid="uid://dg8qskxisc16y" path="res://src/levels/level6.tscn" id="9_0i0me"]
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="9_a7soy"]
+[ext_resource type="PackedScene" uid="uid://bo7o4kl1vggca" path="res://src/levels/level7.tscn" id="10_2gais"]
 [ext_resource type="AudioStream" uid="uid://b3ogqq5yqx1bg" path="res://assets/music/BackToLifeJingleOneshot.ogg" id="10_g3j30"]
 [ext_resource type="AudioStream" uid="uid://duxt6u8dbmj80" path="res://assets/music/HeavenJingleOneshot.ogg" id="11_a7soy"]
 [ext_resource type="AudioStream" uid="uid://b6tr61qaqee2p" path="res://assets/music/ReincarnationJingleOneshot.ogg" id="12_aikvj"]
@@ -25,7 +31,7 @@ start_state = ExtResource("2_pk08u")
 game_state = SubResource("Resource_5q4o7")
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("level_container") instance=ExtResource("2_bs6l1")]
-levels = Array[PackedScene]([ExtResource("4_pk08u"), ExtResource("5_4bcji")])
+levels = Array[PackedScene]([ExtResource("5_4bcji"), ExtResource("5_sv437"), ExtResource("6_6fytc"), ExtResource("7_ra4no"), ExtResource("8_xcy6g"), ExtResource("9_0i0me"), ExtResource("10_2gais")])
 level_container = NodePath("../Level")
 override_level = ExtResource("4_pk08u")
 

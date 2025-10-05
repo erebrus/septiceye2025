@@ -38,6 +38,15 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/layerNames/plugin.cfg", "res://addons/m12_name_generator/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
+[importer_defaults]
+
+com.timothyqiu.godot-csv-importer={
+"delimiter": 0,
+"detect_numbers": false,
+"force_float": true,
+"headers": false
+}
+
 [input]
 
 move_right={
