@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq81larsu30jg"]
+[gd_scene load_steps=18 format=3 uid="uid://bq81larsu30jg"]
 
 [ext_resource type="Script" uid="uid://nt336phwvyco" path="res://src/ui/summary_board.gd" id="1_6ykfi"]
 [ext_resource type="Theme" uid="uid://b8a2lkmwfxsb7" path="res://src/ui/board.tres" id="1_lkexq"]
@@ -9,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://4oavgcddacjx" path="res://assets/sfx/Demotion_1.wav" id="6_tx0sv"]
 [ext_resource type="AudioStream" uid="uid://gws0fhsgc6oq" path="res://assets/sfx/Demotion_2.wav" id="7_lkexq"]
 [ext_resource type="AudioStream" uid="uid://d3jo11f3tb2yj" path="res://assets/sfx/Demotion_3.wav" id="8_bffop"]
+[ext_resource type="AudioStream" uid="uid://ct431drj87bin" path="res://assets/sfx/Text_lines_1.wav" id="10_dx36a"]
+[ext_resource type="AudioStream" uid="uid://df6obfbjb2k7a" path="res://assets/sfx/Text_lines_2.wav" id="11_676gj"]
+[ext_resource type="AudioStream" uid="uid://bs66k41em4xdd" path="res://assets/sfx/Text_lines_3.wav" id="12_pq1pi"]
 
 [sub_resource type="Theme" id="Theme_6ykfi"]
 
@@ -25,6 +28,12 @@ streams_count = 3
 stream_0/stream = ExtResource("6_tx0sv")
 stream_1/stream = ExtResource("7_lkexq")
 stream_2/stream = ExtResource("8_bffop")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_virhp"]
+streams_count = 3
+stream_0/stream = ExtResource("10_dx36a")
+stream_1/stream = ExtResource("11_676gj")
+stream_2/stream = ExtResource("12_pq1pi")
 
 [node name="SummaryBoard" type="Control"]
 layout_mode = 3
@@ -313,13 +322,21 @@ size_flags_vertical = 3
 [node name="Button" type="Button" parent="BG/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Next Day"
 flat = true
 
 [node name="promotionSfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_tx0sv")
+bus = &"Sfx"
 
 [node name="demotionSfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_egwte")
+bus = &"Sfx"
 
+[node name="rowSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_virhp")
+bus = &"Sfx"
+
+[connection signal="mouse_entered" from="BG/Margin/VBox/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BG/Margin/VBox/Button" to="." method="_on_button_pressed"]

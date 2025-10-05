@@ -62,6 +62,10 @@ offset_right = 1448.0
 offset_bottom = 654.0
 texture = ExtResource("6_1wl0k")
 
+[node name="slider_sfx" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/SoundSlider" to="." method="_on_volume_changed"]
 [connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_volume_changed"]

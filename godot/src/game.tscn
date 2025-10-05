@@ -122,27 +122,35 @@ metadata/_edit_lock_ = true
 
 [node name="Return" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("10_g3j30")
+bus = &"Music"
 
 [node name="Heaven" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("11_a7soy")
+bus = &"Music"
 
 [node name="Reincarnate" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("12_aikvj")
+bus = &"Music"
 
 [node name="Purgatory" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("13_ns0lu")
+bus = &"Music"
 
 [node name="Hell" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("14_tqu6b")
+bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("22_xcy6g")
+bus = &"Music"
 
 [node name="Survived" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("22_ra4no")
+bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("22_6fytc")
+bus = &"Music"
 
 [connection signal="game_completed" from="LevelManager" to="." method="_on_level_manager_game_completed"]
 [connection signal="level_ready" from="LevelManager" to="." method="_on_level_manager_level_ready"]

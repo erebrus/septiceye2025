@@ -75,9 +75,11 @@ texture = ExtResource("2_qv512")
 
 [node name="openSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jf5i4")
+bus = &"Sfx"
 
 [node name="closeSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gmitv")
+bus = &"Sfx"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

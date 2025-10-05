@@ -200,12 +200,15 @@ mouse_filter = 2
 
 [node name="ListSfx" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_8u1h0")
+bus = &"Sfx"
 
 [node name="PassportSfx" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_pgi23")
+bus = &"Sfx"
 
 [node name="CharacterSfx" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_j14vu")
+bus = &"Sfx"
 
 [connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]
