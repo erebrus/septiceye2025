@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://b7bf7l2fah4cx"]
+
+[ext_resource type="Texture2D" uid="uid://metjt0urb0l0" path="res://assets/gfx/Characters/eyes_ovals_back.png" id="1_ta78y"]
+[ext_resource type="Texture2D" uid="uid://c08x6mlhowidi" path="res://assets/gfx/Characters/eyes_ovals_front.png" id="2_kukie"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_k86lp"]
+
+[resource]
+script = ExtResource("3_k86lp")
+part = "eyes"
+variant = "ovals"
+back_texture = ExtResource("1_ta78y")
+front_texture = ExtResource("2_kukie")
+back_no_recolor = true
+front_color = 2

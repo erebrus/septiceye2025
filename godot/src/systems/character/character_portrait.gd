@@ -14,7 +14,7 @@ var character: Character:
 	"torso": [ %TorsoFront, %TorsoBack ],
 	"face": [ %HeadFront, %HeadBack ],
 	"hair": [ %HairFront, %HairBack ],
-	"eyebrows": [ %EyebrowsFront, %EyebrowsBack ],
+	"brows": [ %EyebrowsFront, %EyebrowsBack ],
 	"eyes": [ %EyesFront, %EyesBack ],
 	"nose": [ %NoseFront, %NoseBack ],
 	"mouth": [ %MouthFront, %MouthBack ],

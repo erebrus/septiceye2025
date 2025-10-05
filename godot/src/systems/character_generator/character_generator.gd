@@ -27,7 +27,7 @@ func _init() -> void:
 	religions.assign(Types.Religion.values().filter(func(x): return x != Types.Religion.UNKNOWN))
 	
 
-func _ready() -> void:
+func initialize() -> void:
 	_initialize_missing_configs()
 	_initialize_claims()
 	
