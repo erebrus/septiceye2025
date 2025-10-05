@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://cwyxhcjsc84ib"]
+
+[ext_resource type="Texture2D" uid="uid://dqewnf5a7i1us" path="res://assets/gfx/Characters/face_pointy_front.png" id="1_3m08a"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_joe21"]
+
+[resource]
+script = ExtResource("2_joe21")
+part = "face"
+variant = "pointy"
+front_texture = ExtResource("1_3m08a")
+back_color = 2
+front_color = 2

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dga413qveeevc"]
+[gd_scene load_steps=8 format=3 uid="uid://dga413qveeevc"]
 
 [ext_resource type="Script" uid="uid://bxxteoj6i0bun" path="res://src/systems/character_generator/test/character_portrait_test.gd" id="1_nmdu8"]
+[ext_resource type="Texture2D" uid="uid://b3mh0jkshlp05" path="res://assets/gfx/workspace/environmentBack.png" id="2_achjk"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_bd4xp"]
+[ext_resource type="Texture2D" uid="uid://d2j5w4j038gdq" path="res://assets/gfx/workspace/OfficeBG.png" id="2_wb2uj"]
 [ext_resource type="PackedScene" uid="uid://6s4mcqvyfcgw" path="res://src/systems/character/passport.tscn" id="3_p6mq6"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_mhq3f"]
@@ -13,8 +15,19 @@ events = [SubResource("InputEventAction_mhq3f")]
 [node name="CharacterPortraitTest" type="Node"]
 script = ExtResource("1_nmdu8")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_achjk")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_wb2uj")
+
 [node name="CharacterPortrait" parent="." instance=ExtResource("2_bd4xp")]
-position = Vector2(1477, 585)
+position = Vector2(953.00006, 418)
+scale = Vector2(0.65, 0.65)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchors_preset = 9

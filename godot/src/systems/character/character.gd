@@ -19,7 +19,11 @@ enum HairColor {
 	GREEN,
 	ORANGE,
 	BROWN, 
-	GRAY
+	GRAY,
+	BLACK,
+	BLONDE,
+	PINK,
+	RED,
 }
 
 enum SkinColor {
@@ -27,7 +31,8 @@ enum SkinColor {
 	PINK,
 	BEIGE,
 	RED, 
-	BROWN
+	BROWN, 
+	BLUE,
 }
 
 enum ClothesColor1 {
@@ -35,6 +40,11 @@ enum ClothesColor1 {
 	RED,
 	BLUE,
 	BLACK,
+	GREEN,
+	WHITE,
+	PINK,
+	PURPLE,
+	GRAY,
 }
 
 enum ClothesColor2 {
@@ -42,6 +52,11 @@ enum ClothesColor2 {
 	RED,
 	BLUE,
 	BLACK,
+	GREEN,
+	WHITE,
+	PINK,
+	PURPLE,
+	GRAY,
 }
 
 enum ColorChannel {

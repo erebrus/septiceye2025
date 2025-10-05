@@ -62,7 +62,11 @@ func _set_recolor(part: String) -> void:
 			sprites[part].front().modulate = Color.WHITE
 		else:
 			sprites[part].front().modulate = character.get_color_code(config.front_color)
-	
+		
+		if part == "eyes":
+			sprites[part].back().modulate = Color(1,1,1,0.5)
+			
+		
 
 func _set_sprites(part: String) -> void:
 	if not part in character.parts:
