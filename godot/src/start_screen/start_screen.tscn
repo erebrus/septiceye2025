@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tew5nggvlbv0"]
+[gd_scene load_steps=8 format=3 uid="uid://tew5nggvlbv0"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_15q2y"]
 [ext_resource type="Script" uid="uid://d0qhvgualhiwk" path="res://src/start_screen/start_screen.gd" id="1_yk0mb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://caebo4q0m756n" path="res://assets/gfx/ui/startbutton.png" id="4_1wl0k"]
 [ext_resource type="PackedScene" uid="uid://to3p8qv7p8yo" path="res://addons/sj/components/ui/settings/volume_slider.tscn" id="4_h2rxl"]
 [ext_resource type="Texture2D" uid="uid://doknd0l5o427y" path="res://assets/gfx/ui/gametitle.png" id="6_1wl0k"]
+[ext_resource type="AudioStream" uid="uid://da204k70382hd" path="res://assets/sfx/UI_MenuButton_SliderClick_loop.wav" id="7_8hc8o"]
 
 [node name="StartScreen" type="TextureRect"]
 anchors_preset = 15
@@ -63,6 +64,7 @@ offset_bottom = 654.0
 texture = ExtResource("6_1wl0k")
 
 [node name="slider_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8hc8o")
 bus = &"Sfx"
 
 [connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
