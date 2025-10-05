@@ -1,5 +1,144 @@
 extends Control
+const MET_QUOTA_POINTS:=50
+const NOT_MET_QUOTA_POINTS:=-50
 
+var correct:=0
+var incorrect:=0
 
+var back_to_life:=0
+var heaven:=0
+var reincarnation:=0
+var purgatory:=0
+var hell:=0
+
+var score:=0
+@onready var button: Button = $BG/Button
+
+@onready var day_label: Label = $BG/Margin/VBox/DayLabel
+@onready var grid: GridContainer = $BG/Margin/VBox/Margin/Grid
+@onready var points: Label = $BG/Margin/VBox/Points
+@onready var promotion: Label = $BG/Margin/VBox/Promotion
+
+var need_restart:=false
+func _ready() -> void:
+	Events.character_stamped.connect(_on_character_stamped)
+	
+func _on_character_stamped(destination: Types.Destination, expected: Types.Destination):
+	if destination==expected:
+		correct += 1
+		score += 10
+	else:
+		incorrect += 1
+		score -= 15
+		
+	match destination:
+		Types.Destination.RETURN:
+			back_to_life += 1
+		Types.Destination.HEAVEN:
+			heaven += 1
+		Types.Destination.REINCARNATE:
+			reincarnation += 1
+		Types.Destination.PURGATORY:
+			purgatory += 1
+		Types.Destination.HELL:
+			hell += 1
+
+func reset():
+	button.text="Next Day"
+	day_label.text = "Day %d - Summary" % [(Globals.game.level_manager.current_level_idx+1)]
+	hide_all_rows()
+	correct=0
+	incorrect=0
+
+	back_to_life=0
+	heaven=0
+	reincarnation=0
+	purgatory=0
+	hell=0
+	score=0
+
+	points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
+
+func run():
+	
+	var interval = .5
+	await get_tree().create_timer(interval).timeout
+	show_row(0,"Correctly Processed:","%d" % correct, "%d" %(correct*10))
+	await get_tree().create_timer(interval).timeout
+	show_row(1,"Incorrectly Processed:","%d" % incorrect, "%d" %(correct*-15))
+	await get_tree().create_timer(interval).timeout
+	do_quota_row(2, "Back To Life Quota:", back_to_life, Globals.game.game_state.quotas[Types.Destination.RETURN])
+	await get_tree().create_timer(interval).timeout
+	do_quota_row(3, "Heaven Quota:", heaven, Globals.game.game_state.quotas[Types.Destination.HEAVEN])
+	await get_tree().create_timer(interval).timeout
+	do_quota_row(4, "Reincarnation Quota:", reincarnation, Globals.game.game_state.quotas[Types.Destination.REINCARNATE])
+	await get_tree().create_timer(interval).timeout
+	do_quota_row(5, "Purgatory Quota:", purgatory, Globals.game.game_state.quotas[Types.Destination.PURGATORY])
+	await get_tree().create_timer(interval).timeout
+	do_quota_row(6, "Hell Quota:", hell, Globals.game.game_state.quotas[Types.Destination.HELL])
+	await get_tree().create_timer(interval).timeout
+
+	show_row(7,"","", "" )
+	
+	show_row(8,"Total:","", "%d" % score)
+	await get_tree().create_timer(interval).timeout
+	
+
+	var previous_job:=Globals.game.game_state.current_job_title
+	Globals.game.game_state.current_points+=score
+	points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
+	var new_job=Globals.game.game_state.get_position_for_score(Globals.game.game_state.current_points)
+	if new_job!=previous_job:
+		Globals.game.game_state.current_job_title=new_job
+		Events.job_change.emit(new_job, previous_job)
+		if new_job > previous_job:
+			promotion.text= "Promoted to %s" % Types.JOB_TITLES[new_job]
+		else:
+			promotion.text= "Demoted to %s" % Types.JOB_TITLES[new_job]
+			if Globals.game.game_state.current_points < 0:
+				do_lose()
+				Globals.do_lose()
+	else:
+		if Globals.game.game_state.current_points < 0:
+			do_lose()
+			Globals.do_lose()
+		else:
+			promotion.text= "Remained %s" % Types.JOB_TITLES[new_job]
+	
+	if Globals.game.level_manager.is_last_level():
+		do_end()
+
+func do_quota_row(idx:int, label:String, value:int, quota:int):
+	var quota_points=MET_QUOTA_POINTS if value >= quota else NOT_MET_QUOTA_POINTS
+	show_row(idx,label, \
+		"%d/%d" % [value,quota],\
+		"%d" %(quota_points))
+	score+=quota_points
+	
+func do_end():
+	GSLogger.info("End")
+	button.text="Restart"
+	pass
+func do_lose():
+	GSLogger.info("Lose")
+	button.text="Restart"
+	
 func _on_button_pressed() -> void:
 	Events.level_ended.emit()
+
+func show_row(row_idx:int, label:String, value:String, credits:String):
+	var idx = 3 * row_idx
+	
+		
+	grid.get_child(idx).text=label
+	grid.get_child(idx+1).text=value
+	grid.get_child(idx+2).text=credits
+
+	grid.get_child(idx).show()
+	grid.get_child(idx+1).show()
+	grid.get_child(idx+2).show()
+	
+
+func hide_all_rows():
+	for c in grid.get_children():
+		c.hide()
