@@ -21,6 +21,31 @@ var game_version: String:
 @onready var ui_sfx: UiSfx = $UiSfx
 @onready var character_generator: CharacterGenerator = $CharacterGenerator
 
+const TOTALS := [8, 10, 12]
+const QUOTAS:= [
+	{
+		Types.Destination.RETURN:1,
+		Types.Destination.HEAVEN:1,
+		Types.Destination.REINCARNATE:1,
+		Types.Destination.PURGATORY:1,
+		Types.Destination.HELL:1,				
+	},
+	{
+		Types.Destination.RETURN:1,
+		Types.Destination.HEAVEN:1,
+		Types.Destination.REINCARNATE:1,
+		Types.Destination.PURGATORY:1,
+		Types.Destination.HELL:1,				
+	},
+	{
+		Types.Destination.RETURN:1,
+		Types.Destination.HEAVEN:1,
+		Types.Destination.REINCARNATE:1,
+		Types.Destination.PURGATORY:1,
+		Types.Destination.HELL:1,				
+	}
+]
+
 
 func _ready():
 	_init_logger()
