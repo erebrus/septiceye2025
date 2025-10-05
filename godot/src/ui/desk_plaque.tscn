@@ -1,20 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgl2xgwk2ierl"]
+[gd_scene load_steps=6 format=3 uid="uid://dgl2xgwk2ierl"]
 
-[ext_resource type="Texture2D" uid="uid://bsh5u1ujlifqw" path="res://assets/gfx/workspace/Desk_Plaque.png" id="1_uyl8l"]
+[ext_resource type="Script" uid="uid://c6ltotn7kw4wc" path="res://src/ui/desk_plaque.gd" id="1_toay1"]
+[ext_resource type="Texture2D" uid="uid://c5ocbiscxje7f" path="res://assets/gfx/workspace/plaque_reaper.png" id="2_cmei3"]
+[ext_resource type="Texture2D" uid="uid://c2p6n476rfe24" path="res://assets/gfx/workspace/plaque_judge.png" id="3_382fb"]
+[ext_resource type="Texture2D" uid="uid://cxt2n0xjtj7kn" path="res://assets/gfx/workspace/plaque_arbiter.png" id="4_l2ygv"]
+[ext_resource type="Texture2D" uid="uid://de1kdmqe8n6l7" path="res://assets/gfx/workspace/plaque_clerk.png" id="5_e6ao7"]
 
 [node name="DeskPlaque" type="Control"]
-custom_minimum_size = Vector2(446, 194)
+custom_minimum_size = Vector2(330, 140)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1474.0
-offset_bottom = -886.0
+offset_right = -1590.0
+offset_bottom = -940.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_toay1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="GrimReaper" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_uyl8l")
+texture = ExtResource("2_cmei3")
+
+[node name="FallenJudge" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_382fb")
+
+[node name="HighArbiter" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_l2ygv")
+
+[node name="CelestialClerk" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_e6ao7")

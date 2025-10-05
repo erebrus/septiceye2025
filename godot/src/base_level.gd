@@ -31,6 +31,9 @@ func _ready() -> void:
 	_on_manual_button_pressed()
 	await get_tree().process_frame
 	summary_board.reset()
+	var job = Globals.game.game_state.current_job_title
+	Events.job_changed.emit(job,job)
+
 	
 	
 func add_rules():

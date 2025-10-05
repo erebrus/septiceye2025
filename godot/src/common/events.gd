@@ -29,4 +29,5 @@ signal character_stamped(destination: Types.Destination, expected: Types.Destina
 @warning_ignore("unused_signal")
 signal character_left
 
+@warning_ignore("unused_signal")
 signal job_changed(new_job:Types.JobTitle, previous_job:Types.JobTitle)
