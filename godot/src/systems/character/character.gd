@@ -137,6 +137,13 @@ func get_color_code(channel: ColorChannel) -> Color:
 		_: return Color.WHITE
 	
 
+func has_topic(topic:String) -> bool:
+	for claim in claims:
+		if claim.topic == topic:
+			return true
+	return false
+	
+
 func has_claim(topic:String, claim_to_check:String)->bool:
 	for claim in claims:
 		if claim.topic == topic and \

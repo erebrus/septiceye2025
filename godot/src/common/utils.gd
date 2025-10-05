@@ -25,7 +25,9 @@ func read_csv_file(path: String, skip_headers: bool = false) -> Array[Array]:
 
 	while not file.eof_reached():
 		var line: Array[String]
-		line.assign(file.get_csv_line(","))
+		
+		for cell in file.get_csv_line(","):
+			line.append(cell.strip_edges())
 		data.append(line)
 	
 	file.close()
@@ -35,3 +37,9 @@ func read_csv_file(path: String, skip_headers: bool = false) -> Array[Array]:
 	else:
 		return data
 	
+
+func parse_list(string: String) -> Array[String]:
+	var list: Array[String]
+	for item in string.split(";"):
+		list.append(item.strip_edges())
+	return list

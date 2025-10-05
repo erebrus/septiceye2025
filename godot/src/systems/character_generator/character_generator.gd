@@ -205,14 +205,12 @@ func _initialize_claims() -> void:
 	
 	for row in follow_up_data:
 		var claim_id = row[0]
-		var final_claims = row[1].split(";")
-		var follow_up = row[2]
 		
 		assert(claim_dict.has(claim_id), "Follow up with unknown claim id %s" % claim_id)
 		
 		var claim = _create_claim(claim_dict[claim_id])
-		claim.ids.assign(final_claims)
-		claim.follow_up = follow_up
+		claim.ids = GameUtils.parse_list(row[1])
+		claim.follow_up =  row[2]
 		
 		unused_claims.erase(claim_id)
 		
