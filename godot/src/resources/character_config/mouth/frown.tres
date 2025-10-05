@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://cjtifmrl8foop"]
+
+[ext_resource type="Texture2D" uid="uid://ciojj30j622nu" path="res://assets/gfx/Characters/mouth_frown_back.png" id="1_x541f"]
+[ext_resource type="Texture2D" uid="uid://d4gcbwqk5v0oa" path="res://assets/gfx/Characters/mouth_frown_front.png" id="2_u4doj"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_ifre7"]
+
+[resource]
+script = ExtResource("3_ifre7")
+part = "mouth"
+variant = "frown"
+back_texture = ExtResource("1_x541f")
+front_texture = ExtResource("2_u4doj")
+back_no_recolor = true
+front_color = 2

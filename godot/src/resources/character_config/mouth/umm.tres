@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://3dnsh0t7ue2m"]
+
+[ext_resource type="Texture2D" uid="uid://c5rf354phswjc" path="res://assets/gfx/Characters/mouth_umm_back.png" id="1_p3ah7"]
+[ext_resource type="Texture2D" uid="uid://dux1rbf1mb512" path="res://assets/gfx/Characters/mouth_umm_front.png" id="2_6i8u1"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_n5nhs"]
+
+[resource]
+script = ExtResource("3_n5nhs")
+part = "mouth"
+variant = "umm"
+back_texture = ExtResource("1_p3ah7")
+front_texture = ExtResource("2_6i8u1")
+back_no_recolor = true
+front_color = 2

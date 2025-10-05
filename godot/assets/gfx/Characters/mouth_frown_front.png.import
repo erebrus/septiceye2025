@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct3ji8d4jhqk7"
-path="res://.godot/imported/mouth_devastated1_front.png-edf8731d2930d808b7b273292dcb47ef.ctex"
+uid="uid://d4gcbwqk5v0oa"
+path="res://.godot/imported/mouth_frown_front.png-e6a1e50c573e63077512c5f37fe4a030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/Characters/mouth_devastated1_front.png"
-dest_files=["res://.godot/imported/mouth_devastated1_front.png-edf8731d2930d808b7b273292dcb47ef.ctex"]
+source_file="res://assets/gfx/Characters/mouth_frown_front.png"
+dest_files=["res://.godot/imported/mouth_frown_front.png-e6a1e50c573e63077512c5f37fe4a030.ctex"]
 
 [params]
 

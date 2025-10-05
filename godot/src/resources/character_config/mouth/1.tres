@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://f3unhmub7o32"]
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://dal8idlhdakyt"]
 
 [ext_resource type="Texture2D" uid="uid://cxj4r33p6cui7" path="res://assets/gfx/Characters/mouth_1_front.png" id="1_q2akx"]
 [ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_ugq5c"]
