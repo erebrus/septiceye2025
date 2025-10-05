@@ -95,7 +95,7 @@ border_width = 5.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Passport/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 13
+theme_override_constants/separation = 30
 
 [node name="HeaderInfo" type="HBoxContainer" parent="Passport/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -170,6 +170,7 @@ metadata/_edit_lock_ = true
 
 [node name="ClaimsContent" type="VBoxContainer" parent="Passport/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Passport/PanelContainer/VBoxContainer/ClaimsContent"]
 layout_mode = 2
@@ -179,6 +180,7 @@ text = "Lifestyle Claims"
 [node name="ClaimsContainer" type="VBoxContainer" parent="Passport/PanelContainer/VBoxContainer/ClaimsContent"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Marker2D" type="Marker2D" parent="Passport"]
 position = Vector2(426, 707)
@@ -205,10 +207,10 @@ texture = ExtResource("14_sm6r0")
 
 [node name="MarginContainer" type="MarginContainer" parent="Dialog"]
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Dialog/MarginContainer"]
 layout_mode = 2

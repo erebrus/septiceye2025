@@ -98,7 +98,7 @@ func _count_character(character: Character, target: Dictionary[Types.Destination
 		target[character.destination] -= 1
 		return 0
 	else:
-		return -1
+		return 1
 	
 
 func _on_manual_button_pressed():
