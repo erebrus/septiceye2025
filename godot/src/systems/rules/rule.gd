@@ -8,15 +8,10 @@ class_name Rule extends Resource
 @export var end_day:int = 100
 
 @export var met_destinations: Array[Types.Destination]
-@export var unmet_destinations: Array[Types.Destination] = []
+@export var unmet_destinations: Array[Types.Destination]
 
 @export var priority:=1
 
-
-func _init() -> void:
-	met_destinations.assign(Types.Destination.values())
-	unmet_destinations.assign(Types.Destination.values())
-	
 
 func is_met_by(_character: Character) -> bool:	
 	return true

@@ -40,10 +40,7 @@ func make_character_not_meet(character: Character) -> void:
 		GSLogger.error("Character cannot meet rule")
 		return
 	
-	if forbidden.is_empty() or randf() < 0.5:
-		character.forbidden_topics.append(topic)
-	else:
-		character.claims.append(forbidden.pick_random())
+	character.forbidden_topics.append(topic)
 	
 
 static func from_csv_line(cols:Array[String])->Rule:
@@ -57,14 +54,17 @@ static func from_csv_line(cols:Array[String])->Rule:
 	if not cols[4].is_empty():
 		rule.rejected_claim_values = GameUtils.parse_list(cols[4])
 	rule.description = cols[6]
-	rule.met_destinations=lookup_fate(cols[7])
-
+	
+	var fate = lookup_fate(cols[7])
 	if rule.description.begins_with("All"):
-			rule.unmet_destinations.append_array(Types.Destination.values())
+		rule.met_destinations.append(fate)
+		rule.unmet_destinations.append_array(Types.Destination.values())
 	else:
+		rule.met_destinations.append_array(Types.Destination.values())
 		for d in Types.Destination.values():
-			if not d in rule.met_destinations:
+			if d != fate:
 				rule.unmet_destinations.append(d)
+	
 	rule.start_day = int(cols[8])
 	if cols[9]!='-':
 		rule.end_day = int(cols[9]) 
@@ -81,25 +81,29 @@ static func from_csv_line(cols:Array[String])->Rule:
 	return rule
 	
 
-static func lookup_fate(fname:String)->Array[Types.Destination]:
+func _to_string():
+	return "Rule %s [%s]: Allowed: %s, Forbidden: %s, Met: %s, Unmet: %s" % [short_name, topic, allowed, forbidden, met_destinations, unmet_destinations]
+
+
+static func lookup_fate(fname:String)->Types.Destination:
 	#return Types.Destination.RETURN
 	match fname:
 		"paradise":
-			return [Types.Destination.HEAVEN]
+			return Types.Destination.HEAVEN
 		"heaven":
-			return [Types.Destination.HEAVEN]
+			return Types.Destination.HEAVEN
 		"hell":
-			return [Types.Destination.HELL]
+			return Types.Destination.HELL
 		"purgatory":
-			return [Types.Destination.PURGATORY]
+			return Types.Destination.PURGATORY
 		"back to life":
-			return [Types.Destination.RETURN]
+			return Types.Destination.RETURN
 		"reincarnation":
-			return [Types.Destination.REINCARNATE]
+			return Types.Destination.REINCARNATE
 		_:
 			GSLogger.error("Can't find fate for rule")
 			assert(false)
-			return [Types.Destination.RETURN]
+			return Types.Destination.RETURN
 			
 static func lookup_religion(rname:String)->Types.Religion:
 	match rname:		

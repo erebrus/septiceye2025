@@ -106,11 +106,15 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, 
 	for rule in ruleset.rules:
 		if not rule.should_apply(character):
 			continue
+		
+		GSLogger.info("Generate for destination. Processing %s" % rule)
+		
 		if destination in rule.met_destinations:
 			if destination not in rule.unmet_destinations:
 				rule.make_character_meet(character)
 		elif destination in rule.unmet_destinations:
-			rule.make_character_not_meet(character)
+			if destination not in rule.met_destinations:
+				rule.make_character_not_meet(character)
 		
 		if ruleset.possible_fates_for(character).size() == 1:
 			break

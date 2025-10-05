@@ -18,3 +18,7 @@ func has_any_id(value: Array[String]) -> bool:
 		if ids.has(id):
 			return true
 	return false
+	
+
+func _to_string():
+	return "%s" % [ids]
