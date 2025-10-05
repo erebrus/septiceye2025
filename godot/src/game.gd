@@ -77,12 +77,22 @@ func show_warning():
 	await tween.finished
 	label.hide()
 	
+func sort_rule(a:Rule, b:Rule):
+	if a.priority > b.priority:
+		return true
+	return false
+
+
 func load_rules():
 	var rule_data = GameUtils.read_csv_file(RULES_DATA_PATH, true)
 	for rule_line in rule_data:
-		rules.append(Rule.from_csv_line(rule_line))
+		rules.append(ClaimRule.from_csv_line(rule_line))
+	rules.sort_custom(sort_rule)
+	for r in rules:
+		GSLogger.info("Loaded rule: %s" % r.short_name)
 	GSLogger.info("Loaded rules")
 	
+		
 func get_rules_for_day() -> Array[Rule]:
 	var day:int = level_manager.current_level_idx + 1
 	var ret:Array[Rule] = []
