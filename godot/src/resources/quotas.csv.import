@@ -1,18 +1,3 @@
 [remap]
 
-importer="com.timothyqiu.godot-csv-importer"
-type="Resource"
-uid="uid://bcskte63iqh02"
-path="res://.godot/imported/quotas.csv-f8478206bf38eb7c9b216a42eb02fb75.res"
-
-[deps]
-
-source_file="res://src/resources/quotas.csv"
-dest_files=["res://.godot/imported/quotas.csv-f8478206bf38eb7c9b216a42eb02fb75.res"]
-
-[params]
-
-delimiter=0
-headers=false
-detect_numbers=false
-force_float=true
+importer="keep"
