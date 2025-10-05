@@ -29,6 +29,9 @@ func _ready() -> void:
 	generate()
 	Events.pre_day_started.emit(quotas, extra_souls, ruleset)
 	_on_manual_button_pressed()
+	await get_tree().process_frame
+	summary_board.reset()
+	
 	
 func add_rules():
 	var new_rules:Array[Rule]= Globals.game.get_rules_for_day()
@@ -152,4 +155,5 @@ func _on_clock_timeout() -> void:
 	shutter.close()
 	portrait.hide()
 	passport_button.hide()
-	summary_board.show()
+	
+	
