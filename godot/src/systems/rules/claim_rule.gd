@@ -1,8 +1,21 @@
 class_name ClaimRule extends Rule
 
+@export var topic:String 
+@export var accepted_claim_values:Array[String] 
+@export var rejected_claim_values:Array[String]
 
-func _init() -> void:
-	pass
+var allowed: Array[Claim]
+var forbidden: Array[Claim]
+
+func setup():
+	var all: Array[Claim] = Globals.character_generator.claims[topic]
+	for claim in all:
+		if claim.has_all_ids(accepted_claim_values) and not claim.has_any_id(rejected_claim_values):
+			allowed.append(claim)
+		
+		if not claim.has_all_ids(accepted_claim_values) or claim.has_any_id(rejected_claim_values):
+			forbidden.append(claim)
+	
 
 func is_met_by(character: Character) -> bool:
 	for claim in accepted_claim_values:
@@ -14,25 +27,33 @@ func is_met_by(character: Character) -> bool:
 	return true
 	
 
-func should_apply(character: Character) -> bool:
-	return religion == Types.Religion.UNKNOWN or religion == character.religion
+func make_character_meet(character: Character) -> void:
+	if character.has_topic(topic) and not is_met_by(character):
+		GSLogger.error("Character cannot meet rule")
+		return
+	
+	character.claims.append(allowed.pick_random())
 	
 
-func make_character_meet(_character: Character) -> void:
-	pass
+func make_character_not_meet(character: Character) -> void:
+	if character.has_topic(topic) and is_met_by(character):
+		GSLogger.error("Character cannot meet rule")
+		return
+	
+	if not forbidden.is_empty():
+		character.claims.append(forbidden.pick_random())
 	
 
-func make_character_not_meet(_character: Character) -> void:
-	pass
-	
 static func from_csv_line(cols:Array[String])->Rule:
 	var rule = ClaimRule.new()
 	#rule_name,religion,trait_name,accepted_values,rejected_values,custom,text,fate,day of implementation,end day
 	rule.short_name = cols[0]
 	rule.religion = lookup_religion(cols[1])
 	rule.topic = cols[2] as String
-	rule.accepted_claim_values=[] if cols[3]=="" else cols[3].split(";") as Array[String]
-	rule.rejected_claim_values=[] if cols[4]=="" else cols[4].split(";") as Array[String]
+	if not cols[3].is_empty():
+		rule.accepted_claim_values = GameUtils.parse_list(cols[3])
+	if not cols[4].is_empty():
+		rule.rejected_claim_values = GameUtils.parse_list(cols[4])
 	rule.description = cols[6]
 	rule.met_destinations=lookup_fate(cols[7])
 
@@ -46,7 +67,17 @@ static func from_csv_line(cols:Array[String])->Rule:
 	if cols[9]!='-':
 		rule.end_day = int(cols[9]) 
 	rule.priority = int(cols[10])
+	rule.setup()
+	GSLogger.info("Loaded rule %s" % rule.short_name)
+	
+	if rule.allowed.is_empty():
+		GSLogger.error("Rule is not met by any claim")
+		return null
+	if rule.forbidden.is_empty():
+		GSLogger.warn("Rule is not contradicted by any claim (we cannot ensure is_not_met)")
+	
 	return rule
+	
 
 static func lookup_fate(fname:String)->Array[Types.Destination]:
 	#return Types.Destination.RETURN
@@ -66,7 +97,7 @@ static func lookup_fate(fname:String)->Array[Types.Destination]:
 		_:
 			GSLogger.error("Can't find fate for rule")
 			assert(false)
-			return [0]
+			return [Types.Destination.RETURN]
 			
 static func lookup_religion(rname:String)->Types.Religion:
 	match rname:		

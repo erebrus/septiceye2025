@@ -2,22 +2,23 @@ class_name Rule extends Resource
 
 @export var short_name:String 
 @export var religion: Types.Religion
-@export var topic:String 
-@export var accepted_claim_values:Array=[] 
-@export var rejected_claim_values:Array=[]
 @export var description: String
+
 @export var start_day:int = 0
 @export var end_day:int = 100
+
 @export var met_destinations: Array[Types.Destination]
 @export var unmet_destinations: Array[Types.Destination] = []
+
 @export var priority:=1
+
 
 func _init() -> void:
 	met_destinations.assign(Types.Destination.values())
 	unmet_destinations.assign(Types.Destination.values())
 	
 
-func is_met_by(character: Character) -> bool:	
+func is_met_by(_character: Character) -> bool:	
 	return true
 	
 
