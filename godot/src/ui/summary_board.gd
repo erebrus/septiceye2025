@@ -1,5 +1,5 @@
 extends Control
-const MET_QUOTA_POINTS:=50
+const MET_QUOTA_POINTS:= 50
 const NOT_MET_QUOTA_POINTS:=-50
 const CORRECT=15
 const INCORRECT=-10
@@ -154,6 +154,7 @@ func _on_button_pressed() -> void:
 			Events.on_survived.emit()
 	else:
 		Events.level_ended.emit()
+	hide()
 
 func show_row(row_idx:int, label:String, value:String, credits:String):
 	var idx = 3 * row_idx

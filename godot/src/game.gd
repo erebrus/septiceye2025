@@ -110,9 +110,11 @@ func _on_survived():
 	$Jingles/Survived.play()
 	Globals.music_manager.fade_game_music()
 	$OverlayLayer/SurviveScreen.show()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2).timeout	
 	$OverlayLayer/SurviveScreen2.show()
+	$OverlayLayer/SurviveScreen.hide()
 	await get_tree().create_timer(2).timeout
+	$OverlayLayer/SurviveScreen2.hide()
 	$OverlayLayer/SurviveScreen3.show()
 	game_over=true
 	await get_tree().create_timer(5).timeout
@@ -124,7 +126,7 @@ func _on_lose():
 	Globals.music_manager.fade_game_music()
 	$Jingles/Lose.play()
 	game_over=true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(7).timeout
 	Globals.go_to_main_menu()
 		
 func _on_win():
@@ -132,7 +134,7 @@ func _on_win():
 	Globals.music_manager.fade_game_music()
 	$Jingles/Win.play()
 	game_over=true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(7).timeout
 	Globals.go_to_main_menu()
 
 func _on_screen_gui_input(event: InputEvent) -> void:
