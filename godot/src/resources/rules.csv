@@ -1,58 +1,58 @@
 rule_name,religion,trait_name,accepted_values,rejected_values,custom,text,fate,day of implementation,end day
-tea_mindful,tea_religion,brew_tea_mindful,brewed_tea,,,People who brewed tea mindfully go to paradise,paradise,1,-
-tea_anger,tea_religion,brew_tea_anger,brewed_tea_anger,,,People who brewed tea angry go to hell,hell,1,-
-ice_tea,tea_religion,brew_ice_tea,drank_ice_tea,,,People who drank ice tea go to hell,hell,3,5
-first_sip_share,tea_religion,share_sip,sip_shared,,,People who shared the first sip with someone go to paradise,paradise,3,-
-first_sip_denied,tea_religion,deny_sip,sip_denied,,,People who denied to share the first sip go to hell,hell,2,-
-second_sip_shared,tea_religion,share_second_sip,sip_shared_second,,,"Only people who shared second sip, not first, go to purgatory",purgatory,3,6
-tea_hot,tea_religion,drink_tea_hot,drank_hot_tea,,,Only people who drank the tea extremely hot are brought back to life,back to life,4,-
-tea_cold,tea_religion,drink_tea_cold,drank_cold_tea,,,People who drank the tea cold go to hell,hell,1,-
-tea_lukewarm,tea_religion,drink_tea_lukewarm,drank_lukewarm_tea,,,Only people who drank lukewarm tea go to purgatory,purgatory,5,-
-reflect_once,tea_religion,reflect_once_week,reflected_once,,,People who reflected on life with a cup of tea once a week go to paradise,paradise,2,-
-reflect_more,tea_religion,reflect_more_week,reflected_more,,,Only people who reflected on life with a cup of tea more than once a week are reincarnated,reincarnation,3,5
-no_reflect,tea_religion,reflect_none,no_reflection,,,People who don't reflect at all during the week go to hell.,hell,4,-
-throw_leaves,tea_religion,throw_away_tea,tea_thrown,,,People who threw away tea leaves go to hell.,hell,6,-
-bury_leaves,tea_religion,bury_tea_leaves,tea_burried,,,People who bury the leaves in nature go to paradise.,paradise,1,-
-burn_leaves,tea_religion,burn_tea_leaves,tea_burned,,,People who burn the leaves and throw the ashes into the wind are reincarnated.,reincarnation,5,-
-reuse_leaves,tea_religion,reuse_tea_leaves,tea_reused,,,People who reuse the tea leaves and brew another tea with them go to hell.,hell,6,-
-carry_snail,snail_religion,carry_snail_item,snail_item,,,People who carry the Cosmic Snail trinket go to paradise.,paradise,1,-
-no_carry_snail,snail_religion,no_snail_item,snail_item_none,,,People who don't carry any Cosmic Snail trinker go to hell.,hell,1,-
-carry_snail_alot,snail_religion,alot_snail_item,snail_item_alot,,,Only people who carry more than one Cosmic Snail trinket are brought back to life. ,back to life,5,-
-running,snail_religion,move_run,run_movement,,,People who are running go to hell.,hell,3,-
-moving_fast,snail_religion,move_fast,fast_movement,,,"People who move fast, but are not running go to purgatory.",purgatory,4,-
-moving_slow,snail_religion,move_slow,slow_movement,,,People who move slow go to heaven.,heaven,1,-
-moving_snail,snail_religion,move_snail,snail_movement,,,"Only people who move extremely slow, in a snail-like pace, are brought back to life. ",back to life,6,-
-stop_once_aday,snail_religion,stop_once,one_stop,,,People who stop only once a day to notice something tiny and beautiful go to purgatory.,purgatory,1,-
-stop_more_aday,snail_religion,stop_more,more_stops,,,People who stop more than once a day to notice something tiny and beautiful go to paradise.,paradise,4,-
-no_stop,snail_religion,stop_none,no_stops,,,People who don't stop at all to notice something tiny and beautiul go to hell.,hell,1,-
-harm_snail,snail_religion,snail_harm,snail_harmed,,,All people who harm snails go to hell. ,hell,5,-
-dont_protect,snail_religion,dont_protect_creatures,creatures_not_protected,,,"People who don't protect small creatures when seeing them in need, go to purgatory.",purgatory,3,-
-protect,snail_religion,protect_creatures,creatures_protected,,,"People who protect small creatures when seeing them in need, go to paradise. ",paradise,2,-
-laugh,star_religion,laugh_daily,laugh_everyday,,,People who laugh daily go to paradise.,paradise,1,-
-fake_giggle,star_religion,fake_giggle_daily,fake_giggle_everyday,,,People who fake to laugh or giggle go to purgatory.,purgatory,4,-
-no_laugh,star_religion,no_laugh_daily,no_laugh_everyday,,,People who don't try to laugh or giggle go to hell.,hell,1,-
-jokes_cruel,star_religion,share_cruel_jokes,cruel_jokes_shared,,,People who only share mean and cruel jokes go to hell.,hell,1,-
-jokes_generous,star_religion,share_generous_jokes,generous_jokes_shared,,,People who share generous jokes go to paradise.,paradise,1,-
-jokes_mixed,star_religion,share_mixed_jokes,mixed_jokes_shared,,,People who share generous and mean jokes go to purgatory.,purgatory,4,-
-serious_always,star_religion,seriousness_everyday,serious_only,,,People who are serious all the time go to hell.,hell,3,-
-serious_one,star_religion,seriousness_once_aweek,serious_once_aweek,,,People who are serious only once a week go to paradise.,paradise,2,-
-no_serious,star_religion,seriousness_never,serious_none,,,"People who are not serious at all, even once a week go to purgatory.",purgatory,3,-
-cry,star_religion,cry_balance,crying,,,People who aren't afraid to cry go to paradise.,paradise,1,-
-no_cry,star_religion,cry_never,no_crying,,,People who aren't crying at all go to purgatory.,purgatory,1,-
-cry_hold_back,star_religion,cry_held,crying_holding,,,All people who try to hold back crying go to hell. ,hell,4,-
-wish,star_religion,make_a_wish,wish_made,,,"People who see a star and make a wish, without laughing after it, go to purgatory.",purgatory,2,-
-wish_laugh,star_religion,make_a_wish_laugh,wish_made_laugh,,,"People who see a star, make a wish and laugh after it go to paradise.",paradise,1,-
-no_wish,star_religion,no_make_a_wish,wish_not_made,,,"People who see a star and don't make a wish at all, go to hell.",hell,1,-
-light_lamp_twice,sect_religion,light_on_twice,light_twice_aday,,,People who light a candle or a lamp at dawn and dusk everyday go to paradise.,paradise,1,-
-light_lamp_once,sect_religion,light_on_once,light_once_aday,,,People who light a candle or a lamp at dawn or at dusk everyday go to purgatory.,purgatory,4,-
-no_light_lamp,sect_religion,light_none,no_light,,,People who don't light the lamp or a candle everyday go to hell.,hell,1,-
-lie_indarkness,sect_religion,darkness,darkness_only,,,All people who lie in darkness go to hell.,hell,2,-
-lie_with_light,sect_religion,light,light_only,,,People who lie with some type of light go to paradise.,paradise,5,-
-share_light,sect_religion,help_see_light,light_shared,,,People who help others see light when they're lost are reincarnated.,reincarnation,6,-
-no_share_light,sect_religion,no_help_see_light,light_not_shared,,,People who don't help others see the light when they're lost go to purgatory.,purgatory,6,-
-release_doubts_new_moon,sect_religion,doubts_new_moon,doubts_released_new_moon,,,People who release their doubts on new moon go to paradise.,paradise,1,-
-release_doubts_other,sect_religion,doubts_other,doubts_released_other,,,People who release their doubts on other phases of the moon go to purgatory.,purgatory,4,-
-no_release,sect_religion,doubts_no,doubts_not_released,,,People who don't release their doubts at all at any moon phases go to hell.,hell,1,-
-blow_flame_breath,sect_religion,flame_breath,flame_blowed_breath,,,People who blow out the flame with thier breath go to hell.,hell,1,-
-blow_flame_snuff,sect_religion,flame_snuff,flame_blowed_snuffed,,,People who blow out the flame with a gentle snuff go to paradise.,paradise,1,-
-blow_flame_naturally,sect_religion,flame_naturally,flame_blowed_naturally,,,All people who let the flame being blown out naturally by air are brought back to life.,back to life,6,-
+tea_mindful,tea_religion,tea_mood,tea_mindful,,,People who brewed tea mindfully go to paradise,paradise,1,-
+tea_anger,tea_religion,tea_mood,tea_anger,,,People who brewed tea angry go to hell,hell,1,-
+ice_tea,tea_religion,tea_temp,tea_cold,,,People who drank ice tea go to hell,hell,3,5
+first_sip_share,tea_religion,tea_share,first_sip_share,,,People who shared the first sip with someone go to paradise,paradise,3,-
+first_sip_denied,tea_religion,tea_share,first_sip_denied,,,People who denied to share the first sip go to hell,hell,2,-
+second_sip_shared,tea_religion,tea_share,second_sip_shared,first_sip_share,,"Only people who shared second sip, not first, go to purgatory",purgatory,3,6
+tea_hot,tea_religion,tea_temp,tea_hot,,,Only people who drank the tea extremely hot are brought back to life,back to life,4,-
+tea_cold,tea_religion,tea_temp,tea_cold,,,People who drank the tea cold go to hell,hell,1,-
+tea_lukewarm,tea_religion,tea_temp,tea_lukewarm,,,Only people who drank lukewarm tea go to purgatory,purgatory,5,-
+reflect_once,tea_religion,reflection,reflect_once,,,People who reflected on life with a cup of tea once a week go to paradise,paradise,2,-
+reflect_more,tea_religion,reflection,reflect_more,,,Only people who reflected on life with a cup of tea more than once a week are reincarnated,reincarnation,3,5
+no_reflect,tea_religion,reflection,no_reflect,,,People who don't reflect at all during the week go to hell.,hell,4,-
+throw_leaves,tea_religion,leaves,throw_leaves,,,People who threw away tea leaves go to hell.,hell,6,-
+bury_leaves,tea_religion,leaves,bury_leaves,,,People who bury the leaves in nature go to paradise.,paradise,1,-
+burn_leaves,tea_religion,leaves,leaves_burned,,,People who burn the leaves and throw the ashes into the wind are reincarnated.,reincarnation,5,-
+reuse_leaves,tea_religion,leaves,reuse_leaves,,,People who reuse the tea leaves and brew another tea with them go to hell.,hell,6,-
+carry_snail,snail_religion,trinket,carry_snail,,,People who carry the Cosmic Snail trinket go to paradise.,paradise,1,-
+no_carry_snail,snail_religion,trinket,no_carry_snail,,,People who don't carry any Cosmic Snail trinker go to hell.,hell,1,-
+carry_snail_alot,snail_religion,trinket,snail_item_alot,,,Only people who carry more than one Cosmic Snail trinket are brought back to life. ,back to life,5,-
+running,snail_religion,movement,running,,,People who are running go to hell.,hell,3,-
+moving_fast,snail_religion,movement,moving_fast,,,"People who move fast, but are not running go to purgatory.",purgatory,4,-
+moving_slow,snail_religion,movement,moving_slow,,,People who move slow go to heaven.,paradise,1,-
+moving_snail,snail_religion,movement,moving_snail,,,"Only people who move extremely slow, in a snail-like pace, are brought back to life. ",back to life,6,-
+stop_once_aday,snail_religion,stop,stop_once_aday,,,People who stop only once a day to notice something tiny and beautiful go to purgatory.,purgatory,1,-
+stop_more_aday,snail_religion,stop,stop_more_aday,,,People who stop more than once a day to notice something tiny and beautiful go to paradise.,paradise,4,-
+no_stop,snail_religion,stop,no_stop,,,People who don't stop at all to notice something tiny and beautiul go to hell.,hell,1,-
+harm_snail,snail_religion,protect,harm_snail,,,All people who harm snails go to hell. ,hell,5,-
+dont_protect,snail_religion,protect,dont_protect,,,"People who don't protect small creatures when seeing them in need, go to purgatory.",purgatory,3,-
+protect,snail_religion,protect,protect,,,"People who protect small creatures when seeing them in need, go to paradise. ",paradise,2,-
+laugh,star_religion,laugh,laugh_everyday,,,People who laugh daily go to paradise.,paradise,1,-
+fake_giggle,star_religion,laugh,fake_giggle,,,People who fake to laugh or giggle go to purgatory.,purgatory,4,-
+no_laugh,star_religion,laugh,no_laugh,,,People who don't try to laugh or giggle go to hell.,hell,1,-
+jokes_cruel,star_religion,jokes,jokes_cruel,,,People who only share mean and cruel jokes go to hell.,hell,1,-
+jokes_generous,star_religion,jokes,jokes_generous,,,People who share generous jokes go to paradise.,paradise,1,-
+jokes_mixed,star_religion,jokes,jokes_mixed,,,People who share generous and mean jokes go to purgatory.,purgatory,4,-
+serious_always,star_religion,seriousness,serious_always,,,People who are serious all the time go to hell.,hell,3,-
+serious_one,star_religion,seriousness,serious_one,,,People who are serious only once a week go to paradise.,paradise,2,-
+no_serious,star_religion,seriousness,no_serious,,,"People who are not serious at all, even once a week go to purgatory.",purgatory,3,-
+cry,star_religion,crying,cry,,,People who aren't afraid to cry go to paradise.,paradise,1,-
+no_cry,star_religion,crying,no_cry,,,People who aren't crying at all go to purgatory.,purgatory,1,-
+cry_hold_back,star_religion,crying,cry_hold_back,,,All people who try to hold back crying go to hell. ,hell,4,-
+wish,star_religion,wish,wish,,,"People who see a star and make a wish, without laughing after it, go to purgatory.",purgatory,2,-
+wish_laugh,star_religion,wish,wish_laugh,,,"People who see a star, make a wish and laugh after it go to paradise.",paradise,1,-
+no_wish,star_religion,wish,no_wish,,,"People who see a star and don't make a wish at all, go to hell.",hell,1,-
+light_lamp_twice,sect_religion,light,light_lamp_twice,,,People who light a candle or a lamp at dawn and dusk everyday go to paradise.,paradise,1,-
+light_lamp_once,sect_religion,light,light_lamp_once,,,People who light a candle or a lamp at dawn or at dusk everyday go to purgatory.,purgatory,4,-
+no_light_lamp,sect_religion,light,no_light_lamp,,,People who don't light the lamp or a candle everyday go to hell.,hell,1,-
+lie_darkness,sect_religion,darkness,lie_darkness,,,All people who lie in darkness go to hell.,hell,2,-
+lie_with_light,sect_religion,darkness,lie_with_light,,,People who lie with some type of light go to paradise.,paradise,5,-
+share_light,sect_religion,sharing_light,share_light,,,People who help others see light when they're lost are reincarnated.,reincarnation,6,-
+no_share_light,sect_religion,sharing_light,no_share_light,,,People who don't help others see the light when they're lost go to purgatory.,purgatory,6,-
+release_doubts_new_moon,sect_religion,release,release_doubts_new_moon,,,People who release their doubts on new moon go to paradise.,paradise,1,-
+release_doubts_other,sect_religion,release,release_doubts_other,,,People who release their doubts on other phases of the moon go to purgatory.,purgatory,4,-
+no_release,sect_religion,release,no_release,,,People who don't release their doubts at all at any moon phases go to hell.,hell,1,-
+blow_flame_breath,sect_religion,blowing_out,blow_flame_breath,,,People who blow out the flame with thier breath go to hell.,hell,1,-
+blow_flame_snuff,sect_religion,blowing_out,blow_flame_snuff,,,People who blow out the flame with a gentle snuff go to paradise.,paradise,1,-
+blow_flame_naturally,sect_religion,blowing_out,blow_flame_naturally,,,All people who let the flame being blown out naturally by air are brought back to life.,back to life,6,-

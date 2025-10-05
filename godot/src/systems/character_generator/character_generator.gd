@@ -219,7 +219,7 @@ func _initialize_claims() -> void:
 	for claim_id in unused_claims:
 		GSLogger.info("Adding claim without followup %s" % claim_id)
 		var claim = _create_claim(claim_dict[claim_id])
-		claim.ids = [claim_id]
+		claim.ids.append(claim_id)
 		claim.follow_up = "I have nothing more to say about it."
 	
 	GSLogger.info("%s claims loaded" % claims.size())

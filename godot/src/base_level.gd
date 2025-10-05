@@ -23,10 +23,16 @@ func _ready() -> void:
 	Events.character_stamped.connect(_on_character_stamped)
 	portrait.hide()
 	passport_button.hide()
+	add_rules()
 	generate()
 	Events.pre_day_started.emit(quotas, extra_souls, ruleset)
 	_on_manual_button_pressed()
-
+	
+func add_rules():
+	ruleset.rules.clear()
+	var new_rules:Array[Rule]= Globals.game.get_rules_for_day()
+	ruleset.rules.append_array(new_rules)
+		
 func set_state(_game_state:GameState):
 	game_state = _game_state
 	game_state.quotas.clear()

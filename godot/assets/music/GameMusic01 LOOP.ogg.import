@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://clp3gm23xglf2"
+path="res://.godot/imported/GameMusic01 LOOP.ogg-8a250ea947636b51952f62d78c25445e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/GameMusic01 LOOP.ogg"
+dest_files=["res://.godot/imported/GameMusic01 LOOP.ogg-8a250ea947636b51952f62d78c25445e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

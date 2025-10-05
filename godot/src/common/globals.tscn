@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://rumvotveqal5"]
 
 [ext_resource type="Script" uid="uid://dodm85vhrwagf" path="res://src/common/globals.gd" id="1_noqpm"]
-[ext_resource type="AudioStream" uid="uid://bjfe8j08byxx4" path="res://assets/music/kennys/Cheerful Annoyance.ogg" id="3_gfpot"]
+[ext_resource type="AudioStream" uid="uid://clp3gm23xglf2" path="res://assets/music/GameMusic01 LOOP.ogg" id="3_0o1u7"]
 [ext_resource type="Script" uid="uid://c3gbbvoifoygf" path="res://src/common/music_manager.gd" id="3_h14hn"]
 [ext_resource type="AudioStream" uid="uid://bxrc4c7inujhh" path="res://assets/music/kennys/Farm Frolics.ogg" id="4_v6ulc"]
 [ext_resource type="Script" uid="uid://04681mljvxoh" path="res://src/common/ui_sfx.gd" id="5_fmvy8"]
@@ -10,13 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dv04tvpd5gpyu" path="res://src/systems/character_generator/character_generator.tscn" id="8_0o1u7"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_q1nu8"]
-stream_count = 3
-stream_0/stream = ExtResource("3_gfpot")
+stream_count = 1
+stream_0/stream = ExtResource("3_0o1u7")
 stream_0/volume = 0.0
-stream_1/stream = ExtResource("3_gfpot")
-stream_1/volume = -60.0
-stream_2/stream = ExtResource("3_gfpot")
-stream_2/volume = 0.0
 
 [node name="Globals" type="Node"]
 process_mode = 3
