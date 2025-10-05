@@ -98,8 +98,10 @@ func run():
 	#Globals.game.game_state.current_points+=score
 	points.text = "Current Job Rating: %d" % previous_score
 	points.show()
-	for i in range(score):
-		Globals.game.game_state.current_points+=1
+	var delta=sign(score)
+	
+	for i in range(abs(score)):
+		Globals.game.game_state.current_points+=delta
 		points.text = "Current Job Rating: %d" % Globals.game.game_state.current_points
 		await get_tree().process_frame
 		
@@ -122,9 +124,11 @@ func run():
 	else:
 		if Globals.game.game_state.current_points < 0:
 			promotion.text= "You're not longer a %s" % Types.JOB_TITLES[0]
+			button.text="Continue"
 		else:
 			promotion.text= "Remained %s" % Types.JOB_TITLES[new_job]
-	
+	if Globals.game.level_manager.is_last_level():
+		button.text="Continue"
 	button.show()
 
 func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
@@ -142,8 +146,7 @@ func _on_button_pressed() -> void:
 	if Globals.game.game_state.current_points < 0:
 		Events.on_lose.emit()
 	elif Globals.game.level_manager.is_last_level():
-		if Globals.game.game_state.current_job_title==Types.JobTitle.CELESTIAL_CLERK:
-			
+		if Globals.game.game_state.current_job_title==Types.JobTitle.CELESTIAL_CLERK:			
 			Events.on_win.emit()
 		else:
 			Events.on_survived.emit()

@@ -107,6 +107,8 @@ func get_rules_for_day() -> Array[Rule]:
 	return ret
 
 func _on_survived():
+	$Jingles/Survived.play()
+	Globals.music_manager.fade_game_music()
 	$OverlayLayer/SurviveScreen.show()
 	await get_tree().create_timer(2).timeout
 	$OverlayLayer/SurviveScreen2.show()
@@ -119,12 +121,16 @@ func _on_survived():
 
 func _on_lose():
 	$OverlayLayer/LoseScreen.show()
+	Globals.music_manager.fade_game_music()
+	$Jingles/Lose.play()
 	game_over=true
 	await get_tree().create_timer(5).timeout
 	Globals.go_to_main_menu()
 		
 func _on_win():
 	$OverlayLayer/WinScreen.show()
+	Globals.music_manager.fade_game_music()
+	$Jingles/Win.play()
 	game_over=true
 	await get_tree().create_timer(5).timeout
 	Globals.go_to_main_menu()
