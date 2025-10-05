@@ -231,7 +231,7 @@ func _initialize_claims() -> void:
 func _create_claim(claim_data: Array) -> Claim:
 	var claim = Claim.new()
 	claim.topic = claim_data[1]
-	claim.statement = claim_data[2]
+	claim.statement = claim_data[3]
 	
 	if claim.topic not in claims:
 		var array: Array[Claim]
