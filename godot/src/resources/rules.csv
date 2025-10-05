@@ -1,5 +1,4 @@
 rule_name,religion,trait_name,accepted_values,rejected_values,custom,text,fate,day of implementation,end day
-male_hell,religion1,gender,male,,,All men will go to hell.,hell,,
 tea_mindful,tea_religion,brew_tea_mindful,brewed_tea,,,People who brewed tea mindfully go to paradise,paradise,1,-
 tea_anger,tea_religion,brew_tea_anger,brewed_tea_anger,,,People who brewed tea angry go to hell,hell,1,-
 ice_tea,tea_religion,brew_ice_tea,drank_ice_tea,,,People who drank ice tea go to hell,hell,3,5

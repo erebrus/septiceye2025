@@ -1,5 +1,7 @@
 class_name Game extends Node2D
 
+const RULES_DATA_PATH = "res://src/resources/rules.csv"
+
 @export var start_state:GameState
 @export var game_state:GameState
 
@@ -13,9 +15,10 @@ var current_character: Character
 @onready var scheduled_deaths: ScheduledDeaths = %ScheduledDeaths
 @onready var rule_manual: RuleManual = %RuleManual
 
-
+var rules:Array[Rule]=[]
 
 func _ready():
+	load_rules()
 	Events.level_ended.connect(_on_level_ended)
 	fade_panel.fade_in()
 	
@@ -57,3 +60,10 @@ func _on_level_manager_level_ready() -> void:
 		
 	scheduled_deaths.set_state(game_state)
 	rule_manual.ruleset = get_level().ruleset
+
+func load_rules():
+	var rule_data = GameUtils.read_csv_file(RULES_DATA_PATH, true)
+	for rule_line in rule_data:
+		rules.append(Rule.from_csv_line(rule_line))
+	GSLogger.info("Loaded rules")
+	
