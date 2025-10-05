@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dij6fum0ibnv8"]
+[gd_scene load_steps=13 format=3 uid="uid://dij6fum0ibnv8"]
 
 [ext_resource type="Script" uid="uid://dy5rpcuu0y6pi" path="res://src/systems/day/shutter/shutter.gd" id="1_vx1tg"]
 [ext_resource type="Texture2D" uid="uid://q38hdib3yvc" path="res://assets/gfx/workspace/Window_Shutter.png" id="2_qv512"]
@@ -64,6 +64,8 @@ stream_0/stream = ExtResource("3_q6gwv")
 stream_1/stream = ExtResource("4_iiln2")
 stream_2/stream = ExtResource("5_scn53")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q6gwv"]
+
 [node name="Shutter" type="Area2D"]
 script = ExtResource("1_vx1tg")
 
@@ -82,5 +84,8 @@ texture = ExtResource("2_qv512")
 
 [node name="openSfx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_6ikkb")
+
+[node name="closeSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_q6gwv")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

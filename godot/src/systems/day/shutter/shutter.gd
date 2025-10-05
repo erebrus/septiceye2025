@@ -7,6 +7,7 @@ var is_open = false
 
 func close():
 	is_open = false
+	$closeSfx.play()
 	animation_player.play("close")
 	await animation_player.animation_finished
 	Events.day_finished.emit()
