@@ -61,8 +61,9 @@ func _ready():
 	
 
 func go_to_main_menu():
+	music_manager.fade_game_music()
 	get_tree().change_scene_to_file(START_SCENE_PATH)
-	
+
 
 func start_game():
 	GSLogger.info("Starting Game")

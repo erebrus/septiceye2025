@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=25 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
@@ -20,6 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://b6tr61qaqee2p" path="res://assets/music/ReincarnationJingleOneshot.ogg" id="12_aikvj"]
 [ext_resource type="AudioStream" uid="uid://bw63op36kppsm" path="res://assets/music/PurgatoryJingleOneshot.ogg" id="13_ns0lu"]
 [ext_resource type="AudioStream" uid="uid://bi34ftuak4rqk" path="res://assets/music/HellJingleOneshot.ogg" id="14_tqu6b"]
+[ext_resource type="AudioStream" uid="uid://coj3jwqcy4464" path="res://assets/music/BadEnding.ogg" id="22_6fytc"]
+[ext_resource type="AudioStream" uid="uid://cesf3ksruehkg" path="res://assets/music/NeutralEnding.ogg" id="22_ra4no"]
+[ext_resource type="AudioStream" uid="uid://s65t6fpq4a7b" path="res://assets/music/GoodEnding.ogg" id="22_xcy6g"]
 
 [sub_resource type="Resource" id="Resource_5q4o7"]
 metadata/__load_path__ = "res://src/tutorial_state.tres"
@@ -131,6 +134,15 @@ stream = ExtResource("13_ns0lu")
 
 [node name="Hell" type="AudioStreamPlayer" parent="Jingles"]
 stream = ExtResource("14_tqu6b")
+
+[node name="Win" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource("22_xcy6g")
+
+[node name="Survived" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource("22_ra4no")
+
+[node name="Lose" type="AudioStreamPlayer" parent="Jingles"]
+stream = ExtResource("22_6fytc")
 
 [connection signal="game_completed" from="LevelManager" to="." method="_on_level_manager_game_completed"]
 [connection signal="level_ready" from="LevelManager" to="." method="_on_level_manager_level_ready"]
