@@ -20,7 +20,7 @@ func _connect_all_buttons(node: Node) -> void:
 	
 
 func _connect_node(node: Node) -> void:
-	if node is Button:
+	if node is BaseButton:
 		if button_press_auto_connect:
 			node.pressed.connect(_on_button_pressed)
 		if button_hover_auto_connect:

@@ -22,3 +22,7 @@ func _setup() -> void:
 func _on_gui_input(event: InputEvent):
 	if event.is_action_released("left_click"):
 		claim_selected.emit(claim)
+
+
+func _on_mouse_entered():
+	Globals.ui_sfx._on_button_entered()

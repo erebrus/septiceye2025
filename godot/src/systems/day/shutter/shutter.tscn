@@ -90,3 +90,4 @@ mouse_filter = 1
 mouse_default_cursor_shape = 2
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

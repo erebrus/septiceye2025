@@ -25,3 +25,7 @@ func _on_input_event(_viewport, event: InputEvent,_shape_idx):
 	if event.is_action_released("left_click"):
 		if not is_open:
 			open()
+
+
+func _on_mouse_entered():
+	Globals.ui_sfx._on_button_entered()
