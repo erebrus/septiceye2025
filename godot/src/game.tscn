@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=17 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://l2dskqk2haet" path="res://src/systems/list/scheduled_deaths.tscn" id="5_pk08u"]
 [ext_resource type="PackedScene" uid="uid://6s4mcqvyfcgw" path="res://src/systems/character/passport.tscn" id="6_wqvko"]
 [ext_resource type="PackedScene" uid="uid://vm05pthnusdv" path="res://src/systems/rules/rule_manual.tscn" id="7_cdx1q"]
+[ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="9_a7soy"]
 [ext_resource type="AudioStream" uid="uid://b3ogqq5yqx1bg" path="res://assets/music/BackToLifeJingleOneshot.ogg" id="10_g3j30"]
 [ext_resource type="AudioStream" uid="uid://duxt6u8dbmj80" path="res://assets/music/HeavenJingleOneshot.ogg" id="11_a7soy"]
 [ext_resource type="AudioStream" uid="uid://b6tr61qaqee2p" path="res://assets/music/ReincarnationJingleOneshot.ogg" id="12_aikvj"]
@@ -40,9 +41,28 @@ offset_bottom = -540.0
 
 [node name="ScheduledDeaths" parent="HUDLayer" instance=ExtResource("5_pk08u")]
 unique_name_in_owner = true
+visible = false
 
 [node name="RuleManual" parent="HUDLayer" instance=ExtResource("7_cdx1q")]
 unique_name_in_owner = true
+
+[node name="RulesChanged" type="Label" parent="HUDLayer"]
+visible = false
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -547.0
+offset_top = 182.0
+offset_right = 508.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_a7soy")
+theme_override_font_sizes/font_size = 96
+text = "RULES HAVE CHANGED"
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 layer = 5

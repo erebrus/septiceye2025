@@ -63,7 +63,20 @@ func _on_level_manager_level_ready() -> void:
 		
 	scheduled_deaths.set_state(game_state)
 	rule_manual.ruleset = get_level().ruleset
+	if level_manager.current_level_idx>0:
+		show_warning()
 
+func show_warning():
+	var label := $HUDLayer/RulesChanged
+	await get_tree().create_timer(1.2).timeout
+	label.show()
+	label.modulate.a=1
+	await get_tree().create_timer(2).timeout
+	var tween:=get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label,"modulate",Color(1,1,1,0),.5)
+	await tween.finished
+	label.hide()
+	
 func load_rules():
 	var rule_data = GameUtils.read_csv_file(RULES_DATA_PATH, true)
 	for rule_line in rule_data:
