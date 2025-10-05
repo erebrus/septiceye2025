@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=31 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
@@ -21,6 +21,11 @@
 [ext_resource type="AudioStream" uid="uid://bw63op36kppsm" path="res://assets/music/PurgatoryJingleOneshot.ogg" id="13_ns0lu"]
 [ext_resource type="AudioStream" uid="uid://bi34ftuak4rqk" path="res://assets/music/HellJingleOneshot.ogg" id="14_tqu6b"]
 [ext_resource type="FontFile" uid="uid://bh38ogjpfwtyo" path="res://assets/fonts/AlfaSlabOne/AlfaSlabOne-Regular.ttf" id="15_xcy6g"]
+[ext_resource type="Texture2D" uid="uid://bc8co8xfbi4f4" path="res://assets/gfx/end-screens-wintext.png" id="16_rbnx6"]
+[ext_resource type="Texture2D" uid="uid://uwn20gcvi03l" path="res://assets/gfx/end-screens-fail.png" id="17_au4ic"]
+[ext_resource type="Texture2D" uid="uid://ye8y4o51cbnj" path="res://assets/gfx/end-screens-neutral1.png" id="18_2m2ji"]
+[ext_resource type="Texture2D" uid="uid://jfmvre1l4vni" path="res://assets/gfx/end-screens-neutral2.png" id="19_xm868"]
+[ext_resource type="Texture2D" uid="uid://dp5ig1qxvkfui" path="res://assets/gfx/end-screens-neutral3.png" id="20_3onxw"]
 [ext_resource type="AudioStream" uid="uid://coj3jwqcy4464" path="res://assets/music/BadEnding.ogg" id="22_6fytc"]
 [ext_resource type="AudioStream" uid="uid://cesf3ksruehkg" path="res://assets/music/NeutralEnding.ogg" id="22_ra4no"]
 [ext_resource type="AudioStream" uid="uid://s65t6fpq4a7b" path="res://assets/music/GoodEnding.ogg" id="22_xcy6g"]
@@ -86,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("16_rbnx6")
 
 [node name="LoseScreen" type="TextureRect" parent="OverlayLayer"]
 visible = false
@@ -94,6 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("17_au4ic")
 
 [node name="SurviveScreen" type="TextureRect" parent="OverlayLayer"]
 visible = false
@@ -102,6 +109,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("18_2m2ji")
 
 [node name="SurviveScreen2" type="TextureRect" parent="OverlayLayer"]
 visible = false
@@ -110,6 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("19_xm868")
 
 [node name="SurviveScreen3" type="TextureRect" parent="OverlayLayer"]
 visible = false
@@ -118,6 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("20_3onxw")
 
 [node name="FadePanel" parent="OverlayLayer" instance=ExtResource("4_wqvko")]
 unique_name_in_owner = true
@@ -161,3 +171,7 @@ bus = &"Music"
 [connection signal="level_ready" from="LevelManager" to="." method="_on_level_manager_level_ready"]
 [connection signal="level_unloaded" from="LevelManager" to="." method="_on_level_manager_level_unloaded"]
 [connection signal="gui_input" from="OverlayLayer/WinScreen" to="." method="_on_screen_gui_input"]
+[connection signal="gui_input" from="OverlayLayer/LoseScreen" to="." method="_on_screen_gui_input"]
+[connection signal="gui_input" from="OverlayLayer/SurviveScreen" to="." method="_on_screen_gui_input"]
+[connection signal="gui_input" from="OverlayLayer/SurviveScreen2" to="." method="_on_screen_gui_input"]
+[connection signal="gui_input" from="OverlayLayer/SurviveScreen3" to="." method="_on_screen_gui_input"]

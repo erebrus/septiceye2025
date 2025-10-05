@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://tew5nggvlbv0"]
+[gd_scene load_steps=10 format=3 uid="uid://tew5nggvlbv0"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_15q2y"]
 [ext_resource type="Script" uid="uid://d0qhvgualhiwk" path="res://src/start_screen/start_screen.gd" id="1_yk0mb"]
 [ext_resource type="Texture2D" uid="uid://2dcifqx7orvu" path="res://assets/gfx/ui/startscreen.png" id="2_esdhr"]
 [ext_resource type="Texture2D" uid="uid://caebo4q0m756n" path="res://assets/gfx/ui/startbutton.png" id="4_1wl0k"]
 [ext_resource type="PackedScene" uid="uid://to3p8qv7p8yo" path="res://addons/sj/components/ui/settings/volume_slider.tscn" id="4_h2rxl"]
+[ext_resource type="Texture2D" uid="uid://ba1yc8fahbu1c" path="res://assets/gfx/ui/startbutton_hover.png" id="5_r3fr1"]
 [ext_resource type="Texture2D" uid="uid://doknd0l5o427y" path="res://assets/gfx/ui/gametitle.png" id="6_1wl0k"]
 [ext_resource type="AudioStream" uid="uid://da204k70382hd" path="res://assets/sfx/UI_MenuButton_SliderClick_loop.wav" id="7_8hc8o"]
+[ext_resource type="Texture2D" uid="uid://cqkm8gebecwwc" path="res://assets/gfx/ui/Volume_Slider1.png" id="7_axy6j"]
 
 [node name="StartScreen" type="TextureRect"]
 anchors_preset = 15
@@ -26,15 +28,19 @@ offset_right = 842.0
 offset_bottom = 936.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_1wl0k")
+texture_hover = ExtResource("5_r3fr1")
+texture_focused = ExtResource("5_r3fr1")
 
 [node name="VBoxContainer" type="GridContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
+offset_left = 1055.0
+offset_top = -374.0
+offset_right = -365.0
+offset_bottom = -294.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 2
@@ -45,6 +51,10 @@ text = "SFX"
 
 [node name="SoundSlider" parent="VBoxContainer" instance=ExtResource("4_h2rxl")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("7_axy6j")
+theme_override_icons/grabber_highlight = ExtResource("7_axy6j")
+theme_override_icons/grabber_disabled = ExtResource("7_axy6j")
 bus_name = "Sfx"
 
 [node name="MusicLabel" type="Label" parent="VBoxContainer"]
@@ -53,6 +63,10 @@ text = "MUSIC"
 
 [node name="MusicSlider" parent="VBoxContainer" instance=ExtResource("4_h2rxl")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("7_axy6j")
+theme_override_icons/grabber_highlight = ExtResource("7_axy6j")
+theme_override_icons/grabber_disabled = ExtResource("7_axy6j")
 bus_name = "Music"
 
 [node name="Title" type="TextureRect" parent="."]
