@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ke438w5ne7cw"]
+[gd_scene load_steps=26 format=3 uid="uid://ke438w5ne7cw"]
 
 [ext_resource type="Script" uid="uid://cgpkxa13hhnox" path="res://src/game.gd" id="1_kc8ui"]
 [ext_resource type="PackedScene" uid="uid://bdj8t5d1w0lh5" path="res://src/common/level_manager.tscn" id="2_bs6l1"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://b6tr61qaqee2p" path="res://assets/music/ReincarnationJingleOneshot.ogg" id="12_aikvj"]
 [ext_resource type="AudioStream" uid="uid://bw63op36kppsm" path="res://assets/music/PurgatoryJingleOneshot.ogg" id="13_ns0lu"]
 [ext_resource type="AudioStream" uid="uid://bi34ftuak4rqk" path="res://assets/music/HellJingleOneshot.ogg" id="14_tqu6b"]
+[ext_resource type="FontFile" uid="uid://bh38ogjpfwtyo" path="res://assets/fonts/AlfaSlabOne/AlfaSlabOne-Regular.ttf" id="15_xcy6g"]
 [ext_resource type="AudioStream" uid="uid://coj3jwqcy4464" path="res://assets/music/BadEnding.ogg" id="22_6fytc"]
 [ext_resource type="AudioStream" uid="uid://cesf3ksruehkg" path="res://assets/music/NeutralEnding.ogg" id="22_ra4no"]
 [ext_resource type="AudioStream" uid="uid://s65t6fpq4a7b" path="res://assets/music/GoodEnding.ogg" id="22_xcy6g"]
@@ -61,14 +62,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -495.0
-offset_top = 186.0
-offset_right = 560.0
-offset_bottom = 318.0
+offset_left = -598.0
+offset_top = -59.0
+offset_right = 633.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_a7soy")
-theme_override_font_sizes/font_size = 96
+theme_override_colors/font_color = Color(0.85, 0.82960004, 0.816, 1)
+theme_override_colors/font_outline_color = Color(0.13, 0.1235, 0.1235, 1)
+theme_override_constants/outline_size = 100
+theme_override_fonts/font = ExtResource("15_xcy6g")
+theme_override_font_sizes/font_size = 128
 text = "RULES HAVE CHANGED"
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
