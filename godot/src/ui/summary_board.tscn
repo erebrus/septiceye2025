@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq81larsu30jg"]
+[gd_scene load_steps=5 format=3 uid="uid://bq81larsu30jg"]
 
 [ext_resource type="Script" uid="uid://nt336phwvyco" path="res://src/ui/summary_board.gd" id="1_6ykfi"]
 [ext_resource type="Texture2D" uid="uid://crodmcwhxibp" path="res://assets/gfx/workspace/Results.png" id="2_6ykfi"]
+
+[sub_resource type="Theme" id="Theme_6ykfi"]
+
+[sub_resource type="Theme" id="Theme_bbbqe"]
 
 [node name="SummaryBoard" type="Control"]
 layout_mode = 3
@@ -12,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ykfi")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,7 +31,257 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_6ykfi")
 
-[node name="Button" type="Button" parent="TextureRect"]
+[node name="Margin" type="MarginContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBox" type="VBoxContainer" parent="BG/Margin"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme = SubResource("Theme_6ykfi")
+theme_override_font_sizes/font_size = 64
+text = "Day 1 - Summary"
+horizontal_alignment = 1
+
+[node name="Spacer" type="MarginContainer" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Margin" type="MarginContainer" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="Grid" type="GridContainer" parent="BG/Margin/VBox/Margin"]
+layout_mode = 2
+columns = 3
+
+[node name="RowLabel" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+
+[node name="RowValue" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+
+[node name="RowCredits" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Score"
+
+[node name="RowLabel2" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Correctly Processed:"
+
+[node name="RowValue2" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits2" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="RowLabel3" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Incorrectly Processed:"
+
+[node name="RowValue3" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits3" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel4" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Back to Life Quota:"
+
+[node name="RowValue4" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits4" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel5" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Heaven Quota:"
+
+[node name="RowValue5" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits5" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel6" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Reincarnation Quota:"
+
+[node name="RowValue6" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits6" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel7" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Purgatory Quota:"
+
+[node name="RowValue7" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits7" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel8" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Hell Quota:"
+
+[node name="RowValue8" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "50/50"
+
+[node name="RowCredits8" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="RowLabel9" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 0
+
+[node name="RowValue9" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 0
+
+[node name="RowCredits9" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 0
+
+[node name="RowLabel10" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Total:"
+
+[node name="RowValue10" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+
+[node name="RowCredits10" type="Label" parent="BG/Margin/VBox/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "-100"
+
+[node name="Spacer2" type="MarginContainer" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Points" type="Label" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Current Job Rating: 0/100"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="MarginContainer" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Promotion" type="Label" parent="BG/Margin/VBox"]
+layout_mode = 2
+theme = SubResource("Theme_bbbqe")
+theme_override_font_sizes/font_size = 32
+text = "Promoted to"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="BG"]
 layout_mode = 0
 offset_left = 441.0
 offset_top = 971.0
@@ -35,4 +289,4 @@ offset_right = 520.0
 offset_bottom = 1002.0
 text = "Next Day"
 
-[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BG/Button" to="." method="_on_button_pressed"]

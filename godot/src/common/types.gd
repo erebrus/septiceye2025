@@ -24,3 +24,5 @@ enum JobTitle {
 	HIGH_ARBITER,
 	CELESTIAL_CLERK
 }
+
+const JOB_TITLES = ["Grim Reaper", "Fallen Judge", "High Arbiter", "Celestial Clerk"]
