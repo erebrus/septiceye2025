@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://k0yx4w2osxxx"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://k0yx4w2osxxx"]
 
 [ext_resource type="Texture2D" uid="uid://cfxv02j5bdpc1" path="res://assets/gfx/ui/checkbox/checkbox_checked.png" id="1_r2kde"]
 [ext_resource type="Texture2D" uid="uid://bfafs574ou8f7" path="res://assets/gfx/ui/sliders/slider_area_highlight.png" id="1_r7xqo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pp4u141ndyrg" path="res://assets/gfx/ui/sliders/slider_grabber_disabled.png" id="2_o7re1"]
 [ext_resource type="Texture2D" uid="uid://3b6b1pq730jr" path="res://assets/gfx/ui/sliders/slider_area_normal.png" id="3_cwe5m"]
 [ext_resource type="Texture2D" uid="uid://dxnxycvgfbcw4" path="res://assets/gfx/ui/sliders/slider_grabber_highlight.png" id="3_r2kde"]
+[ext_resource type="FontFile" uid="uid://cge3giahnq3eq" path="res://assets/fonts/SpecialElite/SpecialElite-Regular.ttf" id="9_jc0sv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ty3yj"]
 texture = ExtResource("1_r7xqo")
@@ -37,6 +38,7 @@ expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
 [resource]
+default_font = ExtResource("9_jc0sv")
 CheckBox/icons/checked = ExtResource("1_r2kde")
 CheckBox/icons/unchecked = ExtResource("2_jc0sv")
 HSlider/icons/grabber = ExtResource("1_ty3yj")
@@ -48,9 +50,9 @@ HSlider/styles/slider = SubResource("StyleBoxTexture_r2kde")
 HeaderLarge/colors/font_color = Color(0.078431375, 0.07450981, 0.07450981, 1)
 HeaderLarge/font_sizes/font_size = 32
 HeaderMedium/colors/font_color = Color(0.078431375, 0.07450981, 0.07450981, 1)
-HeaderMedium/font_sizes/font_size = 24
+HeaderMedium/font_sizes/font_size = 28
 HeaderSmall/colors/font_color = Color(0.078431375, 0.07450981, 0.07450981, 1)
-HeaderSmall/font_sizes/font_size = 16
-Label/colors/font_color = Color(0.078431375, 0.07450981, 0.07450981, 1)
-Label/font_sizes/font_size = 16
-Label/fonts/font = null
+HeaderSmall/font_sizes/font_size = 24
+Label/colors/font_color = Color(0.22, 0.20899999, 0.20899999, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("9_jc0sv")

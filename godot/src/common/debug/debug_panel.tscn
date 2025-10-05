@@ -54,7 +54,7 @@ layout_mode = 2
 [node name="LoadLevelButton" type="Button" parent="VBoxContainer/HFlowContainer3"]
 layout_mode = 2
 focus_mode = 0
-text = "Game Over
+text = "Load Level
 "
 
 [node name="GameOverLabel" type="Label" parent="VBoxContainer"]

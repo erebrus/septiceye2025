@@ -313,15 +313,19 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"HeaderMedium"
 text = "Principles affecting all souls"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
 [node name="GenericRules" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/GenericContent"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="ReligionContent1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
 unique_name_in_owner = true
@@ -331,6 +335,7 @@ layout_mode = 2
 [node name="ReligionRules1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent1"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="ReligionContent2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
 unique_name_in_owner = true
@@ -340,6 +345,7 @@ layout_mode = 2
 [node name="ReligionRules2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="ReligionContent3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
 unique_name_in_owner = true
@@ -349,6 +355,7 @@ layout_mode = 2
 [node name="ReligionRules3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent3"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="ReligionContent4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage"]
 unique_name_in_owner = true
@@ -358,5 +365,6 @@ layout_mode = 2
 [node name="ReligionRules4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPage/ReligionContent4"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
