@@ -7,8 +7,7 @@ static var destinations: Array[Types.Destination]
 static func _init() -> void:
 	destinations.assign(Types.Destination.values())
 	
-
-func expected_fate_for(character: Character) -> Types.Destination:
+func possible_fates_for(character: Character) -> Array[Types.Destination]:
 	var possible_destinations = destinations
 	for rule in rules:
 		if not rule.should_apply(character):
@@ -22,11 +21,19 @@ func expected_fate_for(character: Character) -> Types.Destination:
 		assert(not possible_destinations.is_empty())
 		
 		if possible_destinations.size() == 1:
-			GSLogger.info("Character with destination: %s" % Types.Destination.keys()[possible_destinations.front()])
-			return possible_destinations.front()
+			break
 	
-	GSLogger.warn("Character with multiple destinations (chosen: %s)" % Types.Destination.keys()[possible_destinations.front()])
-	return possible_destinations.front()
+	return possible_destinations
+	
+
+func expected_fate_for(character: Character) -> Types.Destination:
+	var possible = possible_fates_for(character)
+	if possible.size() == 1:
+		GSLogger.info("Character with destination: %s" % Types.Destination.keys()[possible.front()])
+	else:
+		GSLogger.warn("Character with multiple destinations (chosen: %s)" % Types.Destination.keys()[possible.front()])
+	
+	return possible.front()
 	
 
 func _filter_destinations(source: Array[Types.Destination], allowed: Array[Types.Destination]) ->  Array[Types.Destination]:

@@ -111,6 +111,9 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, 
 				rule.make_character_meet(character)
 		elif destination in rule.unmet_destinations:
 			rule.make_character_not_meet(character)
+		
+		if ruleset.possible_fates_for(character).size() == 1:
+			break
 	
 	complete(character, min_claims)
 	character.destination = ruleset.expected_fate_for(character)
