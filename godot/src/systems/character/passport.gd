@@ -2,6 +2,7 @@ class_name Passport extends MarginContainer
 
 @export var ClaimScene: PackedScene
 
+@export var religion_icons: Array[Texture2D]
 
 var character: Character:
 	set(value):
@@ -11,19 +12,37 @@ var character: Character:
 	
 
 func _ready() -> void:
+	assert(religion_icons.size() == Globals.character_generator.religions.size())
+	
 	if character != null:
 		_setup()
 	
 	hide()
 	Events.show_passport_requested.connect(show)
+	Events.day_finished.connect(close)
 	Events.stamp_requested.connect(_on_stamp_requested)
 	Events.character_entered.connect(func(x): character = x)
 	
 
+func close() -> void:
+	hide()
+	# TODO: close dialog?
+	
+	
+func _input(event: InputEvent):
+	if event.is_action_released("ui_cancel"):
+		close()
+	
 func _setup() -> void:
+	%ReligionIcon.texture = religion_icons[character.religion - 1]
+	%Religion.text = Globals.religion_names[character.religion - 1]
+	
 	%Name.text = character.name
 	%Gender.text = Character.Gender.keys()[character.gender].to_lower()
-	%Religion.text = Types.Religion.keys()[character.religion].to_lower()
+	%CharacterPortrait.character = character
+	
+	for child in %ClaimsContainer.get_children():
+		child.queue_free()
 	
 	for claim in character.claims:
 		_create_claim(claim)
