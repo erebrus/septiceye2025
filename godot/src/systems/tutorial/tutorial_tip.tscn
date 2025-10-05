@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://0axdup41mrit"]
+
+[ext_resource type="Script" uid="uid://db5a2urmljocv" path="res://src/systems/tutorial/tutorial_tip.gd" id="1_pn804"]
+[ext_resource type="Texture2D" uid="uid://xbioaxh5vme4" path="res://assets/gfx/ui/arrow_left.png" id="2_kl61o"]
+[ext_resource type="Texture2D" uid="uid://dny6sfotlecd4" path="res://assets/gfx/ui/arrow_up.png" id="3_pwvxh"]
+[ext_resource type="Texture2D" uid="uid://dk21il00cxmkg" path="res://assets/gfx/ui/arrow_down.png" id="4_pwvxh"]
+[ext_resource type="Texture2D" uid="uid://cxosyvkxc7884" path="res://assets/gfx/ui/arrow_right.png" id="5_g4118"]
+[ext_resource type="FontFile" uid="uid://byr4skm7k550m" path="res://assets/fonts/chawp.otf" id="6_g4118"]
+
+[node name="TutorialTip" type="Node2D"]
+visible = false
+script = ExtResource("1_pn804")
+
+[node name="Arrow1" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-73, -112)
+texture = ExtResource("2_kl61o")
+
+[node name="Arrow2" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(38, -145)
+texture = ExtResource("3_pwvxh")
+
+[node name="Arrow3" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(40, 123)
+texture = ExtResource("4_pwvxh")
+
+[node name="Arrow4" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-100, 102)
+scale = Vector2(-1, 1)
+texture = ExtResource("5_g4118")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.5
+offset_top = -19.5
+offset_right = 303.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.78039217, 0.12941177, 0.20392157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_g4118")
+theme_override_font_sizes/font_size = 38
+text = "This is a tip a very long tip"
+horizontal_alignment = 1

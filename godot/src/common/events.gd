@@ -12,6 +12,8 @@ signal level_ended()
 @warning_ignore("unused_signal")
 signal show_manual_requested
 @warning_ignore("unused_signal")
+signal manual_hidden
+@warning_ignore("unused_signal")
 signal show_list_requested
 @warning_ignore("unused_signal")
 signal show_passport_requested

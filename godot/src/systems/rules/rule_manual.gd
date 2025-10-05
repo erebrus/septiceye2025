@@ -98,3 +98,6 @@ class Page:
 		content.visible = value
 		
 	
+
+func _on_hidden():
+	Events.manual_hidden.emit()
