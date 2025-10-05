@@ -113,20 +113,18 @@ func run():
 			promotion.text= "Promoted to %s" % Types.JOB_TITLES[new_job]
 			$promotionSfx.play()
 		else:
-			promotion.text= "Demoted to %s" % Types.JOB_TITLES[new_job]
-			$demotionSfx.play()
 			if Globals.game.game_state.current_points < 0:
-				do_lose()
-				Globals.do_lose()
+				promotion.text= "You're not longer a %s" % Types.JOB_TITLES[0]
+			else:
+				promotion.text= "Demoted to %s" % Types.JOB_TITLES[new_job]
+			$demotionSfx.play()
+			
 	else:
 		if Globals.game.game_state.current_points < 0:
-			do_lose()
-			Globals.do_lose()
+			promotion.text= "You're not longer a %s" % Types.JOB_TITLES[0]
 		else:
 			promotion.text= "Remained %s" % Types.JOB_TITLES[new_job]
 	
-	if Globals.game.level_manager.is_last_level():
-		do_end()
 	button.show()
 
 func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
@@ -139,16 +137,18 @@ func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
 		"%d" %(quota_points))
 	score+=quota_points
 	
-func do_end():
-	GSLogger.info("End")
-	button.text="Restart"
-	pass
-func do_lose():
-	GSLogger.info("Lose")
-	button.text="Restart"
-	
+
 func _on_button_pressed() -> void:
-	Events.level_ended.emit()
+	if Globals.game.game_state.current_points < 0:
+		Events.on_lose.emit()
+	elif Globals.game.level_manager.is_last_level():
+		if Globals.game.game_state.current_job_title==Types.JobTitle.CELESTIAL_CLERK:
+			
+			Events.on_win.emit()
+		else:
+			Events.on_survived.emit()
+	else:
+		Events.level_ended.emit()
 
 func show_row(row_idx:int, label:String, value:String, credits:String):
 	var idx = 3 * row_idx
