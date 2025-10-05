@@ -30,9 +30,14 @@ func close() -> void:
 	
 	
 func _input(event: InputEvent):
+	if not visible:
+		return
+	
 	if event.is_action_released("ui_cancel"):
+		get_viewport().set_input_as_handled()
 		close()
 	
+
 func _setup() -> void:
 	%ReligionIcon.texture = religion_icons[character.religion - 1]
 	%Religion.text = Globals.religion_names[character.religion - 1]
