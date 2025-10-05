@@ -84,12 +84,12 @@ func sort_rule(a:Rule, b:Rule):
 
 
 func load_rules():
-	var rule_data = GameUtils.read_csv_file(RULES_DATA_PATH, true)
-	for rule_line in rule_data:
-		rules.append(ClaimRule.from_csv_line(rule_line))
-	rules.sort_custom(sort_rule)
-	for r in rules:
-		GSLogger.info("Loaded rule: %s" % r.short_name)
+	#var rule_data = GameUtils.read_csv_file(RULES_DATA_PATH, true)
+	#for rule_line in rule_data:
+		#rules.append(ClaimRule.from_csv_line(rule_line))
+	#rules.sort_custom(sort_rule)
+	#for r in rules:
+		#GSLogger.info("Loaded rule: %s" % r.short_name)
 	GSLogger.info("Loaded rules")
 	
 		

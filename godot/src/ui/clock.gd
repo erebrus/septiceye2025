@@ -8,6 +8,9 @@ signal timeout
 @export var total_time:= 60.0
 var current_time:=0.0
 
+@onready var timeout_bell: AudioStreamPlayer = $TimeoutBell
+@onready var ticking: AudioStreamPlayer = $Ticking
+
 func _ready():
 	reset()
 	Events.day_started.connect(func():start())
@@ -31,3 +34,7 @@ func _on_timer_timeout() -> void:
 	if current_time==total_time:
 		timer.stop()
 		timeout.emit()
+		timeout_bell.play()
+		ticking.stop()
+	elif (total_time-current_time)==15 and not ticking.playing:
+		ticking.play()

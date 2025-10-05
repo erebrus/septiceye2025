@@ -16,6 +16,8 @@ var game_state:GameState
 @onready var passport_button: BaseButton = %PassportButton
 @onready var shutter: Area2D = $Shutter
 @onready var summary_board: Control = $SummaryBoard
+@onready var list_sfx: AudioStreamPlayer = $sfx/ListSfx
+@onready var passport_sfx: AudioStreamPlayer = $sfx/PassportSfx
 
 
 func _ready() -> void:
@@ -96,10 +98,12 @@ func _on_manual_button_pressed():
 
 func _on_scheduled_deaths_button_pressed():
 	Events.show_list_requested.emit()
+	list_sfx.play()
 	
 
 func _on_passport_button_pressed():
 	Events.show_passport_requested.emit()
+	passport_sfx.play()
 	
 
 func _on_return_stamp_pressed():

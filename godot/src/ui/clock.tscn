@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5pd6lnbms1ig"]
+[gd_scene load_steps=6 format=3 uid="uid://c5pd6lnbms1ig"]
 
 [ext_resource type="Script" uid="uid://bfetbp0oxsi2k" path="res://src/ui/clock.gd" id="1_kvncn"]
 [ext_resource type="Texture2D" uid="uid://bflk3bc4objki" path="res://assets/gfx/workspace/ClockBase.png" id="2_rem7s"]
 [ext_resource type="Texture2D" uid="uid://brhno7sqxhl6w" path="res://assets/gfx/workspace/ClockHand.png" id="3_jk8lc"]
+[ext_resource type="AudioStream" uid="uid://cfyyhntu1sbyf" path="res://assets/sfx/Bell_TimeOver.wav" id="4_jk8lc"]
+[ext_resource type="AudioStream" uid="uid://b58c0uya2h17q" path="res://assets/sfx/Clock_Loop.wav" id="5_vnv34"]
 
 [node name="Clock" type="Control"]
 layout_mode = 3
@@ -29,5 +31,11 @@ offset_right = 136.0
 offset_bottom = 123.000015
 pivot_offset = Vector2(22, 103)
 texture = ExtResource("3_jk8lc")
+
+[node name="TimeoutBell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jk8lc")
+
+[node name="Ticking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vnv34")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
