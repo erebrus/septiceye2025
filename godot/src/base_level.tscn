@@ -128,10 +128,10 @@ texture_disabled = ExtResource("12_00nxg")
 metadata/_edit_use_anchors_ = true
 
 [node name="Board" parent="." instance=ExtResource("14_ofrd7")]
-offset_left = 1416.0
-offset_top = 200.0
-offset_right = 1416.0
-offset_bottom = 200.0
+offset_left = 1436.0
+offset_top = 306.0
+offset_right = 1436.0
+offset_bottom = 306.0
 
 [connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]

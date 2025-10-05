@@ -14,6 +14,7 @@ var game_state:GameState
 
 @onready var portrait: CharacterPortrait = %CharacterPortrait
 @onready var passport_button: BaseButton = %PassportButton
+@onready var shutter: Area2D = $Shutter
 
 
 func _ready() -> void:
@@ -23,7 +24,7 @@ func _ready() -> void:
 	passport_button.hide()
 	generate()
 	Events.pre_day_started.emit(quotas, extra_souls, ruleset)
-	
+	_on_manual_button_pressed()
 
 func set_state(_game_state:GameState):
 	game_state = _game_state
@@ -135,3 +136,9 @@ func _on_character_stamped(_destination: Types.Destination, _expected: Types.Des
 		next_character()
 	
 	
+
+
+func _on_clock_timeout() -> void:
+	shutter.close()
+	portrait.hide()
+	passport_button.hide()
