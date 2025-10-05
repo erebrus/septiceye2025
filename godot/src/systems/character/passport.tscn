@@ -233,7 +233,6 @@ text = "Click a claim to follow up"
 
 [node name="EXIT" parent="." instance=ExtResource("23_64k1g")]
 unique_name_in_owner = true
-visible = true
 position = Vector2(1092, 329)
 arrow = 2
 text = "Press ESC to close"
