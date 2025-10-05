@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://bl65iiuj1g8xm"]
+
+[ext_resource type="Texture2D" uid="uid://c41i7cynl2oll" path="res://assets/gfx/Characters/beard_french_front.png" id="1_j5e06"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_bv6ld"]
+
+[resource]
+script = ExtResource("2_bv6ld")
+part = "beard"
+variant = "french"
+front_texture = ExtResource("1_j5e06")
+back_color = 1
+front_color = 1
+gender = 1

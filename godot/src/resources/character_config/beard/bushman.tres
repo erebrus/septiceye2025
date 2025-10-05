@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://s3o7hquafn3q"]
+
+[ext_resource type="Texture2D" uid="uid://cb7xin3gyq6qg" path="res://assets/gfx/Characters/beard_bushman_front.png" id="1_ete47"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_xmtut"]
+
+[resource]
+script = ExtResource("2_xmtut")
+part = "beard"
+variant = "bushman"
+front_texture = ExtResource("1_ete47")
+back_color = 1
+front_color = 1
+gender = 1

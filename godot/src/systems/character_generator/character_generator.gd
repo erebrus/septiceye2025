@@ -10,6 +10,7 @@ const FOLLOW_UP_DATA_PATH = "res://src/resources/follow_ups.csv"
 @export var skin_colors: Dictionary[Character.SkinColor, Color]
 @export var clothes_1_colors: Dictionary[Character.ClothesColor1, Color]
 @export var clothes_2_colors: Dictionary[Character.ClothesColor2, Color]
+@export var beard_probability:= 0.5
 
 var parts_config: Dictionary[String, Dictionary]
 
@@ -57,6 +58,10 @@ func complete(character: Character, min_claims: int = 0) -> void:
 		if part in character.parts:
 			# part already pre-configured, skip
 			continue
+		
+		if part == "beard":
+			if randf() > beard_probability:
+				continue
 		
 		var allowed_values = character.filter_part_allowed_values(part, parts_config[part].keys())
 		_set_part(character, part, allowed_values)

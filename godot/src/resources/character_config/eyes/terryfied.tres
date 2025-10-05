@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=4 format=3 uid="uid://h02r2lbu1tt6"]
+
+[ext_resource type="Texture2D" uid="uid://cp5ext1m3lhuq" path="res://assets/gfx/Characters/eyes_terryfied_back.png" id="1_no0aj"]
+[ext_resource type="Texture2D" uid="uid://cisgnltuv2yxp" path="res://assets/gfx/Characters/eyes_terryfied_front.png" id="2_cw0es"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="3_5ipkw"]
+
+[resource]
+script = ExtResource("3_5ipkw")
+part = "eyes"
+variant = "terryfied"
+back_texture = ExtResource("1_no0aj")
+front_texture = ExtResource("2_cw0es")
+back_no_recolor = true
+front_color = 2

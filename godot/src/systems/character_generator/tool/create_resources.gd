@@ -81,12 +81,15 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 		"eyes", "mouth":
 			resource.back_no_recolor = true
 			resource.front_color = Character.ColorChannel.SKIN
-		"hair", "brows", "facialhair":
+		"hair", "brows", "beard":
 			resource.back_color = Character.ColorChannel.HAIR
 			resource.front_color = Character.ColorChannel.HAIR
 		_:
 			resource.back_no_recolor = true
 			resource.front_no_recolor = true
+	
+	if bodypart == "beard":
+		resource.gender = Character.Gender.MALE
 	
 	if variant.to_lower().contains("snail"):
 		resource.religion = Types.Religion.SNAIL

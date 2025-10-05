@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://dh3m8tigy54nv"]
+
+[ext_resource type="Texture2D" uid="uid://crey6qjul2i4v" path="res://assets/gfx/Characters/beard_goat_front.png" id="1_gav7p"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_uieb3"]
+
+[resource]
+script = ExtResource("2_uieb3")
+part = "beard"
+variant = "goat"
+front_texture = ExtResource("1_gav7p")
+back_color = 1
+front_color = 1
+gender = 1

@@ -78,7 +78,12 @@ var destination: Types.Destination
 
 
 func filter_part_allowed_values(part: String, values: Array[String]) -> Array[String]:
-	var allowed_values: Array[String] = values.duplicate()
+	var allowed_values: Array[String]
+	for value in values:
+		var config = Globals.character_generator.parts_config[part][value]
+		if gender == config.gender or config.gender == Gender.UNKNOWN:
+			allowed_values.append(value)
+	
 	for config in parts.values():
 		if part in config.allowed_parts:
 			GameUtils._array_interect(allowed_values, config.allowed_parts[part])

@@ -41,19 +41,27 @@ texture = ExtResource("5_mxwyy")
 unique_name_in_owner = true
 texture = ExtResource("5_mxwyy")
 
-[node name="NoseBack" type="Sprite2D" parent="BehindTorso"]
-unique_name_in_owner = true
-texture = ExtResource("5_mxwyy")
-
-[node name="NoseFront" type="Sprite2D" parent="BehindTorso"]
-unique_name_in_owner = true
-texture = ExtResource("5_mxwyy")
-
 [node name="MouthBack" type="Sprite2D" parent="BehindTorso"]
 unique_name_in_owner = true
 texture = ExtResource("5_mxwyy")
 
 [node name="MouthFront" type="Sprite2D" parent="BehindTorso"]
+unique_name_in_owner = true
+texture = ExtResource("5_mxwyy")
+
+[node name="BeardBack" type="Sprite2D" parent="BehindTorso"]
+unique_name_in_owner = true
+texture = ExtResource("5_mxwyy")
+
+[node name="BeardFront" type="Sprite2D" parent="BehindTorso"]
+unique_name_in_owner = true
+texture = ExtResource("5_mxwyy")
+
+[node name="NoseBack" type="Sprite2D" parent="BehindTorso"]
+unique_name_in_owner = true
+texture = ExtResource("5_mxwyy")
+
+[node name="NoseFront" type="Sprite2D" parent="BehindTorso"]
 unique_name_in_owner = true
 texture = ExtResource("5_mxwyy")
 

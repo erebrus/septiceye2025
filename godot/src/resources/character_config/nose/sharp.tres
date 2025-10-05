@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://w2625sojig47"]
+
+[ext_resource type="Texture2D" uid="uid://c0qn3y3ixcdeh" path="res://assets/gfx/Characters/nose_sharp_front.png" id="1_3ht0e"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_kbvb6"]
+
+[resource]
+script = ExtResource("2_kbvb6")
+part = "nose"
+variant = "sharp"
+front_texture = ExtResource("1_3ht0e")
+back_color = 2
+front_color = 2
