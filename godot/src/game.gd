@@ -27,8 +27,11 @@ func _ready():
 	Globals.game = self
 	
 	Events.character_entered.connect(func(x): current_character = x)
-	
+	Events.character_stamped.connect(_on_character_stamped)
 
+func _on_character_stamped(destination: Types.Destination, expected: Types.Destination):
+	($Jingles.get_child(destination) as AudioStreamPlayer).play()
+	
 func _on_level_ended():
 	fade_panel.fade_out()
 	await fade_panel.fade_out_completed
