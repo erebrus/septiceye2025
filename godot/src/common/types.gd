@@ -18,3 +18,9 @@ enum Religion {
 	LUMINARA
 }
  
+enum JobTitle {
+	GRIM_REAPER,
+	FALLEN_JUDGE,
+	HIGH_ARBITER,
+	CELESTIAL_CLERK
+}

@@ -29,7 +29,6 @@ func _ready() -> void:
 	_on_manual_button_pressed()
 	
 func add_rules():
-	ruleset.rules.clear()
 	var new_rules:Array[Rule]= Globals.game.get_rules_for_day()
 	ruleset.rules.append_array(new_rules)
 		
