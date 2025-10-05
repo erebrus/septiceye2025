@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("3_jdofs")
 part = "hair"
-variant = "bowlcut"
+variant = "custom-bowlcut-wo-back"
 front_texture = ExtResource("2_i6fvl")
 back_color = 1
 front_color = 1

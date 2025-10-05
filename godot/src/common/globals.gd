@@ -52,6 +52,8 @@ func _ready():
 	
 	GSLogger.info("Game version: %s" % game_version)
 	
+	character_generator.initialize()
+	
 	if get_tree().current_scene.scene_file_path == GAME_SCENE_PATH:
 		start_game()
 	

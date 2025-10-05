@@ -81,7 +81,7 @@ func _process_asset(bodypart: String, variant: String, assets: Array[String]) ->
 		"eyes", "mouth":
 			resource.back_no_recolor = true
 			resource.front_color = Character.ColorChannel.SKIN
-		"hair", "eyebrows", "facialhair":
+		"hair", "brows", "facialhair":
 			resource.back_color = Character.ColorChannel.HAIR
 			resource.front_color = Character.ColorChannel.HAIR
 		_:

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartConfig" load_steps=3 format=3 uid="uid://cksu0kuc525sr"]
+
+[ext_resource type="Texture2D" uid="uid://c4scb08oiae62" path="res://assets/gfx/Characters/brows_streight_front.png" id="1_taj4r"]
+[ext_resource type="Script" uid="uid://wr6lb6upbqtf" path="res://src/systems/character_generator/part_config.gd" id="2_68kad"]
+
+[resource]
+script = ExtResource("2_68kad")
+part = "brows"
+variant = "streight"
+front_texture = ExtResource("1_taj4r")
+back_color = 1
+front_color = 1
