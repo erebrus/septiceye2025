@@ -22,7 +22,7 @@ func start():
 	timer.start()
 
 func update_handle():
-	handle.rotation_degrees = (current_time/60)*360
+	handle.rotation_degrees = (current_time/total_time)*360
 
 
 func _on_timer_timeout() -> void:

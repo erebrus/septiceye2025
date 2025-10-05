@@ -15,6 +15,7 @@ var game_state:GameState
 @onready var portrait: CharacterPortrait = %CharacterPortrait
 @onready var passport_button: BaseButton = %PassportButton
 @onready var shutter: Area2D = $Shutter
+@onready var summary_board: Control = $SummaryBoard
 
 
 func _ready() -> void:
@@ -142,3 +143,4 @@ func _on_clock_timeout() -> void:
 	shutter.close()
 	portrait.hide()
 	passport_button.hide()
+	summary_board.show()
