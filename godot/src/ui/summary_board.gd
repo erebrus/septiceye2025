@@ -140,9 +140,11 @@ func do_quota_row(idx:int, label:String, value:int, fate:Types.Destination):
 		"%d/%d" % [value,quota],\
 		"%d" %(quota_points))
 	score+=quota_points
+
 	
 
 func _on_button_pressed() -> void:
+	Globals.ui_sfx.click_sfx.play()
 	if Globals.game.game_state.current_points < 0:
 		Events.on_lose.emit()
 	elif Globals.game.level_manager.is_last_level():
@@ -164,7 +166,8 @@ func show_row(row_idx:int, label:String, value:String, credits:String):
 	grid.get_child(idx).show()
 	grid.get_child(idx+1).show()
 	grid.get_child(idx+2).show()
-	
+	if label!="" or value !=""  or credits !="" :
+		$rowSfx.play()
 
 func hide_all_rows():
 	for c in grid.get_children():
@@ -176,3 +179,7 @@ func set_quotas(level_quotas:Dictionary[Types.Destination, int]):
 		if dest not in quotas:
 			quotas[dest]=0
 	
+
+
+func _on_button_mouse_entered() -> void:
+	Globals.ui_sfx.hover_sfx.play()

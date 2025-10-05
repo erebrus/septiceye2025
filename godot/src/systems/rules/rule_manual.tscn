@@ -382,5 +382,6 @@ theme_override_constants/separation = 20
 
 [node name="page" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_t7e1e")
+bus = &"Sfx"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

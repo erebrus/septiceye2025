@@ -34,8 +34,10 @@ texture = ExtResource("3_jk8lc")
 
 [node name="TimeoutBell" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jk8lc")
+bus = &"Sfx"
 
 [node name="Ticking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_vnv34")
+bus = &"Sfx"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
