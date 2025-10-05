@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://tew5nggvlbv0"]
+[gd_scene load_steps=7 format=3 uid="uid://tew5nggvlbv0"]
 
 [ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_15q2y"]
 [ext_resource type="Script" uid="uid://d0qhvgualhiwk" path="res://src/start_screen/start_screen.gd" id="1_yk0mb"]
+[ext_resource type="Texture2D" uid="uid://2dcifqx7orvu" path="res://assets/gfx/ui/startscreen.png" id="2_esdhr"]
+[ext_resource type="Texture2D" uid="uid://caebo4q0m756n" path="res://assets/gfx/ui/startbutton.png" id="4_1wl0k"]
 [ext_resource type="PackedScene" uid="uid://to3p8qv7p8yo" path="res://addons/sj/components/ui/settings/volume_slider.tscn" id="4_h2rxl"]
+[ext_resource type="Texture2D" uid="uid://dg0bh8n46l8ox" path="res://assets/gfx/ui/gametitle.png" id="6_1wl0k"]
 
 [node name="StartScreen" type="TextureRect"]
 anchors_preset = 15
@@ -11,18 +14,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_15q2y")
+texture = ExtResource("2_esdhr")
 script = ExtResource("1_yk0mb")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="TextureButton" parent="."]
 layout_mode = 1
-offset_left = 649.0
-offset_top = 200.0
-offset_right = 1089.0
-offset_bottom = 435.0
-theme_override_font_sizes/font_size = 96
-text = "START"
+offset_left = 123.0
+offset_top = 610.0
+offset_right = 842.0
+offset_bottom = 936.0
+texture_normal = ExtResource("4_1wl0k")
 
 [node name="VBoxContainer" type="GridContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -48,6 +52,14 @@ text = "MUSIC"
 [node name="MusicSlider" parent="VBoxContainer" instance=ExtResource("4_h2rxl")]
 layout_mode = 2
 bus_name = "Music"
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 178.0
+offset_right = 1448.0
+offset_bottom = 654.0
+texture = ExtResource("6_1wl0k")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/SoundSlider" to="." method="_on_volume_changed"]
