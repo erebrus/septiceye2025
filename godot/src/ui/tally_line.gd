@@ -28,9 +28,10 @@ func reset():
 	GameUtils.clear_node(tally_container)
 
 func add():
-	if count == tally_container.get_child_count():
+	if count == tally_container.get_child_count()*5:
 		_add_new_block()
 	get_last_block().add()
+	count+=1
 	
 func _add_new_block():
 	var block = BLOCK_SCENE.instantiate()

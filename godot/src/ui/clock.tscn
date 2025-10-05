@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5pd6lnbms1ig"]
+
+[ext_resource type="Script" uid="uid://bfetbp0oxsi2k" path="res://src/ui/clock.gd" id="1_kvncn"]
+[ext_resource type="Texture2D" uid="uid://bflk3bc4objki" path="res://assets/gfx/workspace/ClockBase.png" id="2_rem7s"]
+[ext_resource type="Texture2D" uid="uid://brhno7sqxhl6w" path="res://assets/gfx/workspace/ClockHand.png" id="3_jk8lc"]
+
+[node name="Clock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvncn")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Base" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_rem7s")
+
+[node name="Handle" type="TextureRect" parent="Base"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 12.0
+offset_right = 136.0
+offset_bottom = 123.000015
+pivot_offset = Vector2(22, 103)
+texture = ExtResource("3_jk8lc")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
