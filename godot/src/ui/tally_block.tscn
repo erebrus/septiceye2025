@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8rcov8888thv"]
+
+[ext_resource type="Script" uid="uid://i2r87y62tsp7" path="res://src/ui/tally_block.gd" id="1_adg1m"]
+[ext_resource type="Texture2D" uid="uid://bwjjqkp21sxpl" path="res://assets/gfx/workspace/Chalk_Tally.png" id="1_p2fad"]
+[ext_resource type="Texture2D" uid="uid://b6w7hn3renrex" path="res://assets/gfx/workspace/Chalk_CrossTally.png" id="2_adg1m"]
+
+[node name="TallyBlock" type="Control"]
+custom_minimum_size = Vector2(52.5, 45)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1867.5
+offset_bottom = -1035.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_adg1m")
+count = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 105.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = -13
+
+[node name="Tally1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p2fad")
+
+[node name="Tally2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p2fad")
+
+[node name="Tally3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p2fad")
+
+[node name="Tally4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p2fad")
+
+[node name="TallyCross" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 12.0
+offset_right = 112.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_adg1m")

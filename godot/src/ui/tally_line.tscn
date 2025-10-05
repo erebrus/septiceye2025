@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddtmbsydhepfy"]
+
+[ext_resource type="Theme" uid="uid://k0yx4w2osxxx" path="res://src/ui/theme.tres" id="1_t316r"]
+[ext_resource type="Script" uid="uid://ol7tmm3npx8g" path="res://src/ui/tally_line.gd" id="2_0yhhn"]
+[ext_resource type="PackedScene" uid="uid://c8rcov8888thv" path="res://src/ui/tally_block.tscn" id="2_lhtwi"]
+
+[node name="TallyLine" type="Control"]
+custom_minimum_size = Vector2(313, 45)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1607.0
+offset_bottom = -1035.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t316r")
+script = ExtResource("2_0yhhn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t316r")
+theme_override_colors/font_color = Color(0.8509804, 0.8, 0.7254902, 1)
+theme_override_font_sizes/font_size = 32
+text = "Purgatory(5):"
+
+[node name="TallyContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TallyBlock" parent="HBoxContainer/TallyContainer" instance=ExtResource("2_lhtwi")]
+layout_mode = 2
+
+[node name="TallyBlock2" parent="HBoxContainer/TallyContainer" instance=ExtResource("2_lhtwi")]
+layout_mode = 2
