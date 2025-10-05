@@ -3,6 +3,8 @@ class_name Passport extends MarginContainer
 @export var ClaimScene: PackedScene
 
 @export var religion_icons: Array[Texture2D]
+@export var stamp_textures: Array[Texture2D]
+
 
 var character: Character:
 	set(value):
@@ -10,6 +12,11 @@ var character: Character:
 		if is_node_ready():
 			_setup()
 	
+
+var stamping: bool = false
+
+@onready var stamp_sfx: AudioStreamPlayer = %StampSfx
+@onready var stamp: Sprite2D = %Stamp
 
 func _ready() -> void:
 	assert(religion_icons.size() == Globals.character_generator.religions.size())
@@ -26,6 +33,7 @@ func _ready() -> void:
 
 func close() -> void:
 	hide()
+	
 	# TODO: close dialog?
 	
 	
@@ -39,6 +47,8 @@ func _input(event: InputEvent):
 	
 
 func _setup() -> void:
+	stamp.hide()
+	
 	%ReligionIcon.texture = religion_icons[character.religion - 1]
 	%Religion.text = Globals.religion_names[character.religion - 1]
 	
@@ -62,10 +72,30 @@ func _create_claim(claim: Claim) -> void:
 func _on_stamp_requested(destination: Types.Destination) -> void:
 	if character == null:
 		return
-	# TODO open passport and stamp it 
+	
+	if stamping:
+		return
+	
+	stamping = true
 	GSLogger.info("Stamped character with %s (expected: %s)" % [
 		Types.Destination.keys()[destination],
 		Types.Destination.keys()[character.destination],
 	])
+	
+	if not visible:
+		show()
+		await get_tree().create_timer(0.3).timeout
+	
+	stamp.position = Vector2(randi_range(-50, 25), randi_range(-50, 20))
+	stamp.texture = stamp_textures[destination]
+	
+	await get_tree().create_timer(0.2).timeout
+	stamp_sfx.play()
+	await get_tree().create_timer(0.3).timeout
+	stamp.show()
+	await get_tree().create_timer(2.0).timeout
+	close()
+	
 	Events.character_stamped.emit(destination, character.destination)
+	stamping = false
 	
