@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lqtollaovard"]
+[gd_scene load_steps=18 format=3 uid="uid://lqtollaovard"]
 
 [ext_resource type="Script" uid="uid://b4ytavk038x8p" path="res://src/base_level.gd" id="1_mnxva"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_82ww6"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://j4hf2qioo8lp" path="res://src/ui/board.tscn" id="14_ofrd7"]
 [ext_resource type="PackedScene" uid="uid://c5pd6lnbms1ig" path="res://src/ui/clock.tscn" id="15_f5raj"]
 [ext_resource type="PackedScene" uid="uid://bq81larsu30jg" path="res://src/ui/summary_board.tscn" id="16_00nxg"]
+[ext_resource type="PackedScene" uid="uid://dgl2xgwk2ierl" path="res://src/ui/desk_plaque.tscn" id="17_f6fmg"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_mnxva")
@@ -147,6 +148,12 @@ offset_left = 998.0
 offset_top = 512.0
 offset_right = 998.0
 offset_bottom = 512.0
+
+[node name="DeskPlaque" parent="." instance=ExtResource("17_f6fmg")]
+offset_left = 12.0
+offset_top = 842.0
+offset_right = 458.0
+offset_bottom = 1036.0
 
 [connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]
