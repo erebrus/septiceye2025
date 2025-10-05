@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wwkndu58rohx" path="res://src/systems/claims/claim_item.gd" id="1_8500o"]
 
 [node name="ClaimItem" type="MarginContainer"]
+mouse_default_cursor_shape = 2
 script = ExtResource("1_8500o")
 
 [node name="Label" type="Label" parent="."]

@@ -79,4 +79,14 @@ stream = ExtResource("3_jf5i4")
 [node name="closeSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gmitv")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.0
+offset_top = -392.0
+offset_right = 407.0
+offset_bottom = 385.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
