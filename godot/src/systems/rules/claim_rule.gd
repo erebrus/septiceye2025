@@ -40,7 +40,9 @@ func make_character_not_meet(character: Character) -> void:
 		GSLogger.error("Character cannot meet rule")
 		return
 	
-	if not forbidden.is_empty():
+	if forbidden.is_empty() or randf() < 0.5:
+		character.forbidden_topics.append(topic)
+	else:
 		character.claims.append(forbidden.pick_random())
 	
 

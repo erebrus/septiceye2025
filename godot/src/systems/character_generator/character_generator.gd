@@ -69,12 +69,17 @@ func complete(character: Character, min_claims: int = 0) -> void:
 	var allowed_topics = claims.keys()
 	for claim in character.claims:
 		allowed_topics.erase(claim.topic)
+	for topic in character.forbidden_topics:
+		allowed_topics.erase(topic)
 	
 	for i in range(character.claims.size(), min_claims):
 		var topic = allowed_topics.pick_random()
 		allowed_topics.erase(topic)
 		
-		assert(not allowed_topics.is_empty())
+		if allowed_topics.is_empty():
+			GSLogger.info("Cannot generate any more topics for character")
+			break
+		
 		character.claims.append(claims[topic].pick_random())
 		
 	

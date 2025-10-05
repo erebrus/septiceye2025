@@ -87,6 +87,7 @@ var clothes_2_color: ClothesColor2
 
 var parts: Dictionary[String, PartConfig]
 var colors: Dictionary[ColorChannel, int]
+var forbidden_topics: Array[String]
 var claims: Array[Claim]
 
 var destination: Types.Destination
