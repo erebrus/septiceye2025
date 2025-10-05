@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2dcifqx7orvu"
-path="res://.godot/imported/startscreen.png-47fa98ce046bce3188b91dc1b3bf1973.ctex"
+uid="uid://gmo6usjx2lvi"
+path="res://.godot/imported/beard_bushman_front.png-9d65be73ead6cf5f4301fd93374f3095.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/ui/startscreen.png"
-dest_files=["res://.godot/imported/startscreen.png-47fa98ce046bce3188b91dc1b3bf1973.ctex"]
+source_file="res://assets/gfx/Characters/beard_bushman_front.png"
+dest_files=["res://.godot/imported/beard_bushman_front.png-9d65be73ead6cf5f4301fd93374f3095.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://lqtollaovard"]
+[gd_scene load_steps=26 format=3 uid="uid://lqtollaovard"]
 
 [ext_resource type="Script" uid="uid://b4ytavk038x8p" path="res://src/base_level.gd" id="1_mnxva"]
 [ext_resource type="PackedScene" uid="uid://b58peuo4bsbio" path="res://src/systems/character/character_portrait.tscn" id="2_82ww6"]
@@ -17,6 +17,24 @@
 [ext_resource type="PackedScene" uid="uid://c5pd6lnbms1ig" path="res://src/ui/clock.tscn" id="15_f5raj"]
 [ext_resource type="PackedScene" uid="uid://bq81larsu30jg" path="res://src/ui/summary_board.tscn" id="16_00nxg"]
 [ext_resource type="PackedScene" uid="uid://dgl2xgwk2ierl" path="res://src/ui/desk_plaque.tscn" id="17_f6fmg"]
+[ext_resource type="AudioStream" uid="uid://djpcxe2bnufbt" path="res://assets/sfx/Whoosh_list_1.wav" id="18_1cuma"]
+[ext_resource type="AudioStream" uid="uid://wki1e08oxscl" path="res://assets/sfx/Whoosh_list_2.wav" id="19_owwft"]
+[ext_resource type="AudioStream" uid="uid://c0x7l43c8yhk1" path="res://assets/sfx/Whoosh_list_3.wav" id="20_0aw8o"]
+[ext_resource type="AudioStream" uid="uid://bntiloj812gn5" path="res://assets/sfx/Whoosh_passport_1.wav" id="21_8u1h0"]
+[ext_resource type="AudioStream" uid="uid://cs53lrbn7emas" path="res://assets/sfx/Whoosh_passport_2.wav" id="22_20r1y"]
+[ext_resource type="AudioStream" uid="uid://dv38kqy752m4t" path="res://assets/sfx/Whoosh_passport_3.wav" id="23_cwwvc"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8u1h0"]
+streams_count = 3
+stream_0/stream = ExtResource("18_1cuma")
+stream_1/stream = ExtResource("19_owwft")
+stream_2/stream = ExtResource("20_0aw8o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pgi23"]
+streams_count = 3
+stream_0/stream = ExtResource("21_8u1h0")
+stream_1/stream = ExtResource("22_20r1y")
+stream_2/stream = ExtResource("23_cwwvc")
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_mnxva")
@@ -141,7 +159,6 @@ offset_left = 1554.0
 offset_top = 62.0
 offset_right = 1554.0
 offset_bottom = 62.0
-total_time = 600.0
 
 [node name="SummaryBoard" parent="." instance=ExtResource("16_00nxg")]
 visible = false
@@ -155,6 +172,14 @@ offset_left = 12.0
 offset_top = 842.0
 offset_right = 458.0
 offset_bottom = 1036.0
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="ListSfx" type="AudioStreamPlayer" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_8u1h0")
+
+[node name="PassportSfx" type="AudioStreamPlayer" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_pgi23")
 
 [connection signal="pressed" from="ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="ScheduledDeathsButton" to="." method="_on_scheduled_deaths_button_pressed"]
