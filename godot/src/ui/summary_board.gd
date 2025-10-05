@@ -111,8 +111,10 @@ func run():
 		Events.job_changed.emit(new_job, previous_job)
 		if new_job > previous_job:
 			promotion.text= "Promoted to %s" % Types.JOB_TITLES[new_job]
+			$promotionSfx.play()
 		else:
 			promotion.text= "Demoted to %s" % Types.JOB_TITLES[new_job]
+			$demotionSfx.play()
 			if Globals.game.game_state.current_points < 0:
 				do_lose()
 				Globals.do_lose()

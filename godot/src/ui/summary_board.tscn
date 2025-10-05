@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq81larsu30jg"]
+[gd_scene load_steps=13 format=3 uid="uid://bq81larsu30jg"]
 
 [ext_resource type="Script" uid="uid://nt336phwvyco" path="res://src/ui/summary_board.gd" id="1_6ykfi"]
 [ext_resource type="Texture2D" uid="uid://crodmcwhxibp" path="res://assets/gfx/workspace/Results.png" id="2_6ykfi"]
+[ext_resource type="AudioStream" uid="uid://dqjfeg6xy7vkp" path="res://assets/sfx/Promotion_1.wav" id="3_lelbe"]
+[ext_resource type="AudioStream" uid="uid://cvvbnbpunoxli" path="res://assets/sfx/Promotion_2.wav" id="4_v0yp6"]
+[ext_resource type="AudioStream" uid="uid://dil7un66u0xxm" path="res://assets/sfx/Promotion_3.wav" id="5_wm2up"]
+[ext_resource type="AudioStream" uid="uid://4oavgcddacjx" path="res://assets/sfx/Demotion_1.wav" id="6_tx0sv"]
+[ext_resource type="AudioStream" uid="uid://gws0fhsgc6oq" path="res://assets/sfx/Demotion_2.wav" id="7_lkexq"]
+[ext_resource type="AudioStream" uid="uid://d3jo11f3tb2yj" path="res://assets/sfx/Demotion_3.wav" id="8_bffop"]
 
 [sub_resource type="Theme" id="Theme_6ykfi"]
 
 [sub_resource type="Theme" id="Theme_bbbqe"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tx0sv"]
+streams_count = 3
+stream_0/stream = ExtResource("3_lelbe")
+stream_1/stream = ExtResource("4_v0yp6")
+stream_2/stream = ExtResource("5_wm2up")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_egwte"]
+streams_count = 3
+stream_0/stream = ExtResource("6_tx0sv")
+stream_1/stream = ExtResource("7_lkexq")
+stream_2/stream = ExtResource("8_bffop")
 
 [node name="SummaryBoard" type="Control"]
 layout_mode = 3
@@ -288,5 +306,11 @@ offset_top = 971.0
 offset_right = 520.0
 offset_bottom = 1002.0
 text = "Next Day"
+
+[node name="promotionSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_tx0sv")
+
+[node name="demotionSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_egwte")
 
 [connection signal="pressed" from="BG/Button" to="." method="_on_button_pressed"]
