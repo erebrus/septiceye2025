@@ -1,65 +1,65 @@
 religion,topic,passport claim,claim text
+star_religion,crying,no_cry,Why do we have to cry?
+tea_religion,reflection,no_reflect,When I reflect on life I get sad.
 tea_religion,tea_mood,tea_mindful,Think and brew a tea - that's the way.
+tea_religion,reflection,reflect_once,There is one day in the week for reflection.
 tea_religion,tea_mood,tea_mindful,The tea calms me down.
-tea_religion,tea_mood,tea_anger,I'm usually angry.
-tea_religion,tea_brew,ice_tea,Ice tea is the best.
-tea_religion,tea_brew,ice_tea,Cold tea is not that bad. 
-tea_religion,tea_share,first_sip_share,I love sharing my tea with my mom.
+tea_religion,tea_temp,tea_lukewarm,The Sacred Beverage is too hot.
+snail_religion,movement,moving_snail,The Perfect Pace is the meaning of life.
+snail_religion,movement,moving_slow,The Perfect Pace is hard to achieve but doable.
+sect_religion,release,no_release,The moon calendar is hard to follow.
 tea_religion,tea_share,first_sip_share,The Holy Beverage really nourishes my plants.
 tea_religion,tea_share,first_sip_denied,Sometimes I forget to share the first sip.
-tea_religion,tea_temp,tea_hot,I've burned my tounge many times witht the tea.
 tea_religion,tea_temp,tea_cold,Sometimes I drink a cold tea. 
-tea_religion,tea_temp,tea_lukewarm,The Sacred Beverage is too hot.
-tea_religion,tea_temp,tea_hot,I try my best to drink the tea hot.
-tea_religion,reflection,reflect_once,There is one day in the week for reflection.
-tea_religion,reflection,reflect_once,Reflecting on life brings me peace.
-tea_religion,reflection,reflect_more,I want to become closed to the Holy Leaves.
-tea_religion,reflection,no_reflect,When I reflect on life I get sad.
-tea_religion,leaves,throw_leaves,Living in an apartment complex is difficult.
-tea_religion,leaves,bury_leaves,I'm always burying the Holy Leaves.
 tea_religion,leaves,reuse_leaves,Reused tea leaves are not that bad.
-snail_religion,trinket,carry_snail,Divine Shell is everything to me.
-snail_religion,trinket,carry_snail,I'm scared I offended the Cosmic Snail.
-snail_religion,trinket,no_carry_snail,I don't like showing off my religion too much.
-snail_religion,movement,running,Moving your body is key to stay healthy.
-snail_religion,movement,moving_fast,I feel like I'm not slow enough.
-snail_religion,movement,moving_fast,I have to adapt my pace to others. 
-snail_religion,movement,moving_slow,My steps counting app hasn't reached more than 500 steps a day. 
-snail_religion,movement,moving_slow,The Perfect Pace is hard to achieve but doable.
-snail_religion,movement,moving_snail,The Perfect Pace is the meaning of life.
-snail_religion,stop,stop_once_aday,It's not hard to find something tiny every day.
-snail_religion,stop,stop_more_aday,I feel the presence of the Cosmic Snail every day with me.
-snail_religion,stop,no_stop,My life is too busy.
-snail_religion,protect,harm_snail,"I commited a heresy, I'm afraid."
-snail_religion,protect,dont_protect,"I have a busy life, I get too distracted sometimes. "
-snail_religion,protect,protect,I try to be very observant each day.
-star_religion,laugh,laugh,Laughing every day is important.
-star_religion,laugh,fake_giggle,Celestial Star's needs are hard to fulfill sometimes.
-star_religion,laugh,no_laugh,I feel like Celestial Star can be angry at me.
-star_religion,laugh,no_laugh,I try my best every day. 
-star_religion,jokes,jokes_cruel,Dark humor is not that good after all.
-star_religion,jokes,jokes_generous,People say I'm a social butterfly.
-star_religion,jokes,jokes_mixed,I say and then think.
-star_religion,seriousness,serious_always,I'm kind of like a VIP everywhere.
-star_religion,seriousness,serious_one,Pondering once a week is like a cleansing.
-star_religion,seriousness,no_serious,I feel the Celestial Star's blessing every day.
 star_religion,crying,cry,Releaseing your emotions is important to keep your faith alive.
-star_religion,crying,no_cry,Why do we have to cry?
-star_religion,crying,cry_hold_back,I try to be brave all the time. 
-star_religion,crying,no_cry,I'm not sure how long I can pretend anymore.
-star_religion,wish,wish,I hope the Celestial Star blesses me with my dreams coming ture.
-star_religion,wish,wish_laugh,I know the Celestial Star listens to me. 
-star_religion,wish,no_wish,I don't have many dreams to be honest.
-sect_religion,light,light_lamp_twice,I'm very devoted to the Eternal Light.
-sect_religion,light,light_lamp_once,I'm so tired every day.
-sect_religion,light,no_light_lamp,It's hard to keep up with the schedule.
+tea_religion,reflection,reflect_once,Reflecting on life brings me peace.
+star_religion,seriousness,serious_one,Pondering once a week is like a cleansing.
+star_religion,jokes,jokes_generous,People say I'm a social butterfly.
+snail_religion,movement,moving_slow,My steps counting app hasn't reached more than 500 steps a day. 
 sect_religion,darkness,lie_darkness,My special needs are difficult to meet with my religion's rules.
-sect_religion,darkness,lie_with_light,I made a special purchase for the Eternal Light.
-sect_religion,sharing_light,share_light,I always try to carry some spare candles with me.
-sect_religion,sharing_light,no_share_light,I think I'm too shy to spare the word.
-sect_religion,release,release_doubts_new_moon,I haven't missed a single new moon.
+snail_religion,stop,no_stop,My life is too busy.
+snail_religion,movement,running,Moving your body is key to stay healthy.
+tea_religion,leaves,throw_leaves,Living in an apartment complex is difficult.
+star_religion,laugh,laugh,Laughing every day is important.
+snail_religion,stop,stop_once_aday,It's not hard to find something tiny every day.
+sect_religion,light,no_light_lamp,It's hard to keep up with the schedule.
 sect_religion,release,release_doubts_other,It's difficult to contact the Eternal Light.
-sect_religion,release,no_release,The moon calendar is hard to follow.
+tea_religion,tea_brew,ice_tea,Ice tea is the best.
+tea_religion,tea_temp,tea_hot,I've burned my tounge many times witht the tea.
+sect_religion,light,light_lamp_twice,I'm very devoted to the Eternal Light.
+tea_religion,tea_mood,tea_anger,I'm usually angry.
+sect_religion,light,light_lamp_once,I'm so tired every day.
+snail_religion,trinket,carry_snail,I'm scared I offended the Cosmic Snail.
+star_religion,crying,no_cry,I'm not sure how long I can pretend anymore.
+star_religion,seriousness,serious_always,I'm kind of like a VIP everywhere.
 sect_religion,blowing_out,blow_flame_breath,I'm in too much rush.
-sect_religion,blowing_out,blow_flame_snuff,"Following the Eternal Light rules is necessary, I don't want my home to burn down."
+tea_religion,leaves,bury_leaves,I'm always burying the Holy Leaves.
+tea_religion,reflection,reflect_more,"I want to become closed to the Holy Leaves."
+snail_religion,protect,protect,I try to be very observant each day.
+star_religion,crying,cry_hold_back,I try to be brave all the time. 
+tea_religion,tea_temp,tea_hot,I try my best to drink the tea hot.
+star_religion,laugh,laugh_everyday,I try my best every day. 
+sect_religion,sharing_light,no_share_light,I think I'm too shy to spare the word.
+star_religion,jokes,jokes_mixed,I say and then think.
+sect_religion,darkness,lie_with_light,I made a special purchase for the Eternal Light.
+tea_religion,tea_share,first_sip_share,I love sharing my tea with my mom.
+star_religion,wish,wish_laugh,I know the Celestial Star listens to me. 
+star_religion,wish,wish,I hope the Celestial Star blesses me with my dreams coming ture.
+sect_religion,release,release_doubts_new_moon,I haven't missed a single new moon.
+snail_religion,movement,moving_fast,"I have to adapt my pace to others. "
+snail_religion,protect,dont_protect,"I have a busy life, I get too distracted sometimes. "
+snail_religion,stop,stop_more_aday,I feel the presence of the Cosmic Snail every day with me.
+star_religion,seriousness,no_serious,I feel the Celestial Star's blessing every day.
+snail_religion,movement,moving_fast,"I feel like I'm not slow enough."
 sect_religion,blowing_out,blow_flame_naturally,"I feel like I do some extra work, but it'll pay off."
+star_religion,laugh,no_laugh,I feel like Celestial Star can be angry at me.
+snail_religion,trinket,no_carry_snail,I don't like showing off my religion too much.
+star_religion,wish,no_wish,I don't have many dreams to be honest.
+snail_religion,protect,harm_snail,"I commited a heresy, I'm afraid."
+sect_religion,sharing_light,share_light,I always try to carry some spare candles with me.
+sect_religion,blowing_out,blow_flame_snuff,"Following the Eternal Light rules is necessary, I don't want my home to burn down."
+snail_religion,trinket,carry_snail,Divine Shell is everything to me.
+star_religion,jokes,jokes_cruel,Dark humor is not that good after all.
+tea_religion,tea_brew,ice_tea,Cold tea is not that bad. 
+star_religion,laugh,fake_giggle,"Celestial Star's needs are hard to fulfill sometimes."

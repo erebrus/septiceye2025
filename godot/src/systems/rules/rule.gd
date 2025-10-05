@@ -2,7 +2,7 @@ class_name Rule extends Resource
 
 @export var short_name:String 
 @export var religion: Types.Religion
-@export var claim:String 
+@export var topic:String 
 @export var accepted_claim_values:Array=[] 
 @export var rejected_claim_values:Array=[]
 @export var description: String
@@ -17,6 +17,14 @@ func _init() -> void:
 	
 
 func is_met_by(character: Character) -> bool:
+	if religion != character.religion:
+		return false
+	for claim in accepted_claim_values:
+		if not character.has_claim(topic,claim):
+			return false
+	for claim in rejected_claim_values:
+		if character.has_claim(topic,claim):
+			return false
 	return true
 	
 
@@ -36,7 +44,7 @@ static func from_csv_line(cols:Array[String])->Rule:
 	#rule_name,religion,trait_name,accepted_values,rejected_values,custom,text,fate,day of implementation,end day
 	rule.short_name = cols[0]
 	rule.religion = lookup_religion(cols[1])
-	rule.claim = cols[2]
+	rule.topic = cols[2] as String
 	rule.accepted_claim_values=[] if cols[3]=="" else cols[3].split(";") as Array[String]
 	rule.rejected_claim_values=[] if cols[4]=="" else cols[4].split(";") as Array[String]
 	rule.description = cols[6]

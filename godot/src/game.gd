@@ -67,3 +67,11 @@ func load_rules():
 		rules.append(Rule.from_csv_line(rule_line))
 	GSLogger.info("Loaded rules")
 	
+func get_rules_for_day() -> Array[Rule]:
+	var day:int = level_manager.current_level_idx + 1
+	var ret:Array[Rule] = []
+	for rule in rules:
+		if day >= rule.start_day and day <= rule.end_day:
+			ret.append(rule)
+	return ret
+	

@@ -116,3 +116,10 @@ func get_color_code(channel: ColorChannel) -> Color:
 		ColorChannel.CLOTHES_2: return gen.clothes_2_colors[clothes_2_color]
 		_: return Color.WHITE
 	
+
+func has_claim(topic:String, claim_to_check:String)->bool:
+	for claim in claims:
+		if claim.topic == topic and \
+			claim_to_check in claim.ids:
+				return true
+	return false
