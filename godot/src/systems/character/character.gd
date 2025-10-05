@@ -73,15 +73,7 @@ var gender: Gender
 var religion: Types.Religion
 
 var hair_color: HairColor
-var hair_color_code: Color:
-	get:
-		return Globals.character_generator.hair_colors[hair_color]
-
 var skin_color: SkinColor
-var skin_color_code: Color:
-	get:
-		return Globals.character_generator.skin_colors[skin_color]
-
 var clothes_1_color: ClothesColor1
 var clothes_2_color: ClothesColor2
 
@@ -142,7 +134,7 @@ func has_topic(topic:String) -> bool:
 	for claim in claims:
 		if claim.topic == topic:
 			return true
-	return false
+	return forbidden_topics.has(topic)
 	
 
 func has_claim(topic:String, claim_to_check:String)->bool:
