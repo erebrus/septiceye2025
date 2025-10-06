@@ -60,15 +60,15 @@ static func from_csv_line(cols:Array[String])->Rule:
 	rule.description = cols[6]
 	
 	var fate = lookup_fate(cols[7])
-	#rule.met_destinations.append(fate)
-	if rule.description.begins_with("All"):
-		rule.met_destinations.append(fate)
-		rule.unmet_destinations.append_array(Types.Destination.values())
-	else:
-		rule.met_destinations.append_array(Types.Destination.values())
-		for d in Types.Destination.values():
-			if d != fate:
-				rule.unmet_destinations.append(d)
+	rule.met_destinations.append(fate)
+	#if rule.description.begins_with("All"):
+		#rule.met_destinations.append(fate)
+		#rule.unmet_destinations.append_array(Types.Destination.values())
+	#else:
+		#rule.met_destinations.append_array(Types.Destination.values())
+		#for d in Types.Destination.values():
+			#if d != fate:
+				#rule.unmet_destinations.append(d)
 	
 	rule.start_day = int(cols[8])
 	if cols[9]!='-':
@@ -77,9 +77,9 @@ static func from_csv_line(cols:Array[String])->Rule:
 	rule.setup()
 	GSLogger.info("Loaded rule %s" % rule.short_name)
 	
-	if rule.allowed.is_empty():
-		GSLogger.error("Rule is not met by any claim")
-		return null
+	#if rule.allowed.is_empty():
+		#GSLogger.error("Rule is not met by any claim")
+		#return null
 	if rule.forbidden.is_empty():
 		GSLogger.warn("Rule is not contradicted by any claim (we cannot ensure is_not_met)")
 	

@@ -125,14 +125,19 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, 
 	if base_rule.description.begins_with("All"):
 		applicable_rules=[base_rule]
 	else:
-		applicable_rules = applicable_rules.filter(func(x):return not x.description.begins_with("Only") )
+		applicable_rules = applicable_rules.filter(func(x):return x.description.begins_with("Only") )
 
 	for r in applicable_rules:
 		r.make_character_meet(character)
 
 	complete(character, min_claims)
 	character.destination = ruleset.expected_fate_for(character)
-	
+	if character.destination!=destination:
+		GSLogger.warn("Trying to generate character for %s, but got %s"% \
+			[Types.Destination.keys()[destination],Types.Destination.keys()[character.destination]])
+		ruleset.expected_fate_for(character)
+	else:
+		GSLogger.info("RIGHT DEST")
 	return character
 	
 

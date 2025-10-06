@@ -95,7 +95,7 @@ func load_rules():
 	rules.sort_custom(sort_rule)
 	for r in rules:
 		GSLogger.info("Loaded rule: %s" % r.short_name)
-	GSLogger.info("Loaded rules")
+	GSLogger.info("Loaded %d rules" % rules.size())
 	
 		
 func get_rules_for_day() -> Array[Rule]:
