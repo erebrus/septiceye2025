@@ -8,6 +8,8 @@ var allowed: Array[Claim]
 var forbidden: Array[Claim]
 
 func setup():
+	if not topic:
+		return
 	var all: Array[Claim] = Globals.character_generator.claims[topic]
 	for claim in all:
 		if claim.has_all_ids(accepted_claim_values) and not claim.has_any_id(rejected_claim_values):
@@ -58,6 +60,7 @@ static func from_csv_line(cols:Array[String])->Rule:
 	rule.description = cols[6]
 	
 	var fate = lookup_fate(cols[7])
+	#rule.met_destinations.append(fate)
 	if rule.description.begins_with("All"):
 		rule.met_destinations.append(fate)
 		rule.unmet_destinations.append_array(Types.Destination.values())

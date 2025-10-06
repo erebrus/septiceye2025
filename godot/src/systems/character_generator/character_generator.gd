@@ -103,10 +103,12 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, 
 	var character = Character.new()
 	character.religion = religions.pick_random()
 	var applicable_rules:Array[Rule] = []
+	if destination == Types.Destination.HEAVEN:
+		pass
 	for rule in ruleset.rules:
 		if not rule.should_apply(character):
 			continue
-		if rule.met_destinations[0]== destination:
+		if destination in rule.met_destinations:
 			applicable_rules.append(rule)
 		#GSLogger.info("Generate for destination. Processing %s" % rule)
 		#
@@ -120,7 +122,7 @@ func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, 
 		#if ruleset.possible_fates_for(character).size() == 1:
 		#	break
 	var base_rule:Rule=applicable_rules.pick_random()
-	if base_rule.description.begins_with("Only"):
+	if base_rule.description.begins_with("All"):
 		applicable_rules=[base_rule]
 	else:
 		applicable_rules = applicable_rules.filter(func(x):return not x.description.begins_with("Only") )

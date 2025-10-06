@@ -85,6 +85,7 @@ func generate() -> void:
 func next_character() -> void:
 	var character = character_queue.front()
 	Events.character_entered.emit(character)
+	GSLogger.info("Character entered. Expected destination: %s" % Types.Destination.keys()[character.destination])
 	$sfx/CharacterSfx.play()
 	portrait.modulate.a=0
 	portrait.show()
