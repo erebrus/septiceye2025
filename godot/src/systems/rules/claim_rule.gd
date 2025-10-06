@@ -18,6 +18,8 @@ func setup():
 	
 
 func is_met_by(character: Character) -> bool:
+	if not topic: #default rule
+		return true
 	for claim in accepted_claim_values:
 		if not character.has_claim(topic,claim):
 			return false
