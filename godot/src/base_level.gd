@@ -60,14 +60,7 @@ func generate() -> void:
 		Globals.character_generator.complete(character, claims_per_soul)
 		character.destination = ruleset.expected_fate_for(character)
 		num_extra += _count_character(character, target)
-		
-	#for rule in ruleset.rules:
-		#GSLogger.info("Generating character which meets rule: %s" % rule)
-		#var character = Globals.character_generator.generate_for_rule(rule, claims_per_soul)
-		#character.destination = ruleset.expected_fate_for(character)
-		#character_queue.append(character)
-		#num_extra += _count_character(character, target)
-	
+
 	for destination in target:
 		for _i in target[destination]:
 			GSLogger.info("Generating character with destination: %s" % Types.Destination.keys()[destination])
