@@ -1,7 +1,7 @@
 class_name ScheduledDeathsRule extends Rule
 
 func _init() -> void:
-	description = "Souls should be scheduled to pass on today to access the afterlife realms."
+	description = "All souls should be scheduled to pass on today to access the afterlife realms."
 	met_destinations = [Types.Destination.RETURN]
 	unmet_destinations.assign(Types.Destination.values().filter(func(x): return x != Types.Destination.RETURN))
 	

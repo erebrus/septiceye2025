@@ -8,6 +8,10 @@ var allowed: Array[Claim]
 var forbidden: Array[Claim]
 
 func setup():
+	#No setup required for default rules because they dont need claims
+	if not topic: 
+		return
+		
 	var all: Array[Claim] = Globals.character_generator.claims[topic]
 	for claim in all:
 		if claim.has_all_ids(accepted_claim_values) and not claim.has_any_id(rejected_claim_values):
@@ -18,6 +22,9 @@ func setup():
 	
 
 func is_met_by(character: Character) -> bool:
+	#default rules are always met by anyone
+	if not topic: 
+		return true
 	for claim in accepted_claim_values:
 		if not character.has_claim(topic,claim):
 			return false
@@ -55,15 +62,10 @@ static func from_csv_line(cols:Array[String])->Rule:
 		rule.rejected_claim_values = GameUtils.parse_list(cols[4])
 	rule.description = cols[6]
 	
-	var fate = lookup_fate(cols[7])
-	if rule.description.begins_with("All"):
-		rule.met_destinations.append(fate)
-		rule.unmet_destinations.append_array(Types.Destination.values())
-	else:
-		rule.met_destinations.append_array(Types.Destination.values())
-		for d in Types.Destination.values():
-			if d != fate:
-				rule.unmet_destinations.append(d)
+	#TODO clean this up.
+	var fate = lookup_fate(cols[7]) 	
+	rule.met_destinations.append(fate)
+
 	
 	rule.start_day = int(cols[8])
 	if cols[9]!='-':
@@ -72,8 +74,8 @@ static func from_csv_line(cols:Array[String])->Rule:
 	rule.setup()
 	GSLogger.info("Loaded rule %s" % rule.short_name)
 	
-	if rule.allowed.is_empty():
-		GSLogger.error("Rule is not met by any claim")
+	if rule.topic and rule.allowed.is_empty():
+		GSLogger.error("Rule is not default and is not met by any claim")
 		return null
 	if rule.forbidden.is_empty():
 		GSLogger.warn("Rule is not contradicted by any claim (we cannot ensure is_not_met)")

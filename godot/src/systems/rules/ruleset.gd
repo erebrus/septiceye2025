@@ -8,21 +8,24 @@ static func _init() -> void:
 	destinations.assign(Types.Destination.values())
 	
 func possible_fates_for(character: Character) -> Array[Types.Destination]:
-	var possible_destinations = destinations
+	#TODO review that it can fit all types of rules
+	var possible_destinations:Array[Types.Destination] = []
+	var rejected_destinations:Array[Types.Destination] = []
+	#For all applicable rules, add the possible and forbidden destinations
 	for rule in rules:
 		if not rule.should_apply(character):
 			continue
-		
+		var dest:Types.Destination = rule.met_destinations[0]
 		if rule.is_met_by(character):
-			possible_destinations = _filter_destinations(possible_destinations, rule.met_destinations)
-		else:
-			possible_destinations = _filter_destinations(possible_destinations, rule.unmet_destinations)
-		
-		assert(not possible_destinations.is_empty())
-		
-		if possible_destinations.size() == 1:
-			break
-	
+			if not dest in possible_destinations:
+				possible_destinations.append(dest) 
+		elif not rule.description.begins_with("All"):
+			if not dest in rejected_destinations:
+				rejected_destinations.append(dest)
+	#Remove the forbidden destinations from the possible ones
+	possible_destinations = possible_destinations.filter(func(x): return not x in rejected_destinations)
+	assert(not possible_destinations.is_empty())
+
 	return possible_destinations
 	
 

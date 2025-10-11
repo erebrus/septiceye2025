@@ -102,26 +102,32 @@ func generate_for_rule(rule: Rule, min_claims: int = 0) -> Character:
 func generate_for_destination(destination: Types.Destination, ruleset: RuleSet, min_claims: int = 0) -> Character:
 	var character = Character.new()
 	character.religion = religions.pick_random()
-	
+	var applicable_rules:Array[Rule] = []
+
+	#Choose all rules that can lead to destination
 	for rule in ruleset.rules:
 		if not rule.should_apply(character):
 			continue
-		
-		GSLogger.info("Generate for destination. Processing %s" % rule)
-		
 		if destination in rule.met_destinations:
-			if destination not in rule.unmet_destinations:
-				rule.make_character_meet(character)
-		elif destination in rule.unmet_destinations:
-			if destination not in rule.met_destinations:
-				rule.make_character_not_meet(character)
-		
-		if ruleset.possible_fates_for(character).size() == 1:
-			break
-	
+			applicable_rules.append(rule)
+	#Pick a random applicable rule, if it's a "only" rule, then add all "only" rules, other wise, add just the one
+	var base_rule:Rule=applicable_rules.pick_random()
+	if base_rule.description.begins_with("All"):
+		applicable_rules=[base_rule]
+	else:
+		applicable_rules = applicable_rules.filter(func(x):return x.description.begins_with("Only") )
+
+	#Ensure character has traits/claims that make it meet the rule
+	for r in applicable_rules:
+		r.make_character_meet(character)
+
 	complete(character, min_claims)
 	character.destination = ruleset.expected_fate_for(character)
-	
+	if character.destination!=destination:
+		GSLogger.warn("Trying to generate character for %s, but got %s"% \
+			[Types.Destination.keys()[destination],Types.Destination.keys()[character.destination]])
+		ruleset.expected_fate_for(character)
+
 	return character
 	
 
